@@ -20,4 +20,10 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 		return (Long)session.save(artista);
 	}
 
+	@Override
+	public Artista obtenerArtistaPorId(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Artista.class, id);
+	}
+
 }

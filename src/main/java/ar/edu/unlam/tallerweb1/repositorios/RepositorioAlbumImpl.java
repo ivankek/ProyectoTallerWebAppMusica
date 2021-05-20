@@ -20,4 +20,10 @@ public class RepositorioAlbumImpl implements RepositorioAlbum {
 		return (Long)session.save(album);
 	}
 
+	@Override
+	public Album obtenerAlbumPorId(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Album)session.get(Album.class, id);
+	}
+
 }
