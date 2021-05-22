@@ -16,70 +16,69 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 
 @Controller
 public class ControladorUsuario {
-	
+
 	@Inject
 	private ServicioCancion servicioCancion;
-	
+
 	@RequestMapping("/uploadSongs")
 	public ModelAndView uploadSongs() {
-		
-		//Crea un album y lo almacena en la bd
+
+		// Crea un album y lo almacena en la bd
 		Album album = new Album();
-		album.setNombre("Medicine At Midnight");
-		album.setPath_img("img/Album/nombre_de_img.jpg");
+		album.setNombre("Back In Black");
+		album.setPath_img("img/Album/BackInBlack.jpg");
 		Long id_album = servicioCancion.guardarAlbum(album);
-		
-		//Crea un artista y lo almacena en la bd
+
+		// Crea un artista y lo almacena en la bd
 		Artista artista = new Artista();
-		artista.setNombre("nombre_de_artista");
+		artista.setNombre("AC/DC");
 		Long id_artista = servicioCancion.guardarArtista(artista);
-		
+
 		Genero genero = new Genero();
-        //Crea 2 generos y los almacena en la bd
-		//Se puede agregar o dejar un solo genero depende del album
-		genero.setNombre("genero_de_la cancion");
+		// Crea 2 generos y los almacena en la bd
+		// Se puede agregar o dejar un solo genero depende del album
+		genero.setNombre("Rock");
 		servicioCancion.guardarGenero(genero);
-		
-		genero.setNombre("genero_de_la cancio");
+
+		genero.setNombre("Rock");
 		servicioCancion.guardarGenero(genero);
-		
-		//Crea 3 canciones y las almacena en la bd
+
+		// Crea 3 canciones y las almacena en la bd
 		Cancion cancion = new Cancion();
 		cancion.setAlbum(servicioCancion.obtenerAlbumPorId(id_album));
 		cancion.setArtista(servicioCancion.obtenerArtistaPorId(id_artista));
-		
-		cancion.setNombre("nombre_de_cancion");
-		cancion.setPath_cancion("media/album_del_disco/cancion.mp3");
+
+		cancion.setNombre("Hells Bells");
+		cancion.setPath_cancion("media/BackInBlack/HellsBells.mp3");
 		servicioCancion.guardarCancion(cancion);
-		
-		cancion.setNombre("nombre_de_cancion");
-		cancion.setPath_cancion("media/album_del_disco/cancion.mp3");
+
+		cancion.setNombre("Shoot To Thrill");
+		cancion.setPath_cancion("media/BackInBlack/ShootToThrill.mp3");
 		servicioCancion.guardarCancion(cancion);
-		
-		cancion.setNombre("nombre_de_cancion");
-		cancion.setPath_cancion("media/album_del_disco/cancion.mp3");
+
+		cancion.setNombre("You Shook Me All Night Long");
+		cancion.setPath_cancion("media/BackInBlack/YouShookMeAllNightLong.mp3");
 		servicioCancion.guardarCancion(cancion);
-		
+
 		ModelMap model = new ModelMap();
-		
+
 		model.put("artista", id_artista);
 		model.put("album", id_album);
-		return new ModelAndView("viewUploadSongs",model);
+		return new ModelAndView("viewUploadSongs", model);
 	}
-	
+
 	@RequestMapping("/Album")
-	public ModelAndView album(
-		@RequestParam(value="idArtista",required=false)Long id_artista,
-		@RequestParam(value="idAlbum",required=false)Long id_album)
-	{
+	public ModelAndView album(@RequestParam(value = "idArtista", required = false) Long id_artista,
+			@RequestParam(value = "idAlbum", required = false) Long id_album) {
 		ModelMap model = new ModelMap();
-		
+
 		model.put("nombreArtista", servicioCancion.obtenerArtistaPorId(id_artista).getNombre());
 		model.put("nombreAlbum", servicioCancion.obtenerAlbumPorId(id_album).getNombre());
 		model.put("imagenAlbum", servicioCancion.obtenerAlbumPorId(id_album).getPath_img());
 		model.put("canciones", servicioCancion.obtenerTodasLasCanciones());
-		
-		
-		return new ModelAndView ("viewAlbum",model);
+
+		return new ModelAndView("viewAlbum", model);
 	}
 }
+
+	
