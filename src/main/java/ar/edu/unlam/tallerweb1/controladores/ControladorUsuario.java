@@ -79,6 +79,23 @@ public class ControladorUsuario {
 
 		return new ModelAndView("viewAlbum", model);
 	}
-}
 
-	
+	int upload = 0;
+
+	@RequestMapping("/Inicio")
+	public ModelAndView inicio() {
+
+		if (upload < 1) {
+			uploadSongs();
+			upload++;
+		}
+
+		ModelMap model = new ModelMap();
+
+		model.put("titulo", "Inicio");
+		model.put("canciones", servicioCancion.obtenerTodasLasCanciones());
+
+		return new ModelAndView("Inicio", model);
+	}
+
+}
