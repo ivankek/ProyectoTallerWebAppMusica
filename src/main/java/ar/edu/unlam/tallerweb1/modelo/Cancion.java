@@ -21,6 +21,9 @@ public class Cancion {
 	@ManyToOne
 	private Artista artista;
 	
+	@ManyToOne
+	private ListaReproduccion listaReproduccion;
+	
 	private String path_cancion;
 
 	public Long getId() {
@@ -61,6 +64,14 @@ public class Cancion {
 
 	public void setArtista(Artista artista) {
 		this.artista = artista;
+	}
+
+	public ListaReproduccion getListaReproduccion() {
+		return listaReproduccion;
+	}
+
+	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
+		this.listaReproduccion = listaReproduccion;
 	}
 	
 }
