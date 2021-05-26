@@ -68,27 +68,9 @@ function timeFormat(time){
 	return minutes + ":" + seconds;
 }
 
-//Otros
-/*function scheludeSong(){
-  audio.onended = function(){
-    if(queue.childElementCount == 1){
-      audio.pause();
-      playBtn.innerHTML = "play_circle_outline";
-    }else{
-      queue.removeChild(queue.firstElementChild);
-      songIsSet();
-    }
-  }
-}
-
-function songIsSet(){
-	var song = queue.firstElementChild;
-	if(song){
-		audio.setAttribute("src",song.getAttribute('name'));
-		songName.innerHTML = song.innerHTML;
-		artistName.innerHTML = "Foo Fighters";
-		audio.play();
-		
-    	scheludeSong();
-	}
-}*/
+document.querySelectorAll(".click").forEach(el => {
+  el.addEventListener("click", e => {
+    const id = e.target.getAttribute("id");
+    audio.src = id;
+  });
+});
