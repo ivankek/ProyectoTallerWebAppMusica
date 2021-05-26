@@ -13,6 +13,8 @@ public class Artista {
 	private Long id;
 	
 	private String nombre;
+	
+	private Long puntaje;
 
 	public Long getId() {
 		return id;
@@ -29,6 +31,16 @@ public class Artista {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public Long getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(Long puntaje) {
+		this.puntaje = puntaje;
+	}
+	
+	
 	
 	
 }

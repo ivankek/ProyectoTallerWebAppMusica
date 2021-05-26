@@ -13,7 +13,10 @@ public class Album {
 	private Long id;
 	
 	private String nombre;
+	
 	private String path_img;
+	
+	private Long puntaje;
 	
 	public Long getId() {
 		return id;
@@ -33,4 +36,12 @@ public class Album {
 	public void setPath_img(String path_img) {
 		this.path_img = path_img;
 	}
+	public Long getPuntaje() {
+		return puntaje;
+	}
+	public void setPuntaje(Long puntaje) {
+		this.puntaje = puntaje;
+	}
+	
+	
 }

@@ -9,5 +9,7 @@ public interface RepositorioCancion {
 	Long insertarCancion(Cancion cancion);
 	
 	List<Cancion> obtenerTodasLasCanciones();
+	
+	List<Cancion>obtenerLasCincoMejoresCanciones();
 
 }

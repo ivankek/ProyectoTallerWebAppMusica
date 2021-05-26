@@ -22,6 +22,8 @@ public class Cancion {
 	private Artista artista;
 	
 	private String path_cancion;
+	
+	private Long puntaje;
 
 	public Long getId() {
 		return id;
@@ -62,5 +64,15 @@ public class Cancion {
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
+
+	public Long getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(Long puntaje) {
+		this.puntaje = puntaje;
+	}
+	
+	
 	
 }
