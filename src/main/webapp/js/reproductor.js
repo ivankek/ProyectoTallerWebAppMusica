@@ -1,37 +1,14 @@
-$(document).ready(function(){
-	getSongs();
-});
-
 var audio = document.getElementById('player');
-var music;
+const queueMusic = document.querySelector('#queue');
+const queue = document.querySelector('#playlist');
 
-function playSong(rutaCancion,track){
-	var cantidadCanciones = document.getElementsByClassName("list-group-item").length;
-	if(track > cantidadCanciones){
-		audio.pause();
+
+function queueShow(){
+	if(queueMusic.className.includes("text-success")){
+		queueMusic.classList.remove('text-success');
+		queue.setAttribute('hidden', true);
 	}else{
-		$('#player').attr('src',rutaCancion);
-		audio.play();
-		track++;
-		scheludeSong(track,cantidadCanciones);
-		}
-	}
-
-function getSongs(){
-	$('#playlist li').click(function(){
-		var selectedsong = $(this).attr('name');
-		var track = $(this).attr('id');
-		playSong(selectedsong,parseInt(track));
-	});
-}
-
-function scheludeSong(track,cantidadCanciones){
-	audio.onended = function(){
-		if(track <= cantidadCanciones){
-			playSong(document.getElementById(track).getAttribute("name"),track);
-		}else{
-			console.log("finalizo lista");
-			audio.pause();
-		}
+		queue.removeAttribute('hidden');
+		queueMusic.classList.add('text-success');
 	}
 }

@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
@@ -27,6 +29,15 @@ public class RepositorioCancionImpl implements RepositorioCancion {
 	public List<Cancion> obtenerTodasLasCanciones() {
 		Session session = sessionFactory.getCurrentSession();
 		return  session.createCriteria(Cancion.class).list();
+	}
+
+	@Override
+	public List<Cancion> obtenerLasCincoMejoresCanciones() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Cancion.class)
+				.addOrder(Order.desc("puntaje"))
+				.setMaxResults(5)
+				.list();
 	}
 
 }

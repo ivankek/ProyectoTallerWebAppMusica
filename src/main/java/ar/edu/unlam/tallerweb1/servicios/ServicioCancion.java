@@ -25,4 +25,10 @@ public interface ServicioCancion {
 	Artista obtenerArtistaPorId(Long id);
 	
 	Album obtenerAlbumPorId(Long id);
+	
+	List<Cancion>obtenerLasCincoMejoresCanciones();
+	
+	List<Album> obtenerLosCincoMejoresAlbumes();
+	
+	List<Artista> obtenerLosCincoMejoresArtistas();
 }

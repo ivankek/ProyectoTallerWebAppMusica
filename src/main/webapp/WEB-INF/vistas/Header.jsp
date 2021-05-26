@@ -7,6 +7,7 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href= "css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>${titulo}</title>
 </head>
 <body>
@@ -22,11 +23,3 @@
 		<button type="button" class="btn btn-info text-light">Login</button>
 	</div>
 	</nav>
-	
-	<!-- Bootstrap -->
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="https://kit.fontawesome.com/1776a9f4e1.js" crossorigin="anonymous"></script>
-	<script src="js/reproductor.js"></script>
-</body>
-</html>
