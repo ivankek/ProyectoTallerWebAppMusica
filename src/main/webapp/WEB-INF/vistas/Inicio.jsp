@@ -21,7 +21,7 @@
 						name="${cancion.path_cancion}"
 						style="border-radius: 1em; margin-bottom: 2px;">
 						<div
-							class="d-flex justify-content-between text-light align-items-center p-3">
+							class="d-flex justify-content-between text-light align-items-center">
 							<img style="width: 3em" src="${cancion.album.path_img}" alt="">
 							<p class="fs-5">${cancion.nombre}</p>
 							<p class="fs-5">${cancion.artista.nombre}</p>
