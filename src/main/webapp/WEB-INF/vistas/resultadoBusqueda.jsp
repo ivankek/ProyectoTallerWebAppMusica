@@ -102,15 +102,14 @@
 
 			</c:forEach>
 		</ul>
-		<audio class="fixed-bottom w-100" id="player" controls></audio>
 	</div>
 
+<%@include file="reproductor.jsp"%>
 
 	<!-- Scripts -->
-	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/1776a9f4e1.js"
 		crossorigin="anonymous"></script>
-	<script src="js/reproductor.js"></script>
+	<script src="js/reproductorFooter.js"></script>
 </body>
 </html>

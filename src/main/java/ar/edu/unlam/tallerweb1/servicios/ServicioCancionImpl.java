@@ -77,4 +77,19 @@ public class ServicioCancionImpl implements ServicioCancion {
 		return repositorioAlbum.obtenerAlbumPorId(id);
 	}
 
+	@Override
+	public List<Cancion> obtenerLasCincoMejoresCanciones() {
+		return repositorioCancion.obtenerLasCincoMejoresCanciones();
+	}
+
+	@Override
+	public List<Album> obtenerLosCincoMejoresAlbumes() {
+		return repositorioAlbum.obtenerCincoMejoresAlbum();
+	}
+
+	@Override
+	public List<Artista> obtenerLosCincoMejoresArtistas() {
+		return repositorioArtista.obtenerCincoMejoresArtistas();
+	}
+
 }

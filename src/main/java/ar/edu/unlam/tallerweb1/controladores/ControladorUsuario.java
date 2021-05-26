@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.modelo.Album;
-import ar.edu.unlam.tallerweb1.modelo.Artista;
-import ar.edu.unlam.tallerweb1.modelo.Cancion;
-import ar.edu.unlam.tallerweb1.modelo.Genero;
+
+import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 
 @Controller
@@ -19,10 +17,13 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioCancion servicioCancion;
+	
+	@Inject
+	private ServicioBusqueda servicioBusqueda;
 
 	@RequestMapping("/uploadSongs")
 	public ModelAndView uploadSongs() {
-
+		/*Antes se inicializaba  por aca ahora se ejecuta un script ver scrpit loadSongs
 		// Crea un album y lo almacena en la bd
 		Album album = new Album();
 		album.setNombre("Back In Black");
@@ -85,39 +86,30 @@ public class ControladorUsuario {
 		model.put("artista", id_artista);
 		model.put("artista", id_artista1);
 		model.put("album", id_album);
-		model.put("album", id_album1);
-		return new ModelAndView("viewUploadSongs", model);
+		model.put("album", id_album1);*/
+
+		return new ModelAndView("viewUploadSongs");
 	}
 
 	@RequestMapping("/Album")
-	public ModelAndView album(@RequestParam(value = "idArtista", required = false) Long id_artista,
-			@RequestParam(value = "idAlbum", required = false) Long id_album) {
+	public ModelAndView album(@RequestParam(value = "nombre", required = false) String album) {
 		ModelMap model = new ModelMap();
 
-		model.put("nombreArtista", servicioCancion.obtenerArtistaPorId(id_artista).getNombre());
-		model.put("nombreAlbum", servicioCancion.obtenerAlbumPorId(id_album).getNombre());
-		model.put("imagenAlbum", servicioCancion.obtenerAlbumPorId(id_album).getPath_img());
-		model.put("canciones", servicioCancion.obtenerTodasLasCanciones());
+
+		model.put("canciones", servicioBusqueda.obtenerCancionesPorAlbum(album));
+		model.put("titulo","Album - " + album);
 
 		return new ModelAndView("viewAlbum", model);
 	}
 
-	int upload = 0;
-
 	@RequestMapping("/Inicio")
 	public ModelAndView inicio() {
-
-		if (upload < 1) {
-			uploadSongs();
-			upload++;
-		}
-
+		
 		ModelMap model = new ModelMap();
 
 		model.put("titulo", "Inicio");
-		model.put("canciones", servicioCancion.obtenerTodasLasCanciones());
+		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
 
 		return new ModelAndView("Inicio", model);
 	}
-
 }

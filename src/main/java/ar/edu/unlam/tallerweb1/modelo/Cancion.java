@@ -25,6 +25,8 @@ public class Cancion {
 	private ListaReproduccion listaReproduccion;
 	
 	private String path_cancion;
+	
+	private Long puntaje;
 
 	public Long getId() {
 		return id;
@@ -66,6 +68,7 @@ public class Cancion {
 		this.artista = artista;
 	}
 
+
 	public ListaReproduccion getListaReproduccion() {
 		return listaReproduccion;
 	}
@@ -73,5 +76,12 @@ public class Cancion {
 	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
 		this.listaReproduccion = listaReproduccion;
 	}
-	
+
+	public Long getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(Long puntaje) {
+		this.puntaje = puntaje;
+	}
 }

@@ -4,3 +4,6 @@ body{
 	background-color: #131313;
 	
 }
+div.progress{height:3px;}
+.volume-progress{width:100px;}
+
