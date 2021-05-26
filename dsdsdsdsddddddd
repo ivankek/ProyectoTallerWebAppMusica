@@ -1,0 +1,65 @@
+[33mcommit 758f52937be4fc2f050efa55e6e330cf85dd48e8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Elian Dominguez <56704805+elian-dominguez@users.noreply.github.com>
+Date:   Tue May 25 19:35:19 2021 -0300
+
+    Subida de repositorios, modelo, servicios de la PlayList
+
+[33mcommit 4a09262bfe6e43f609a4f7ebf143c1460864e6b0[m[33m ([m[1;32mivan[m[33m)[m
+Author: juampifortu <juampifortunato98@gmail.com>
+Date:   Mon May 24 22:23:24 2021 -0300
+
+    agrego buscador con diferentes tipos de búsqueda
+
+[33mcommit 8657ce51c2e43f8cefaa48e9e4a8333a6270d776[m
+Author: ivankek <ivan.kek@hotmail.com>
+Date:   Sun May 23 18:18:24 2021 -0300
+
+    Home con reproductor y lista de canciones terminado
+
+[33mcommit c210b43680bbec5532772f9825d4503e812b8ec6[m
+Author: ivankek <ivan.kek@hotmail.com>
+Date:   Sat May 22 18:07:48 2021 -0300
+
+    Se subieron canciones
+
+[33mcommit 8e763b2a3dc2ef315bac7308a3211073d7c228cc[m
+Author: Diego Lopez <godiework@hotmail.com>
+Date:   Thu May 20 09:02:55 2021 -0300
+
+    Se agrega un prototipo de como reproduce musica
+
+[33mcommit b847f9619c49a5bea5d43ddf664588af362dbdaa[m
+Author: Diego Lopez <godiework@hotmail.com>
+Date:   Wed May 19 10:44:07 2021 -0300
+
+    modelos y repositorios: cancion,canciongenero,album,artista,genero
+
+[33mcommit 0480b78636b2b9b7847e9c06a979985a4a57043d[m
+Author: Diego Lopez <godiework@hotmail.com>
+Date:   Wed May 19 10:41:33 2021 -0300
+
+    Se añadio los modelos album,artista,cancion,cancionGenero,genero.Ademas sus respectivos repositorios e implementaciones
+
+[33mcommit c9bd30c06dd32de554a7f42f7c87e3b45ebe170a[m
+Author: Diego Lopez <godiework@hotmail.com>
+Date:   Tue May 18 20:16:30 2021 -0300
+
+    Se añadio Boostrap 5
+
+[33mcommit ed79ccf63215cd570b036371d4d842c9a0608559[m
+Author: Diego Lopez <godiework@hotmail.com>
+Date:   Tue May 18 19:33:26 2021 -0300
+
+    Se agrego en el gitignore para que ignore el hibernateContext
+
+[33mcommit fd780c2a29280f1bf43134b86859609814d83449[m
+Author: ivankek <ivan.kek@hotmail.com>
+Date:   Sun May 16 15:22:11 2021 -0300
+
+    Primer commit
+
+[33mcommit ef90e0e97c874ff501f77d5d0ec91740ddf717b1[m
+Author: ivankek <64092879+ivankek@users.noreply.github.com>
+Date:   Sun May 16 15:19:46 2021 -0300
+
+    Initial commit

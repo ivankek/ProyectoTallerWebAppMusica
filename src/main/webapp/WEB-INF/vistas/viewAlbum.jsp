@@ -1,16 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="ISO-8859-1">
-	<link rel="stylesheet" href= "css/bootstrap.min.css">
-	<link rel="stylesheet" href= "css/style.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<title>Album</title>
-</head>
-<body>
+<%@include file="Header.jsp"%>
 		<!-- Queue -->
 		<ul class="list-group" id="playlist" hidden>
 			<c:forEach items="${canciones}" var="cancion">

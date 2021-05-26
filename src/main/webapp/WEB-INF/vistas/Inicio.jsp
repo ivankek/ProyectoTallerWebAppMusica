@@ -9,6 +9,7 @@
 			<p class="text-info">Album</p>
 			<p class="text-info">Opciones</p>
 		</div>
+		
 		<hr class="mt-0">
 		<div class="mt-2">
 			<ul class="list-group mb-5" id="playlist">
@@ -29,10 +30,8 @@
 	</div>
 
 <%@include file="reproductor.jsp"%>
-
 	<!-- Scripts -->>
 	<script src="js/bootstrap.min.js"></script>
-
 	<script src="js/reproductorFooter.js"></script>
 </body>
 </html>
