@@ -11,7 +11,7 @@
 			<p class="text-info">Opciones</p>
 		</div>
 		<hr class="mt-0">
-		<div class="mt-2">
+		<div class="mt-2" style="margin-bottom: 8em;">
 
 
 			<ul class="list-group" id="playlist">

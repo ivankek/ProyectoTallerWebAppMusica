@@ -12,10 +12,10 @@
 			<p class="text-info">Opciones</p>
 		</div>
 		<hr class="mt-0">
-		
+
 		<!-- Busqueda canciones por genero -->
-		
-		<ul class="list-group" id="playlist">
+
+		<ul class="list-group" id="playlist" style="margin-bottom: 8em;">
 			<c:forEach items="${generos}" var="genero">
 				<li>${genero.nombre}</li>
 			</c:forEach>

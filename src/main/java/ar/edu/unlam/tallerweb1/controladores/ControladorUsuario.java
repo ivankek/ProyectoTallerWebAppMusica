@@ -29,10 +29,19 @@ public class ControladorUsuario {
 		album.setPath_img("img/Album/BackInBlack.jpg");
 		Long id_album = servicioCancion.guardarAlbum(album);
 
+		Album album1 = new Album();
+		album1.setNombre("Dynasty");
+		album1.setPath_img("img/Album/Dynasty.jpg");
+		Long id_album1 = servicioCancion.guardarAlbum(album1);
+
 		// Crea un artista y lo almacena en la bd
 		Artista artista = new Artista();
 		artista.setNombre("AC/DC");
 		Long id_artista = servicioCancion.guardarArtista(artista);
+
+		Artista artista1 = new Artista();
+		artista1.setNombre("Kiss");
+		Long id_artista1 = servicioCancion.guardarArtista(artista1);
 
 		Genero genero = new Genero();
 		// Crea 2 generos y los almacena en la bd
@@ -60,10 +69,23 @@ public class ControladorUsuario {
 		cancion.setPath_cancion("media/BackInBlack/YouShookMeAllNightLong.mp3");
 		servicioCancion.guardarCancion(cancion);
 
+		cancion.setAlbum(servicioCancion.obtenerAlbumPorId(id_album1));
+		cancion.setArtista(servicioCancion.obtenerArtistaPorId(id_artista1));
+
+		cancion.setNombre("I Was Made For Loving You");
+		cancion.setPath_cancion("media/Dynasty/IWasMadeForLovinYou.mp3");
+		servicioCancion.guardarCancion(cancion);
+
+		cancion.setNombre("Sure Know Something");
+		cancion.setPath_cancion("media/Dynasty/SureKnowSomething.mp3");
+		servicioCancion.guardarCancion(cancion);
+
 		ModelMap model = new ModelMap();
 
 		model.put("artista", id_artista);
+		model.put("artista", id_artista1);
 		model.put("album", id_album);
+		model.put("album", id_album1);
 		return new ModelAndView("viewUploadSongs", model);
 	}
 
