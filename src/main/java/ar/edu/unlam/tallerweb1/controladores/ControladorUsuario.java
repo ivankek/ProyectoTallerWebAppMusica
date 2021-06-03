@@ -98,6 +98,7 @@ public class ControladorUsuario {
 
 		model.put("canciones", servicioBusqueda.obtenerCancionesPorAlbum(album));
 		model.put("titulo","Album - " + album);
+		model.put("datos", servicioCancion.serializarDatosCanciones());
 
 		return new ModelAndView("viewAlbum", model);
 	}
@@ -109,6 +110,7 @@ public class ControladorUsuario {
 
 		model.put("titulo", "Inicio");
 		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
+		model.put("datos", servicioCancion.serializarDatosCanciones());
 
 		return new ModelAndView("Inicio", model);
 	}

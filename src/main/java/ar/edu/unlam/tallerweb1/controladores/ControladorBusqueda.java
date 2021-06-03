@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,10 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 
 @Controller
 public class ControladorBusqueda {
 
+	@Inject
+	private ServicioCancion servicioCancion;
 	
 	private ServicioBusqueda servicioBusqueda;
 
@@ -35,6 +40,7 @@ public class ControladorBusqueda {
 			@RequestParam(value="busqueda", required=true) String nombre
 			) {
 		ModelMap modelo = new ModelMap();
+		modelo.put("datos", servicioCancion.serializarDatosCanciones());
 		switch (tipo) {
 		case "Genero":
 			modelo.put("generos" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));

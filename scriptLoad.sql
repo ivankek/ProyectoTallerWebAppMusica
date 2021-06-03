@@ -32,4 +32,5 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (16, "No Son Of Mine", "media/Medicine at midnight/No Son Of Mine.mp3",2 ,2 , 100),
       (17, "Holding Poison", "media/Medicine at midnight/Holding Poison.mp3",2 ,2 , 8),
       (18, "Chasing Birds", "media/Medicine at midnight/Chasing Birds.mp3",2 ,2 , 9),
-      (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);
+      (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);  
+      

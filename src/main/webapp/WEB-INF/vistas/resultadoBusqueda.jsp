@@ -1,7 +1,8 @@
 <%@include file="Header.jsp"%>
 <body>
 
-	<div class="container mt-5 text-light mb-5">
+	<div class="container mt-5 text-light mb-5 main">
+		<div class="datos" hidden>${datos}</div>
 		<h2 class="text-center mb-5">Resultado de tu busqueda:</h2>
 		<div
 			class="mt-5 d-flex justify-content-between  text-light align-items-center">
@@ -104,12 +105,13 @@
 		</ul>
 	</div>
 
+<%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 
 	<!-- Scripts -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/1776a9f4e1.js"
 		crossorigin="anonymous"></script>
-	<script src="js/reproductorFooter.js"></script>
+	<script src = "js/json.js"></script>
 </body>
 </html>
