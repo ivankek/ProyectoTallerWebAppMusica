@@ -40,4 +40,10 @@ public class RepositorioCancionImpl implements RepositorioCancion {
 				.list();
 	}
 
+	@Override
+	public Boolean subirPuntajeDeLaCancion(Cancion cancion) {
+
+		return true;
+	}
+
 }

@@ -11,5 +11,7 @@ public interface RepositorioCancion {
 	List<Cancion> obtenerTodasLasCanciones();
 	
 	List<Cancion>obtenerLasCincoMejoresCanciones();
+	
+	Boolean subirPuntajeDeLaCancion(Cancion cancion);
 
 }

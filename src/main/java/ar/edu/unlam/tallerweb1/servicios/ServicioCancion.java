@@ -31,4 +31,6 @@ public interface ServicioCancion {
 	List<Album> obtenerLosCincoMejoresAlbumes();
 	
 	List<Artista> obtenerLosCincoMejoresArtistas();
+	
+	String serializarDatosCanciones();
 }
