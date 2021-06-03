@@ -1,7 +1,9 @@
 <%@include file="Header.jsp"%>
 	<div class="container mt-5 text-light mb-5 main">
 		<h2 class="text-center">Tus Canciones</h2>
+		
 		<div class="datos" hidden>${datos}</div>
+		
 		<div
 			class="mt-5 d-flex justify-content-between  text-light align-items-center">
 			<p class="text-info">Foto</p>
@@ -12,6 +14,7 @@
 		</div>
 		
 		<hr class="mt-0">
+		
 		<div class="mt-2">
 			<ul class="list-group pb-5 mb-5 cancion">
 			<c:forEach items="${canciones}" var="cancion">

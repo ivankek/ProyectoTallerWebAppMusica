@@ -29,6 +29,7 @@ public class ControladorBusqueda {
 	public ControladorBusqueda(ServicioBusqueda servicioBusqueda) {
 		this.servicioBusqueda = servicioBusqueda;
 	}
+	
 	@RequestMapping("/buscar")
 	public ModelAndView buscar() {
 		return new ModelAndView("busqueda");
@@ -39,31 +40,35 @@ public class ControladorBusqueda {
 			@RequestParam(value="tipoBusqueda", required=true) String tipo,
 			@RequestParam(value="busqueda", required=true) String nombre
 			) {
+		
 		ModelMap modelo = new ModelMap();
+		
 		modelo.put("datos", servicioCancion.serializarDatosCanciones());
+		
 		switch (tipo) {
-		case "Genero":
-			modelo.put("generos" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));
-			break;
+			case "Genero":
+				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));
+				break;
 			
-		case "Artista":
-			modelo.put("artistas" ,servicioBusqueda.obtenerCancionesPorArtista(nombre));
-			break;
+			case "Artista":
+				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorArtista(nombre));
+				break;
 			
-		case "Album":
-			modelo.put("albums" ,servicioBusqueda.obtenerCancionesPorAlbum(nombre));
-			break;
+			case "Album":
+				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorAlbum(nombre));
+				break;
 			
-		case "Lista":
-			modelo.put("listas" ,servicioBusqueda.obtenerCancionesPorLista(nombre));
-			break;
+			case "Lista":
+				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorLista(nombre));
+				break;
 			
-		case "Cancion":
-			modelo.put("canciones" ,servicioBusqueda.obtenerCancionesPorNombre(nombre));
-			break;
-		default:
-			break;
+			case "Cancion":
+				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorNombre(nombre));
+				break;
+			default:
+				break;
 		}
+		
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}
 }

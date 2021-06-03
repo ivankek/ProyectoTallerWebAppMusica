@@ -1,9 +1,9 @@
 <%@include file="Header.jsp"%>
-<body>
-
 	<div class="container mt-5 text-light mb-5 main">
+		<h2 class="text-center">Resultado de tu busqueda:</h2>
+		
 		<div class="datos" hidden>${datos}</div>
-		<h2 class="text-center mb-5">Resultado de tu busqueda:</h2>
+		
 		<div
 			class="mt-5 d-flex justify-content-between  text-light align-items-center">
 			<p class="text-info">Foto</p>
@@ -12,97 +12,37 @@
 			<p class="text-info">Album</p>
 			<p class="text-info">Opciones</p>
 		</div>
+		
 		<hr class="mt-0">
-
-		<!-- Busqueda canciones por genero -->
-
-		<ul class="list-group" id="playlist" style="margin-bottom: 8em;">
-			<c:forEach items="${generos}" var="genero">
-				<li>${genero.nombre}</li>
-			</c:forEach>
-
-			<!-- Busqueda canciones por artista -->
-
-			<c:forEach items="${artistas}" var="artista">
-				<!-- <li>${artista.nombre}</li> -->
-				<li class="list-group-item bg-dark" id="${artista.id}"
-					name="${artista.path_cancion}"
-					style="border-radius: 1em; margin-bottom: 2px;">
-					<div
-						class="d-flex justify-content-between text-light align-items-center">
-						<img style="width: 3em" src="${artista.album.path_img}" alt="">
-						<p class="fs-5">${artista.nombre}</p>
-						<p class="fs-5">${artista.artista.nombre}</p>
-						<p class="fs-5">${artista.album.nombre}</p>
-						<a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20"
-								height="20" fill="currentColor"
-								class="bi bi-three-dots text-decoration-none"
-								style="color: whitesmoke;" viewBox="0 0 16 16">
-                <path
-									d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-              </svg> </a>
-
+		
+		<div class="mt-2">
+			<ul class="list-group pb-5 mb-5 cancion">
+			<c:forEach items="${resultado}" var="cancion">
+				<li class="list-group-item bg-dark d-flex justify-content-between">
+					<!-- parte A -->
+					<div class="d-flex  align-items-center">
+						<i class="material-icons text-white me-3 icon-play"  name="${cancion.nombre}">play_circle_outline</i>
+						<div class="flex-shrink-0">
+							<img src="${cancion.album.path_img}" style="width: 64px; height: 64px" alt="...">
+						</div>
+						<div class="flex-grow-1 ms-3 text-white">
+							<h5 class="mt-0">${cancion.nombre}</h5>
+							<p>${cancion.artista.nombre}</p>
+						</div>
+					</div> 
+					<!-- parte B -->
+					<div class="text-white d-flex align-items-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
+					</div> 
+					<!-- parte C -->
+					<div class="text-white d-flex align-items-center">
+						<div>3:20</div>
+						<div class="material-icons ms-3">more_horiz</div>
 					</div>
 				</li>
 			</c:forEach>
-
-
-			<!-- Busqueda canciones por album -->
-			<c:forEach items="${albums}" var="album">
-				<!-- 	<li>${album.nombre}</li> -->
-				<li class="list-group-item bg-dark" id="${album.id}"
-					name="${album.path_cancion}"
-					style="border-radius: 1em; margin-bottom: 2px;">
-					<div
-						class="d-flex justify-content-between text-light align-items-center">
-						<img style="width: 3em" src="${album.album.path_img}" alt="">
-						<p class="fs-5">${album.nombre}</p>
-						<p class="fs-5">${album.artista.nombre}</p>
-						<p class="fs-5">${album.album.nombre}</p>
-						<a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20"
-								height="20" fill="currentColor"
-								class="bi bi-three-dots text-decoration-none"
-								style="color: whitesmoke;" viewBox="0 0 16 16">
-                <path
-									d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-              </svg> </a>
-
-					</div>
-				</li>
-			</c:forEach>
-
-
-			<!-- Busqueda canciones por lista de reproduccion -->
-			<c:forEach items="${listas}" var="lista">
-				<li>${lista.nombre}</li>
-			</c:forEach>
-
-
-			<!-- Busqueda canciones por nombre de cancion -->
-
-			<c:forEach items="${canciones}" var="cancion">
-				<li class="list-group-item bg-dark" id="${cancion.id}"
-					name="${cancion.path_cancion}"
-					style="border-radius: 1em; margin-bottom: 2px;">
-					<div
-						class="d-flex justify-content-between text-light align-items-center">
-						<img style="width: 3em" src="${cancion.album.path_img}" alt="">
-						<p class="fs-5">${cancion.nombre}</p>
-						<p class="fs-5">${cancion.artista.nombre}</p>
-						<p class="fs-5">${cancion.album.nombre}</p>
-						<a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20"
-								height="20" fill="currentColor"
-								class="bi bi-three-dots text-decoration-none"
-								style="color: whitesmoke;" viewBox="0 0 16 16">
-                <path
-									d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-              </svg> </a>
-
-					</div>
-				</li>
-
-			</c:forEach>
-		</ul>
+			</ul>
+		</div>
 	</div>
 
 <%@include file="queue.jsp"%>
@@ -110,8 +50,6 @@
 
 	<!-- Scripts -->
 	<script src="js/bootstrap.min.js"></script>
-	<script src="https://kit.fontawesome.com/1776a9f4e1.js"
-		crossorigin="anonymous"></script>
 	<script src = "js/json.js"></script>
 </body>
 </html>
