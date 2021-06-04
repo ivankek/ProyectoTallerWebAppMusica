@@ -14,7 +14,7 @@
 		</div>
 		
 		<hr class="mt-0">
-<<<<<<< HEAD
+
 		<div class="mt-2" style="margin-bottom: 8em;">
 			<ul class="list-group mb-5" id="playlist">
 			<c:forEach items="${canciones}" var="cancion">
@@ -27,8 +27,7 @@
 					<a href="Album?nombre=${cancion.album.nombre}" class="fs-5">${cancion.album.nombre}</a>
 					<div class="material-icons ms-3">more_horiz</div>
               	</div>
-=======
-		
+
 		<div class="mt-2">
 			<ul class="list-group pb-5 mb-5 cancion">
 			<c:forEach items="${canciones}" var="cancion">
@@ -53,7 +52,7 @@
 						<div>3:20</div>
 						<div class="material-icons ms-3">more_horiz</div>
 					</div>
->>>>>>> master
+
 				</li>
 			</c:forEach>
 			</ul>
