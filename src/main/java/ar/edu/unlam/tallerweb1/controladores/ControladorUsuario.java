@@ -96,7 +96,7 @@ public class ControladorUsuario {
 		ModelMap model = new ModelMap();
 
 
-		model.put("canciones", servicioBusqueda.obtenerCancionesPorAlbum(album));
+		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(album));
 		model.put("titulo","Album - " + album);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 
