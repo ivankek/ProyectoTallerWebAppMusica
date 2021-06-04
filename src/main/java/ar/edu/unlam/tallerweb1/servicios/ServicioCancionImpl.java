@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.gson.Gson;
+
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
@@ -90,6 +92,17 @@ public class ServicioCancionImpl implements ServicioCancion {
 	@Override
 	public List<Artista> obtenerLosCincoMejoresArtistas() {
 		return repositorioArtista.obtenerCincoMejoresArtistas();
+	}
+
+	@Override
+	public String serializarDatosCanciones() {
+		String representacionJson;
+		List<Cancion> canciones = repositorioCancion.obtenerTodasLasCanciones();
+		Gson gson = new Gson();
+		
+		representacionJson = gson.toJson(canciones);
+		
+		return representacionJson;
 	}
 
 }

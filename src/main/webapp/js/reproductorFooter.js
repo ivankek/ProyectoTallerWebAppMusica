@@ -24,6 +24,8 @@ playBtn.addEventListener("click", playpause);
 
 
 
+
+
 //setear cancion seleccionada en el reproductor
 function setSong(event){
 	var songInfo  = event.target.parentElement;
