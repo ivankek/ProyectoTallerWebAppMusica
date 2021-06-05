@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -37,7 +38,6 @@ public class ControladorBusqueda {
 	
 	@RequestMapping(path=("realizarBusqueda"), method=RequestMethod.GET)
 	public ModelAndView realizarBusqueda(
-			@RequestParam(value="tipoBusqueda", required=true) String tipo,
 			@RequestParam(value="busqueda", required=true) String nombre
 			) {
 		
@@ -45,29 +45,33 @@ public class ControladorBusqueda {
 		
 		modelo.put("datos", servicioCancion.serializarDatosCanciones());
 		
-		switch (tipo) {
-			case "Genero":
-				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));
-				break;
-			
-			case "Artista":
-				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorArtista(nombre));
-				break;
-			
-			case "Album":
-				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorAlbum(nombre));
-				break;
-			
-			case "Lista":
-				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorLista(nombre));
-				break;
-			
-			case "Cancion":
-				modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorNombre(nombre));
-				break;
-			default:
-				break;
-		}
+		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(nombre);
+		
+		modelo.put("resultado",lista);
+		
+		/*switch (tipo) {
+		case "Genero":
+			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));
+			break;
+		
+		case "Artista":
+			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorArtista(nombre));
+			break;
+		
+		case "Album":
+			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorAlbum(nombre));
+			break;
+		
+		case "Lista":
+			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorLista(nombre));
+			break;
+		
+		case "Cancion":
+			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorNombre(nombre));
+			break;
+		default:
+			break;
+	}*/
 		
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}

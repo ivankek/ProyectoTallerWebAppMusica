@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
@@ -17,4 +18,6 @@ public interface RepositorioBusqueda {
 	List<Cancion> obtenerCancionesPorLista(String nombre);
 	
 	List<Cancion> obtenerCancionesPorNombre(String nombre);
+	
+	
 }
