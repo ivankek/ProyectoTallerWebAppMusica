@@ -14,20 +14,7 @@
 		</div>
 		
 		<hr class="mt-0">
-
-		<div class="mt-2" style="margin-bottom: 8em;">
-			<ul class="list-group mb-5" id="playlist">
-			<c:forEach items="${canciones}" var="cancion">
-				<li class="list-group-item bg-dark" id="${cancion.id}" name="${cancion.path_cancion}" 
-					style="border-radius: 1em; margin-bottom: 2px;">
-				<div class="song-info d-flex justify-content-between text-light align-items-center">
-					<img style="width: 3em" src="${cancion.album.path_img}" onclick="setSong(event)" alt="">
-					<p class="fs-5">${cancion.nombre}</p>
-					<p class="fs-5">${cancion.artista.nombre}</p>
-					<a href="Album?nombre=${cancion.album.nombre}" class="fs-5">${cancion.album.nombre}</a>
-					<div class="material-icons ms-3">more_horiz</div>
-              	</div>
-
+		
 		<div class="mt-2">
 			<ul class="list-group pb-5 mb-5 cancion">
 			<c:forEach items="${canciones}" var="cancion">
@@ -52,7 +39,6 @@
 						<div>3:20</div>
 						<div class="material-icons ms-3">more_horiz</div>
 					</div>
-
 				</li>
 			</c:forEach>
 			</ul>
