@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -71,6 +72,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 				.add(Restrictions.eq("nombre", nombre))
 				.list();
 	}
+
+	
 	
 	
 }

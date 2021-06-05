@@ -11,15 +11,7 @@
 <h1>Buscar</h1>
 
 <form action="realizarBusqueda">
-  <label for="tipoBusqueda">Elegir tipo de busqueda:</label>
-  <select name="tipoBusqueda" id="tipoBusqueda">
-    <option value="Genero" name="Genero">Genero</option>
-    <option value="Artista">Artista</option>
-    <option value="Album">Album</option>
-    <option value="Lista">Lista</option>
-    <option value="Cancion">Cancion</option>
-  </select>
-  <br><br>
+  
   
   <label for="busqueda"></label>
   <input type=text name="busqueda" id="busqueda" >
