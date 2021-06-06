@@ -34,3 +34,7 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (18, "Chasing Birds", "media/Medicine at midnight/Chasing Birds.mp3",2 ,2 , 9),
       (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);  
       
+/*Inserta usuario*/
+INSERT INTO Usuario(id, usuario, password, rol)
+VALUES(1, "ivank", "1234", "usuario");
+      

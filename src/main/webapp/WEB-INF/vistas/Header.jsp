@@ -23,6 +23,6 @@
 				<button class="col-2 text-center btn btn-outline-info" type="submit"
 					value="Submit">Buscar</button>
 			</form>
-			<button type="button" class="btn btn-info text-light">Login</button>
+			<a href="login" type="button" class="btn btn-info text-light">Login</a>
 		</div>
 	</nav>
