@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<link rel="stylesheet" href= "css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<title>${titulo}</title>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>${titulo}</title>
 </head>
 <body>
 	<nav class="navbar navbar-light bg-dark">
@@ -23,7 +24,31 @@
 				<button class="col-2 text-center btn btn-outline-info" type="submit"
 					value="Submit">Buscar</button>
 			</form>
+
+
+			<%
+				if (request.getAttribute("usuario") != null) {
+			%>
+			<div class="dropdown dropstart">
+				<button class="btn btn-info text-light dropdown-toggle"
+					type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+					aria-expanded="false">${usuario.usuario}</button>
+				<ul class="dropdown-menu dropdown-menu-dark"
+					aria-labelledby="dropdownMenuButton2">
+					<li><form action="cerrarSesion">
+							<button type="submit" class="dropdown-item">Logout</button>
+						</form></li>
+
+				</ul>
+			</div>
+
+			<%
+				} else {
+			%>
 			<a href="login" type="button" class="btn btn-info text-light">Login</a>
-			
+			<%
+				}
+			%>
+
 		</div>
 	</nav>

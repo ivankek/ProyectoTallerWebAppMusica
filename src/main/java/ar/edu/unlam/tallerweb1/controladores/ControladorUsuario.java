@@ -1,11 +1,13 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
@@ -94,14 +96,16 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/Inicio")
-	public ModelAndView inicio() {
+	public ModelAndView inicio(HttpServletRequest request) {
 
 		ModelMap model = new ModelMap();
-
+		
 		model.put("titulo", "Inicio");
 		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
 		model.put("datos", servicioCancion.serializarDatosCanciones());
-
+		Object usuario = request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
+		
 		return new ModelAndView("Inicio", model);
 	}
 }
