@@ -24,5 +24,6 @@
 					value="Submit">Buscar</button>
 			</form>
 			<a href="login" type="button" class="btn btn-info text-light">Login</a>
+			
 		</div>
 	</nav>
