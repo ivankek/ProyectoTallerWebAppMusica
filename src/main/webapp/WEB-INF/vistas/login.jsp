@@ -1,40 +1,72 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class = "container">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-				<form:form action="validar-login" method="POST" modelAttribute="usuario">
-			    	<h3 class="form-signin-heading">Taller Web I</h3>
-					<hr class="colorgraph"><br>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container">
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					<form:input path="usuario" id="usuario" type="usuario" class="form-control" />
-					<form:input path="password" type="password" id="password" class="form-control"/>     		  
-					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
+
+		<h2 class="text-center text-white mt-5"">Bienvenido a Musicapp</h2>
+
+		<div class="container-fluid bg-image" id="loginbox">
+			<div class="container my-5 p-4 col-12 col-md-6 col-lg-4"
+				style="border-radius: 10px; backdrop-filter: blur(15px); box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);">
+				<form:form class="d-flex flex-column" action="validar-login"
+					method="POST" modelAttribute="usuario">
+
+					<h3 style="color: whitesmoke">Ingreso a la Plataforma</h3>
+					<div class="mb-3" style="color: whitesmoke">
+						<label for="exampleInputEmail1" class="form-label">Usuario</label>
+						<form:input path="usuario" id="usuario" type="usuario"
+							class="form-control text-light"
+							style="background-color: transparent; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65); border-radius: 10px; border-color: transparent;"
+							aria-describedby="emailHelp" />
+					</div>
+
+					<div class="mb-3" style="color: whitesmoke">
+						<label for="exampleInputPassword1" class="form-label">Contraseña</label>
+						<form:input path="password" type="password" id="password"
+							class="form-control"
+							style="background-color: transparent; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65); border-radius: 10px; border-color: transparent; color: whitesmoke;" />
+					</div>
+
+
+					<div class="mb-3 form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1" />
+						<label class="form-check-label" for="exampleCheck1"
+							style="color: whitesmoke">Recuerdame</label>
+					</div>
+
+					<button Type="Submit" class="btn mt-3 bg-info"
+						style="border-radius: 10px; color: white;">Ingresar</button>
+
+					<a href="#" id="contraseñaOlvidada"
+						class="mt-3 d-flex justify-content-center"
+						style="color: rgb(216, 216, 216)"> Olvidé mi contraseña </a>
+
+
 				</form:form>
 
-				<%--Bloque que es visible si el elemento error no estÃ¡ vacÃ­o	--%>
 				<c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
-			        <br>
-		        </c:if>	
+					<h4>
+						<span>${error}</span>
+					</h4>
+					<br>
+				</c:if>
+
 			</div>
 		</div>
-		
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	</body>
+
+
+	</div>
+
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
 </html>

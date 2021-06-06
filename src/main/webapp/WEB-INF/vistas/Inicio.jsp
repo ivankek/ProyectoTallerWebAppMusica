@@ -46,7 +46,7 @@
 	</div>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
-	<!-- Scripts -->>
+	<!-- Scripts -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src = "js/json.js"></script>
 </body>
