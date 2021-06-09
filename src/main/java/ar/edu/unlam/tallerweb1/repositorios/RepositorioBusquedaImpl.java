@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,7 +33,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(CancionGenero.class)
 				.createAlias("genero", "generoBuscado")
-				.add(Restrictions.eq("generoBuscado.nombre", nombre))
+				//.add(Restrictions.eq("generoBuscado.nombre", nombre))
+				.add(Restrictions.ilike("generoBuscado.nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}
 
@@ -41,7 +43,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(Cancion.class)
 				.createAlias("artista", "artistaBuscado")
-				.add(Restrictions.eq("artistaBuscado.nombre", nombre))
+				//.add(Restrictions.eq("artistaBuscado.nombre", nombre))
+				.add(Restrictions.ilike("artistaBuscado.nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}
 	
@@ -50,7 +53,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(Cancion.class)
 				.createAlias("album", "albumBuscado")
-				.add(Restrictions.eq("albumBuscado.nombre", nombre))
+				//.add(Restrictions.eq("albumBuscado.nombre", nombre))
+				.add(Restrictions.ilike("albumBuscado.nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}
 
@@ -60,7 +64,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(Cancion.class)
 				.createAlias("listaReproduccion", "listaBuscada")
-				.add(Restrictions.eq("listaBuscada.nombre", nombre))
+				//.add(Restrictions.eq("listaBuscada.nombre", nombre))
+				.add(Restrictions.ilike("listaBuscada.nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}
 
@@ -69,7 +74,8 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 	public List<Cancion> obtenerCancionesPorNombre(String nombre) { 
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(Cancion.class)
-				.add(Restrictions.eq("nombre", nombre))
+				//.add(Restrictions.eq("nombre", nombre))
+				.add(Restrictions.ilike("nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}
 
