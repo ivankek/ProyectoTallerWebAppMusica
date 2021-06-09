@@ -49,7 +49,6 @@
 		class="mt-5 d-flex justify-content-between  text-light align-items-center">
 		<p class="text-info">Foto</p>
 		<p class="text-info">Titulo</p>
-		<p class="text-info">Artista</p>
 		<p class="text-info">Album</p>
 		<p class="text-info">Opciones</p>
 	</div>
