@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CancionGenero {
-
+public class Favorito {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -17,7 +17,7 @@ public class CancionGenero {
 	private Cancion cancion;
 	
 	@ManyToOne
-	private Genero genero;
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -35,12 +35,14 @@ public class CancionGenero {
 		this.cancion = cancion;
 	}
 
-	public Genero getGenero() {
-		return genero;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setGenero(Genero genero) {
-		this.genero = genero;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
+	
+
 }
