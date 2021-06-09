@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
 public class ControladorUsuario {
@@ -21,6 +24,9 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioBusqueda servicioBusqueda;
+
+	@Inject
+	private ServicioListaReproduccion servicioListaReproduccion;
 
 	@RequestMapping("/uploadSongs")
 	public ModelAndView uploadSongs() {
@@ -99,13 +105,29 @@ public class ControladorUsuario {
 	public ModelAndView inicio(HttpServletRequest request) {
 
 		ModelMap model = new ModelMap();
-		
+
 		model.put("titulo", "Inicio");
 		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		Object usuario = request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
-		
+
 		return new ModelAndView("Inicio", model);
 	}
+
+	@RequestMapping("/CrearPlaylist")
+	public ModelAndView crearPlaylist(@RequestParam(value = "nombrePlaylist", required = false) String nombrePlaylist,
+			@RequestParam(value = "usuario", required = false) String usuario) {
+		ModelMap model = new ModelMap();
+
+		ListaReproduccion listaReproduccion = new ListaReproduccion();
+
+		listaReproduccion.setUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(usuario));
+		listaReproduccion.setNombre(nombrePlaylist);
+		servicioListaReproduccion.guardarListaReproduccion(listaReproduccion);
+
+		return new ModelAndView("redirect:/Inicio");
+
+	}
+
 }
