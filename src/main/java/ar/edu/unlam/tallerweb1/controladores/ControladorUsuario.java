@@ -11,14 +11,18 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
 public class ControladorUsuario {
 
+	@Inject
+	private ServicioFavorito servicioFavorito;
+	
 	@Inject
 	private ServicioCancion servicioCancion;
 
@@ -27,7 +31,7 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioListaReproduccion servicioListaReproduccion;
-
+	
 	@RequestMapping("/uploadSongs")
 	public ModelAndView uploadSongs() {
 		/*
@@ -103,13 +107,17 @@ public class ControladorUsuario {
 
 	@RequestMapping("/Inicio")
 	public ModelAndView inicio(HttpServletRequest request) {
-
+		
 		ModelMap model = new ModelMap();
 
 		model.put("titulo", "Inicio");
 		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
 		model.put("datos", servicioCancion.serializarDatosCanciones());
-		Object usuario = request.getSession().getAttribute("usuario");
+		Object usuario = request.getSession().getAttribute("usuario"); 
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		
+		model.put("favoritos", servicioFavorito.obtenerFavoritosDelUsuario(user));
+		
 		model.put("usuario", usuario);
 
 		return new ModelAndView("Inicio", model);

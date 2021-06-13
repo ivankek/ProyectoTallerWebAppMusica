@@ -85,6 +85,11 @@
 			</c:forEach>
 		</ul>
 	</div>
+<!-- Favoritos -->
+<div>
+<c:forEach items="${favoritos}" var="favorito">
+<p>${favorito.cancion.nombre}</p>
+</c:forEach>
 </div>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>

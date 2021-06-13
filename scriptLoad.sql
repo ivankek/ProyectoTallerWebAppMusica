@@ -35,6 +35,12 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);  
       
 /*Inserta usuario*/
-INSERT INTO Usuario(id, usuario, password, rol)
-VALUES(1, "ivank", "1234", "usuario");
+INSERT INTO usuario(id, usuario, password, rol)
+VALUES(1, "ivank", "1234", "usuario"),
+      (2, "godiee", "zxcv", "usuario");
+      
+/*Añadir a favoritos*/
+INSERT INTO favorito(id, cancion_id, usuario_id)
+VALUES(1 ,19, 2),
+      (2 ,16 ,2);      
       
