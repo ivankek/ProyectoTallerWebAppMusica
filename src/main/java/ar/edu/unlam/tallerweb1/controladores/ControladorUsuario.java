@@ -14,14 +14,14 @@ import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioRecomendar;
 
 @Controller
 public class ControladorUsuario {
 
 	@Inject
-	private ServicioFavorito servicioFavorito;
+	private ServicioRecomendar servicioRecomendar;
 	
 	@Inject
 	private ServicioCancion servicioCancion;
@@ -116,8 +116,8 @@ public class ControladorUsuario {
 		Object usuario = request.getSession().getAttribute("usuario"); 
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		
-		model.put("favoritos", servicioFavorito.obtenerFavoritosDelUsuario(user));
-		
+		model.put("recomendaciones", servicioRecomendar.recomendarArtistaPorGenerosDelUsuario(user));
+		model.put("condicion", servicioRecomendar.recomendarArtistaPorGenerosDelUsuario(user).isEmpty());
 		model.put("usuario", usuario);
 
 		return new ModelAndView("Inicio", model);

@@ -29,9 +29,9 @@ public class ServicioRecomendarImpl implements ServicioRecomendar {
 	RepositorioFavorito repoFavorito;
 	
 	@Override
-	public List<String> recomendarArtistaPorGeneosDelUsuario(Usuario usuario) {
+	public List<Artista> recomendarArtistaPorGenerosDelUsuario(Usuario usuario) {
 		List<Favorito>listaDeFavoritos = repoFavorito.obtenerListaDeFavoritos(usuario);
-		List<String>recomendaciones = new ArrayList<String>();
+		List<Artista>recomendaciones = new ArrayList<Artista>();
 		List<Artista>todosLosArtistas = repoArtista.obtenerTodosLosArtistas();
 		List<String>generosDelUsuario = servicioGenero.obtenerGenerosDeListaDeFavoritos(listaDeFavoritos);
 		
@@ -41,7 +41,7 @@ public class ServicioRecomendarImpl implements ServicioRecomendar {
 			Integer i = 0;
 			while(!añadio && i < generosDelUsuario.size()){
 				if(generosDelArtista.contains(generosDelUsuario.get(i))) {
-					añadio = recomendaciones.add(artista.getNombre());
+					añadio = recomendaciones.add(artista);
 				}
 				i++;
 			}

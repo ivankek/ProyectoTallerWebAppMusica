@@ -15,6 +15,8 @@ public class Artista {
 	private String nombre;
 	
 	private Long puntaje;
+	
+	private String pathImg;
 
 	public Long getId() {
 		return id;
@@ -39,8 +41,12 @@ public class Artista {
 	public void setPuntaje(Long puntaje) {
 		this.puntaje = puntaje;
 	}
-	
-	
-	
-	
+
+	public String getPathImg() {
+		return pathImg;
+	}
+
+	public void setPathImg(String pathImg) {
+		this.pathImg = pathImg;
+	}
 }
