@@ -10,7 +10,13 @@
 <body>
 
 <div class="container mt-5 text-light mb-5 main">
-	<div class="datos" hidden>${datos}</div>	
+
+	<form:form class="d-flex flex-column" action="FollowArtista"
+					method="GET" modelAttribute="artista">
+	<button type="button" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
+	<input type="hidden" name="artista" value="${cancion.artista.nombre}">
+	</form:form>
+	<div class="datos" hidden>${datos}</div>
 	
 	<ul class="list-group pb-5 mb-5">
 		<c:forEach items="${canciones}" var="cancion">
@@ -45,6 +51,7 @@
 	
 <script src="js/bootstrap.min.js"></script>
 <script src="js/json.js"></script>
+<script src="js/follow.js"></script>
 
 </body>
 </html>
