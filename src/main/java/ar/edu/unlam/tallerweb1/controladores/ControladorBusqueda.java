@@ -49,30 +49,6 @@ public class ControladorBusqueda {
 		
 		modelo.put("resultado",lista);
 		
-		/*switch (tipo) {
-		case "Genero":
-			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorGenero(nombre));
-			break;
-		
-		case "Artista":
-			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorArtista(nombre));
-			break;
-		
-		case "Album":
-			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorAlbum(nombre));
-			break;
-		
-		case "Lista":
-			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorLista(nombre));
-			break;
-		
-		case "Cancion":
-			modelo.put("resultado" ,servicioBusqueda.obtenerCancionesPorNombre(nombre));
-			break;
-		default:
-			break;
-	}*/
-		
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}
 }

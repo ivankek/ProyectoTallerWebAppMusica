@@ -100,6 +100,17 @@ public class ControladorUsuario {
 
 		return new ModelAndView("viewAlbum", model);
 	}
+	
+	@RequestMapping("/Artista")
+	public ModelAndView artista(@RequestParam(value= "nombre", required = false) String artista) {
+		ModelMap model = new ModelMap();
+
+		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
+		model.put("titulo", "Artista - " + artista);
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+
+		return new ModelAndView("viewArtista", model);
+	}
 
 	@RequestMapping("/Inicio")
 	public ModelAndView inicio(HttpServletRequest request) {
