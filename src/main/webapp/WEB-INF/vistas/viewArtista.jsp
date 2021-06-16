@@ -11,15 +11,21 @@
 
 <div class="container mt-5 text-light mb-5 main">
 
-	<form:form class="d-flex flex-column" action="FollowArtista"
-					method="GET" modelAttribute="artista">
-	<button type="button" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
-	<input type="hidden" name="artista" value="${cancion.artista.nombre}">
+<div align="center">
+		<h1>${titulo}</h1>
+			
+				<img src="${artista.path_img}" style="width: 200px; height: 200px" alt="...">
+				<form:form class="d-flex flex-column" action="FollowArtista"
+							method="GET" modelAttribute="artista">
+				<button type="button" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
+				<input type="hidden" name="artista" value="${cancion.artista.nombre}">
+			
+	</div>
 	</form:form>
 	<div class="datos" hidden>${datos}</div>
 	
 	<ul class="list-group pb-5 mb-5">
-		<c:forEach items="${canciones}" var="cancion">
+		<c:forEach items="${canciones}" var="cancion">	
 			<li class="list-group-item bg-dark d-flex justify-content-between" id="cancion${cancion.id}">
 				<!-- parte A -->
 				<div class="d-flex  align-items-center">
