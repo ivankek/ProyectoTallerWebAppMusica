@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Follow;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
+
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
+
+import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
+
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
 
 @Controller
@@ -32,6 +37,11 @@ public class ControladorUsuario {
 	@Inject
 	private ServicioListaReproduccion servicioListaReproduccion;
 	
+
+	@Inject
+	private ServicioFollow servicioFollow;
+
+
 	@RequestMapping("/uploadSongs")
 	public ModelAndView uploadSongs() {
 		/*
@@ -104,6 +114,17 @@ public class ControladorUsuario {
 
 		return new ModelAndView("viewAlbum", model);
 	}
+	
+	@RequestMapping("/Artista")
+	public ModelAndView artista(@RequestParam(value= "nombre", required = false) String artista) {
+		ModelMap model = new ModelMap();
+
+		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
+		model.put("titulo", "Artista - " + artista);
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+
+		return new ModelAndView("viewArtista", model);
+	}
 
 	@RequestMapping("/Inicio")
 	public ModelAndView inicio(HttpServletRequest request) {
@@ -137,5 +158,15 @@ public class ControladorUsuario {
 		return new ModelAndView("redirect:/Inicio");
 
 	}
-
+	
+	@RequestMapping("/FollowArtista")
+	public ModelAndView seguirArtista(@RequestParam(value="artista",required= false) String artista) {
+		ModelMap modelo = new ModelMap();
+		
+		Follow follow = new Follow();
+		
+		follow.setArtista(servicioFollow.obtenerArtistaPorNombre(artista));
+		servicioFollow.guardarArtistaSeguido(follow);
+		return new ModelAndView("viewArtista");
+	}
 }
