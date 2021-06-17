@@ -122,6 +122,7 @@ public class ControladorUsuario {
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("artista",servicioCancion.obtenerArtistaPorNombre(artista));
 
 		return new ModelAndView("viewArtista", model);
 	}

@@ -33,4 +33,6 @@ public interface ServicioCancion {
 	List<Artista> obtenerLosCincoMejoresArtistas();
 	
 	String serializarDatosCanciones();
+	
+	Artista obtenerArtistaPorNombre(String nombre);
 }

@@ -1,12 +1,13 @@
+use db_proyecto;
 /*Album*/
 INSERT INTO album(id, nombre, path_img)
 VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
 	  (2, "Medicine at Midnight", "img/Album/MedicineAtMidnight.jpg");
       
 /*Artista*/
-INSERT INTO artista(id, nombre)
-VALUES(1, "AC/DC"),
-      (2, "Foo Fighters");
+INSERT INTO artista(id, nombre,path_img)
+VALUES(1, "AC/DC", "img/Artista/ACDC.jpg"),
+      (2, "Foo Fighters", "img/Artista/FooFighters.jpg");
       
 /*Genero por el momento no se esta utilizando*/
 INSERT INTO genero(id, nombre)

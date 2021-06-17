@@ -11,15 +11,31 @@
 
 <div class="container mt-5 text-light mb-5 main">
 
-	<form:form class="d-flex flex-column" action="FollowArtista"
-					method="GET" modelAttribute="artista">
-	<button type="button" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
-	<input type="hidden" name="artista" value="${cancion.artista.nombre}">
+<div align="center">
+		
+			
+				<img src="${artista.path_img}" style="width: 1100px; height: 400px" alt="...">
+				
+			
+	
+	<h1>${titulo}</h1>
+	
+	
+	<form:form class="" action="FollowArtista"
+							method="GET" modelAttribute="artista">
+				<button type="button" class="btn btn-info text-light" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
+				<input type="hidden" name="artista" value="${cancion.artista.nombre}">
+			
+	
 	</form:form>
+	
+	
+	</div>	<br>
+				
 	<div class="datos" hidden>${datos}</div>
 	
 	<ul class="list-group pb-5 mb-5">
-		<c:forEach items="${canciones}" var="cancion">
+		<c:forEach items="${canciones}" var="cancion">	
 			<li class="list-group-item bg-dark d-flex justify-content-between" id="cancion${cancion.id}">
 				<!-- parte A -->
 				<div class="d-flex  align-items-center">
@@ -29,12 +45,12 @@
 					</div>
 					<div class="flex-grow-1 ms-3 text-white">
 						<h5 class="mt-0">${cancion.nombre}</h5>
-						<p>${cancion.artista.nombre}</p>
+						<a href="">${cancion.artista.nombre}</a>
 					</div>
 				</div> 
 				<!-- parte B -->
 				<div class="text-white d-flex align-items-center">
-					<a href="">${cancion.album.nombre}</a>
+					<a href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 				</div> 
 				<!-- parte C -->
 				<div class="text-white d-flex align-items-center">
