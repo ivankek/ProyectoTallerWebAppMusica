@@ -1,5 +1,7 @@
+<%@page import="org.springframework.ui.Model"%>
 <%@include file="Header.jsp"%>
-<div class="container d-flex flex-column justify-content-center mt-5 text-light mb-5 main">
+<div
+	class="container d-flex flex-column justify-content-center mt-5 text-light mb-5 main">
 
 	<%
 		if (request.getAttribute("usuario") != null) {
@@ -17,26 +19,37 @@
 	<%
 		if (request.getAttribute("usuario") != null) {
 	%>
-	
-<p>
-  <a class="container btn btn-info mt-3 d-flex justify-content-center col-3 text-light" data-bs-toggle="collapse"
-		href="#collapseExample" role="button" aria-expanded="false"
-		aria-controls="multiCollapseExample1">Crear una playlist <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg ms-2 mt-1" viewBox="0 0 16 16">
-  <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
-</svg> </a>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="container bg-dark card card-body d-flex justify-content-center rounded col-3">
-   <form action="CrearPlaylist" class="container d-flex flex-column justify-content-center">
-   <label class="text-center">Nombre de playlist:</label>
-   <div class="d-flex mt-3">
-   <input class="text-light bg-dark rounded border border-1 border-light w-75" name="nombrePlaylist" type="text">
-   <input type="hidden" name="usuario" value="${usuario.usuario}">
-   <input class="w-25 text-decoration-none bg-info border-0 ms-1 text-center rounded text-light" type="submit" value="Crear">
-   </div>
-   </form>
-  </div>
-</div>
+
+	<p>
+		<a
+			class="container btn btn-info mt-3 d-flex justify-content-center col-3 text-light"
+			data-bs-toggle="collapse" href="#collapseExample" role="button"
+			aria-expanded="false" aria-controls="multiCollapseExample1">Crear
+			una playlist <svg xmlns="http://www.w3.org/2000/svg" width="14"
+				height="14" fill="currentColor" class="bi bi-plus-lg ms-2 mt-1"
+				viewBox="0 0 16 16">
+  <path
+					d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+</svg>
+		</a>
+	</p>
+	<div class="collapse" id="collapseExample">
+		<div
+			class="container bg-dark card card-body d-flex justify-content-center rounded col-3">
+			<form action="CrearPlaylist"
+				class="container d-flex flex-column justify-content-center">
+				<label class="text-center">Nombre de playlist:</label>
+				<div class="d-flex mt-3">
+					<input
+						class="text-light bg-dark rounded border border-1 border-light w-75"
+						name="nombrePlaylist" type="text"> <input type="hidden"
+						name="usuario" value="${usuario.usuario}"> <input
+						class="w-25 text-decoration-none bg-info border-0 ms-1 text-center rounded text-light"
+						type="submit" value="Crear">
+				</div>
+			</form>
+		</div>
+	</div>
 
 	<%
 		}
@@ -44,6 +57,7 @@
 
 
 	<div class="datos" hidden>${datos}</div>
+
 
 	<div
 		class="mt-5 d-flex justify-content-between  text-light align-items-center">

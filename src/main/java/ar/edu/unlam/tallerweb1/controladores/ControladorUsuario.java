@@ -111,6 +111,7 @@ public class ControladorUsuario {
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		Object usuario = request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
+		model.put("PlaylistCantidad", servicioListaReproduccion.obtenerTodasLasListasDeReproduccion().size());
 
 		return new ModelAndView("Inicio", model);
 	}
