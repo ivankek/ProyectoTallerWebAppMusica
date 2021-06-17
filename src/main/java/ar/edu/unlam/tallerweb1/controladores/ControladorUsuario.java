@@ -137,5 +137,10 @@ public class ControladorUsuario {
 		return new ModelAndView("redirect:/Inicio");
 
 	}
+	
+	@RequestMapping("/artista")
+	public ModelAndView artista() {
+		return new ModelAndView("viewArtista");
+	}
 
 }
