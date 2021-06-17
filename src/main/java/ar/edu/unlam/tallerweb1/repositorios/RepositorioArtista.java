@@ -11,4 +11,6 @@ public interface RepositorioArtista {
 	Artista obtenerArtistaPorId (Long id);
 	
 	List<Artista> obtenerCincoMejoresArtistas();
+	
+	Artista obtenerArtistaPorNombre(String artista);
 }

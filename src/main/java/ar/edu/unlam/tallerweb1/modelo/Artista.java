@@ -16,6 +16,8 @@ public class Artista {
 	
 	private Long puntaje;
 
+	private String path_img;
+
 	public Long getId() {
 		return id;
 	}
@@ -38,6 +40,14 @@ public class Artista {
 
 	public void setPuntaje(Long puntaje) {
 		this.puntaje = puntaje;
+	}
+
+	public String getPath_img() {
+		return path_img;
+	}
+
+	public void setPath_img(String path_img) {
+		this.path_img = path_img;
 	}
 	
 	
