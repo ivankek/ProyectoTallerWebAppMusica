@@ -105,4 +105,9 @@ public class ServicioCancionImpl implements ServicioCancion {
 		return representacionJson;
 	}
 
+	@Override
+	public Artista obtenerArtistaPorNombre(String nombre) {
+		return repositorioArtista.obtenerArtistaPorNombre(nombre);
+	}
+
 }

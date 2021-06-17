@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Artista;
@@ -36,6 +37,14 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 				      .addOrder(Order.desc("puntaje"))
 				      .setMaxResults(5)
 				      .list();
+	}
+
+	@Override
+	public Artista obtenerArtistaPorNombre(String artista) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Artista) session.createCriteria(Artista.class)
+				.add(Restrictions.eq("nombre", artista))
+				.uniqueResult();
 	}
 
 }

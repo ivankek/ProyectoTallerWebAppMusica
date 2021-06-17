@@ -83,7 +83,7 @@
 						</div>
 						<div class="flex-grow-1 ms-3 text-white">
 							<h5 class="mt-0">${cancion.nombre}</h5>
-							<p>${cancion.artista.nombre}</p>
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 						</div>
 					</div> <!-- parte B -->
 					<div class="text-white d-flex align-items-center">
