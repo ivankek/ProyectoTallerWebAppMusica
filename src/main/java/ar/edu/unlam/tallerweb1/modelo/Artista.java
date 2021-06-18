@@ -49,8 +49,5 @@ public class Artista {
 	public void setPath_img(String path_img) {
 		this.path_img = path_img;
 	}
-	
-	
-	
-	
+
 }

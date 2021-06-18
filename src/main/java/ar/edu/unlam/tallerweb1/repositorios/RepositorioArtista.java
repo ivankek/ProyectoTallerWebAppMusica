@@ -12,5 +12,9 @@ public interface RepositorioArtista {
 	
 	List<Artista> obtenerCincoMejoresArtistas();
 	
+
+	List<Artista>obtenerTodosLosArtistas();
+
 	Artista obtenerArtistaPorNombre(String artista);
+
 }
