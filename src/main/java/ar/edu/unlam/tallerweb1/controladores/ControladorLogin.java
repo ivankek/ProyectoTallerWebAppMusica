@@ -35,9 +35,10 @@ public class ControladorLogin {
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
+		
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
-			request.getSession().setAttribute("usuario", usuario);
+			request.getSession().setAttribute("usuario", usuarioBuscado);
 			model.put("sesion", request.getAttribute("usuario"));
 
 			return new ModelAndView("redirect:/Inicio", model);
@@ -51,13 +52,13 @@ public class ControladorLogin {
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
-		return new ModelAndView("redirect:/Inicio");
+		return new ModelAndView("redirect:/login");
 	}
 
 	@RequestMapping("/cerrarSesion")
 	public ModelAndView cerrarSesion(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return new ModelAndView("redirect:/Inicio");
+		return new ModelAndView("redirect:/login");
 	}
 
 }

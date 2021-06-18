@@ -40,6 +40,12 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 	}
 
 	@Override
+	public List<Artista> obtenerTodosLosArtistas() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Artista.class)
+				      .list();
+	}
+
 	public Artista obtenerArtistaPorNombre(String artista) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Artista) session.createCriteria(Artista.class)

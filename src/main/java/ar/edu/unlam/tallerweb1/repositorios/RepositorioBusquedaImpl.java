@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,7 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 				.createAlias("genero", "generoBuscado")
 				//.add(Restrictions.eq("generoBuscado.nombre", nombre))
 				.add(Restrictions.ilike("generoBuscado.nombre", nombre, MatchMode.ANYWHERE))
+				.setProjection(Projections.property("cancion"))
 				.list();
 	}
 
@@ -77,9 +79,5 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 				//.add(Restrictions.eq("nombre", nombre))
 				.add(Restrictions.ilike("nombre", nombre, MatchMode.ANYWHERE))
 				.list();
-	}
-
-	
-	
-	
+	}	
 }
