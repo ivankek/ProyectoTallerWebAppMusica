@@ -1,7 +1,7 @@
 <div class="col-2">
 	<ul class="nav nav-pills flex-column mb-auto pt-2">
     	<li class="nav-item">
-        	<a href="#" class="nav-link text-success d-flex p-0">
+        	<a href="Inicio" class="nav-link text-success d-flex p-0">
           		<i class="material-icons">home</i>
           		<p class="ps-1">Inicio</p>
        		</a>

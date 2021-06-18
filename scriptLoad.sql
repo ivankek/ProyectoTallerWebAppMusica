@@ -6,8 +6,8 @@ VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
       
 /*Artista*/
 INSERT INTO artista(id, nombre, path_img)
-VALUES(1, "AC/DC" , "img/Artista/acdc.jpg"),
-      (2, "Foo Fighters" , "img/Artista/foofighters.jpg");
+VALUES(1, "AC/DC" , "img/Artista/ac_dc.jpg"),
+      (2, "Foo Fighters" , "img/Artista/foo_fighters.jpg");
 
 /*Genero*/
 INSERT INTO genero(id, nombre)
