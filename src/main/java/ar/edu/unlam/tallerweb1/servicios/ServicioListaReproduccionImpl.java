@@ -46,6 +46,11 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	public Usuario obtenerUsuarioPorNombre(String usuario) {
 		return repositorioUsuario.obtenerUsuarioPorNombre(usuario);
 	}
+
+	@Override
+	public List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario) {
+		return repositorioListaReproduccion.obtenerListaReproduccionPorUsuario(usuario);
+	}
 	
 	
 }

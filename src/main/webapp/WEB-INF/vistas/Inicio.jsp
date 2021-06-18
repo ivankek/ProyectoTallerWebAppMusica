@@ -58,7 +58,6 @@
 
 	<div class="datos" hidden>${datos}</div>
 
-
 	<div
 		class="mt-5 d-flex justify-content-between  text-light align-items-center">
 		<p class="text-info">Foto</p>
@@ -83,7 +82,8 @@
 						</div>
 						<div class="flex-grow-1 ms-3 text-white">
 							<h5 class="mt-0">${cancion.nombre}</h5>
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+							<a
+								href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 						</div>
 					</div> <!-- parte B -->
 					<div class="text-white d-flex align-items-center">

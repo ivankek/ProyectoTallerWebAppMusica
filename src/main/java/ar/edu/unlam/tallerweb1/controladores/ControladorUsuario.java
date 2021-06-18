@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Follow;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
@@ -147,6 +148,17 @@ public class ControladorUsuario {
 		return new ModelAndView("redirect:/Inicio");
 
 	}
+	
+	
+	@RequestMapping("/MisPlaylist")
+	public ModelAndView crearPlaylist(HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		Object usuario = request.getSession().getAttribute("usuario");
+		//model.put("playlist", servicioListaReproduccion.obtenerListaReproduccionPorUsuario((Usuario) usuario));
+		
+		return new ModelAndView("MisPlaylist");
+	}
+	
 	
 	@RequestMapping("/FollowArtista")
 	public ModelAndView seguirArtista(@RequestParam(value="artista",required= false) String artista) {

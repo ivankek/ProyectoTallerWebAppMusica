@@ -18,7 +18,6 @@ public class Follow {
 	@ManyToOne
 	private Usuario usuario;
 	
-	
 	public Long getId() {
 		return id;
 	}
