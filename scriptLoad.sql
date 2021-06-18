@@ -5,11 +5,11 @@ VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
 	  (2, "Medicine at Midnight", "img/Album/MedicineAtMidnight.jpg");
       
 /*Artista*/
-INSERT INTO artista(id, nombre,path_img)
-VALUES(1, "AC/DC", "img/Artista/ACDC.jpg"),
-      (2, "Foo Fighters", "img/Artista/FooFighters.jpg");
-      
-/*Genero por el momento no se esta utilizando*/
+INSERT INTO artista(id, nombre, path_img)
+VALUES(1, "AC/DC" , "img/Artista/acdc.jpg"),
+      (2, "Foo Fighters" , "img/Artista/foofighters.jpg");
+
+/*Genero*/
 INSERT INTO genero(id, nombre)
 VALUES(1, "rock");
 
@@ -34,6 +34,28 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (17, "Holding Poison", "media/Medicine at midnight/Holding Poison.mp3",2 ,2 , 8),
       (18, "Chasing Birds", "media/Medicine at midnight/Chasing Birds.mp3",2 ,2 , 9),
       (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);  
+      
+/*Asociar cancion a los generos*/
+INSERT INTO canciongenero(id , cancion_id , genero_id)
+VALUES(1 , 1 , 1),
+	  (2 , 2 , 1),
+	  (3 , 3 , 1),
+	  (4 , 4 , 1),
+	  (5 , 5 , 1),
+	  (6 , 6 , 1),
+	  (7 , 7 , 1),
+	  (8 , 8 , 1),
+	  (9 , 9 , 1),
+	  (10 , 10 , 1),
+	  (11 , 11 , 1),
+	  (12 , 12 , 1),
+	  (13 , 13 , 1),
+	  (14 , 14 , 1),
+	  (15 , 15 , 1),
+	  (16 , 16 , 1),
+	  (17 , 17 , 1),
+	  (18 , 18 , 1),
+	  (19 , 19 , 1);
       
 /*Inserta usuario*/
 INSERT INTO usuario(id, usuario, password, rol)
