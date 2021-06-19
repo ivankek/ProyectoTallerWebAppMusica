@@ -51,14 +51,16 @@ public class ControladorUsuario {
 	}
 	
 	@RequestMapping("/Artista")
-	public ModelAndView artista(@RequestParam(value= "nombre", required = false) String artista) {
+	public ModelAndView artista(HttpServletRequest request, @RequestParam(value= "nombre", required = false) String artista) {
 		ModelMap model = new ModelMap();
 
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista",servicioCancion.obtenerArtistaPorNombre(artista));
-
+		Object usuario = request.getSession().getAttribute("usuario"); 
+		model.put("usuario", usuario);
+		model.put("seguidores", servicioFollow.obtenerSeguidoresPorArtista(artista).size());
 		return new ModelAndView("viewArtista", model);
 	}
 
@@ -96,13 +98,15 @@ public class ControladorUsuario {
 	}
 	
 	@RequestMapping("/FollowArtista")
-	public ModelAndView seguirArtista(@RequestParam(value="artista",required= false) String artista) {
+	public ModelAndView seguirArtista(@RequestParam(value="artista",required= false) Long artista,
+									  @RequestParam(value="usuario", required= false) Long usuario) {
 		ModelMap modelo = new ModelMap();
 		
 		Follow follow = new Follow();
 		
-		follow.setArtista(servicioFollow.obtenerArtistaPorNombre(artista));
-		servicioFollow.guardarArtistaSeguido(follow);
-		return new ModelAndView("viewArtista");
+		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
+		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario));
+		servicioFollow.guardarFollow(follow);
+		return new ModelAndView("redirect:/Inicio");
 	}
 }
