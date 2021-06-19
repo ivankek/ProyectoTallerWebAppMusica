@@ -11,7 +11,11 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/db_proyecto?serverTimezone=UTC"/>
 		<property name="username" value="root" />
+<<<<<<< HEAD
 		<property name="password" value="Ivankek99edlp" />
+=======
+		<property name="password" value="" />
+>>>>>>> 62c2c38fe9dce285081b5955fefe6ddd6b41fb7d
 	</bean>
 
 	<!--Configuracion de la factory encargada de generar las sesiones con la base de datos, la misma -->
