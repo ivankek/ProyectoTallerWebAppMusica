@@ -25,9 +25,6 @@ public class Cancion {
 	@ManyToOne
 	private Artista artista;
 
-	@ManyToOne
-	private ListaReproduccion listaReproduccion;
-
 	private String path_cancion;
 
 	private Long puntaje;
@@ -72,14 +69,7 @@ public class Cancion {
 		this.artista = artista;
 	}
 
-	public ListaReproduccion getListaReproduccion() {
-		return listaReproduccion;
-	}
-
-	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
-		this.listaReproduccion = listaReproduccion;
-	}
-
+	
 	public Long getPuntaje() {
 		return puntaje;
 	}

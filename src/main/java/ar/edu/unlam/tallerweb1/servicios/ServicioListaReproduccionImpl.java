@@ -1,14 +1,20 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Cancion;
+import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 
@@ -21,7 +27,10 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 
 	@Inject
 	private RepositorioUsuario repositorioUsuario;
-
+	
+	@Inject 
+	private RepositorioCancionLista repositorioCancionLista;
+	
 	@Override
 	public Long guardarListaReproduccion(ListaReproduccion listaReproduccion) {
 		return repositorioListaReproduccion.insertarLista(listaReproduccion);
@@ -51,6 +60,10 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	public List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario) {
 		return repositorioListaReproduccion.obtenerListaReproduccionPorUsuario(usuario);
 	}
-	
+
+	@Override
+	public Long guardarCancionLista(CancionLista cancionLista) {
+		return repositorioCancionLista.insertarCancionLista(cancionLista);
+	}
 	
 }
