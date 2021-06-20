@@ -39,7 +39,6 @@
 						</div> 
 						<!-- parte B -->
 						<div class="text-white d-flex align-items-center">
-							<a href="">${cancion.album.nombre}</a>
 							<a href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 						</div> 
 						<!-- parte C -->

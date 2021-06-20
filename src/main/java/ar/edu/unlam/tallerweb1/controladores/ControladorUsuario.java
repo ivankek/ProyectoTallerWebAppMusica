@@ -44,9 +44,11 @@ public class ControladorUsuario {
 	private ServicioFollow servicioFollow;
 
 	@RequestMapping("/Album")
-	public ModelAndView album(@RequestParam(value = "nombre", required = false) String album) {
+	public ModelAndView album(HttpServletRequest request,
+			@RequestParam(value = "nombre", required = false) String album) {
 		ModelMap model = new ModelMap();
-
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(album));
 		model.put("titulo", "Album - " + album);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
@@ -55,9 +57,11 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/Artista")
-	public ModelAndView artista(@RequestParam(value = "nombre", required = false) String artista) {
+	public ModelAndView artista(HttpServletRequest request,
+			@RequestParam(value = "nombre", required = false) String artista) {
 		ModelMap model = new ModelMap();
-
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
@@ -74,29 +78,29 @@ public class ControladorUsuario {
 		model.put("titulo", "Inicio");
 		model.put("canciones", servicioCancion.obtenerLasCincoMejoresCanciones());
 		model.put("datos", servicioCancion.serializarDatosCanciones());
-		Object usuario = request.getSession().getAttribute("usuario");
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-
+		model.put("listas", servicioListaReproduccion.obtenerListaReproduccionPorUsuario(user));
 		model.put("recomendaciones", servicioRecomendar.recomendarArtistaPorGenerosDelUsuario(user));
 		model.put("condicion", servicioRecomendar.recomendarArtistaPorGenerosDelUsuario(user).isEmpty());
-		model.put("usuario", usuario);
+		model.put("usuario", user);
 //		model.put("PlaylistCantidad", servicioListaReproduccion.obtenerTodasLasListasDeReproduccion().size());
 
 		return new ModelAndView("Inicio", model);
 	}
 
 	@RequestMapping("/CrearPlaylist")
-	public ModelAndView crearPlaylist(@RequestParam(value = "nombrePlaylist", required = false) String nombrePlaylist,
+	public ModelAndView crearPlaylist(HttpServletRequest request,
+			@RequestParam(value = "nombrePlaylist", required = false) String nombrePlaylist,
 			@RequestParam(value = "usuario", required = false) String usuario) {
+
 		ModelMap model = new ModelMap();
-
 		ListaReproduccion listaReproduccion = new ListaReproduccion();
-
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		listaReproduccion.setUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(usuario));
 		listaReproduccion.setNombre(nombrePlaylist);
 		servicioListaReproduccion.guardarListaReproduccion(listaReproduccion);
-
-		return new ModelAndView("redirect:/Inicio");
+		return new ModelAndView("redirect:/MisPlaylist");
 
 	}
 
@@ -107,6 +111,7 @@ public class ControladorUsuario {
 		model.put("usuario", user);
 		model.put("listas", servicioListaReproduccion.obtenerListaReproduccionPorUsuario(user));
 
+		
 //		Artista artista = new Artista();
 //		artista.setNombre("AC/DC");
 //		Long id_artista = servicioCancion.guardarArtista(artista);

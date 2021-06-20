@@ -3,10 +3,20 @@
 <!-- Main -->
 <div class="container-fluid main pb-4 mb-5">
 	<div class="row">
+
 		<!-- SIDEBAR -->
 		<%@include file="sidebar.jsp"%>
 		<!-- Contenido Principal -->
-		<div class="col bg-dark bg-gradient">
+		<div class="col bg-dark bg-gradient p-5">
+
+			<%
+				if (request.getAttribute("usuario") != null) {
+			%>
+			<h2 class="text-center text-light mb-3">Bienvenido,
+				${usuario.usuario}.</h2>
+			<%
+				}
+			%>
 
 			<!--Artistas Recomendados -->
 			<h2 class="text-white">Artistas recomendados para vos</h2>
@@ -44,8 +54,28 @@
 							<div class="card-body">
 								<h6 class="card-title">${cancion.nombre}</h6>
 								<p class="card-text">${cancion.album.nombre}</p>
-								<a class="card-text"
-									href="Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+								<div class="d-flex">
+									<a class="card-text"
+										href="Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+
+									<div class="dropdown dropup position-absolute end-0 me-2">
+										<a href='#' role='button' id='dropdownMenuLink'
+											data-bs-toggle='dropdown' aria-expanded='false'
+											style="color: white;"><div class="material-icons">more_vert</div></a>
+										<ul class="dropdown-menu dropdown-menu-end px-1"
+											aria-labelledby='dropdownMenuLink'>
+											<li class="text-center">Agregar a playlist</li>
+											<hr>
+											<c:forEach items="${listas}" var="lista">
+												<li id="${lista.id}"><a class='dropdown-item'
+													href="AgregarCancionAPlaylist?idCancion=${cancion.id}&idPlaylist=${lista.id}">${lista.nombre}</a></li>
+											</c:forEach>
+										</ul>
+
+									</div>
+
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -59,6 +89,10 @@
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
 <script src="js/json.js"></script>
 </body>
 </html>

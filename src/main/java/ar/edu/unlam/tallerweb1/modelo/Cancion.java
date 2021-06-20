@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -28,6 +27,9 @@ public class Cancion {
 	private String path_cancion;
 
 	private Long puntaje;
+
+	@ManyToOne
+	private ListaReproduccion listaReproduccion;
 
 	public Long getId() {
 		return id;
@@ -69,7 +71,6 @@ public class Cancion {
 		this.artista = artista;
 	}
 
-	
 	public Long getPuntaje() {
 		return puntaje;
 	}
