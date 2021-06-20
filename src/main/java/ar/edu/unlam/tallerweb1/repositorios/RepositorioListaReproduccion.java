@@ -15,4 +15,7 @@ public interface RepositorioListaReproduccion {
 
 	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
 
+
+	ListaReproduccion obtenerListaPorId(Long id);
+
 }

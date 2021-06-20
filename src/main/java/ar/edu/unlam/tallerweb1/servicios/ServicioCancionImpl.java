@@ -50,6 +50,11 @@ public class ServicioCancionImpl implements ServicioCancion {
 	}
 
 	@Override
+	public Cancion obtenerCancionPorId(Long id) {
+		return repositorioCancion.obtenerCancionPorId(id);
+	}
+	
+	@Override
 	public Long guardarArtista(Artista artista) {
 		return repositorioArtista.insertarArtista(artista);
 	}
@@ -109,5 +114,7 @@ public class ServicioCancionImpl implements ServicioCancion {
 	public Artista obtenerArtistaPorNombre(String nombre) {
 		return repositorioArtista.obtenerArtistaPorNombre(nombre);
 	}
+
+
 
 }

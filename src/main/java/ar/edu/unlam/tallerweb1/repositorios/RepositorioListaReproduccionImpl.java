@@ -39,4 +39,10 @@ public class RepositorioListaReproduccionImpl implements RepositorioListaReprodu
 				.add(Restrictions.eq("usuario", usuario)).list();
 	}
 
+	@Override
+	public ListaReproduccion obtenerListaPorId(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(ListaReproduccion.class, id);
+	}
+
 }

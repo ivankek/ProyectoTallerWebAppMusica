@@ -60,7 +60,8 @@
 						<h5 class="card-title text-light mb-3">${lista.nombre}</h5>
 						<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
-						<a href="#" class="card-link text-decoration-none text-info">Ver
+						<a href="viewLista?idPlaylist=${lista.id}"
+							class="card-link text-decoration-none text-info">Ver
 							canciones</a> <a href="#"
 							class="card-link text-decoration-none text-danger">Eliminar</a>
 					</div>

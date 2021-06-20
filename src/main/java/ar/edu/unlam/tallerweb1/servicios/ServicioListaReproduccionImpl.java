@@ -65,5 +65,15 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	public Long guardarCancionLista(CancionLista cancionLista) {
 		return repositorioCancionLista.insertarCancionLista(cancionLista);
 	}
+
+	@Override
+	public ListaReproduccion obtenerListaPorId(Long id) {
+		return repositorioListaReproduccion.obtenerListaPorId(id);
+	}
+
+	@Override
+	public List<String> obtenerCancionesDeLista(ListaReproduccion listaReproduccion) {
+		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
+	}
 	
 }

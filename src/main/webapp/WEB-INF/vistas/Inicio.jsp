@@ -58,6 +58,10 @@
 									<a class="card-text"
 										href="Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 
+
+									<%
+										if (request.getAttribute("usuario") != null) {
+									%>
 									<div class="dropdown dropup position-absolute end-0 me-2">
 										<a href='#' role='button' id='dropdownMenuLink'
 											data-bs-toggle='dropdown' aria-expanded='false'
@@ -73,6 +77,20 @@
 										</ul>
 
 									</div>
+									<%
+										} else {
+									%>
+									<div class="dropdown dropup position-absolute end-0 me-2">
+										<a href="login" role='button' id='dropdownMenuLink'
+											data-bs-toggle='dropdown' aria-expanded='false'
+											style="color: white;"><div class="material-icons">more_vert</div></a>
+
+									</div>
+
+									<%
+										}
+									%>
+
 
 								</div>
 

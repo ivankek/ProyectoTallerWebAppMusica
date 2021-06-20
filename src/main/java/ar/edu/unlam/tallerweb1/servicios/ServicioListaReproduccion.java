@@ -15,8 +15,12 @@ public interface ServicioListaReproduccion {
 	
 	Usuario obtenerUsuarioPorId(Long id);
 
+	ListaReproduccion obtenerListaPorId(Long id);
+	
 	Long guardarCancionLista(CancionLista cancionLista);
 		
+	List<String> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
+	
 	List<ListaReproduccion> obtenerTodasLasListasDeReproduccion();
 
 	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
