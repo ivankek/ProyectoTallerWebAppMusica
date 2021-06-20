@@ -1,12 +1,14 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
 
 public interface ServicioFollow {
 
-	Long guardarArtistaSeguido(Follow follow);
+	Long guardarFollow(Follow follow);
 
-	Artista obtenerArtistaPorNombre(String artista);
+	List<Follow> obtenerSeguidoresPorArtista(String artista);
 
 }

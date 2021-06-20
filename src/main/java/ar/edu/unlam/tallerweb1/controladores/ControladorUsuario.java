@@ -57,16 +57,27 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/Artista")
+<<<<<<< HEAD
 	public ModelAndView artista(HttpServletRequest request,
 			@RequestParam(value = "nombre", required = false) String artista) {
+=======
+	public ModelAndView artista(HttpServletRequest request, @RequestParam(value= "nombre", required = false) String artista) {
+>>>>>>> master
 		ModelMap model = new ModelMap();
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(artista));
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
+<<<<<<< HEAD
 		model.put("artista", servicioCancion.obtenerArtistaPorNombre(artista));
 
+=======
+		model.put("artista",servicioCancion.obtenerArtistaPorNombre(artista));
+		Object usuario = request.getSession().getAttribute("usuario"); 
+		model.put("usuario", usuario);
+		model.put("seguidores", servicioFollow.obtenerSeguidoresPorArtista(artista).size());
+>>>>>>> master
 		return new ModelAndView("viewArtista", model);
 	}
 
@@ -167,13 +178,26 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/FollowArtista")
+<<<<<<< HEAD
 	public ModelAndView seguirArtista(@RequestParam(value = "artista", required = false) String artista) {
+=======
+	public ModelAndView seguirArtista(@RequestParam(value="artista",required= false) Long artista,
+									  @RequestParam(value="usuario", required= false) Long usuario) {
+>>>>>>> master
 		ModelMap modelo = new ModelMap();
 
 		Follow follow = new Follow();
+<<<<<<< HEAD
 
 		follow.setArtista(servicioFollow.obtenerArtistaPorNombre(artista));
 		servicioFollow.guardarArtistaSeguido(follow);
 		return new ModelAndView("viewArtista");
+=======
+		
+		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
+		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario));
+		servicioFollow.guardarFollow(follow);
+		return new ModelAndView("redirect:/Inicio");
+>>>>>>> master
 	}
 }

@@ -12,14 +12,21 @@
   				<div class="card-img-overlay">
     				<h2 class="card-title fw-bolder">${artista.nombre}</h2>
     				<p class="card-text">Artista</p>
+    				<p class="card-text">${seguidores} seguidores</p>
   				</div>
 			</div>
-			
-			<form:form class="" action="FollowArtista" method="GET" modelAttribute="artista">
-				<button type="button" class="btn btn-info text-light" name="botonFollow" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
-				<input type="hidden" name="artista" value="${cancion.artista.nombre}">
-			</form:form>
-			
+			<%
+		if (request.getAttribute("usuario") != null) {
+			%>
+	<form action="FollowArtista">
+				<input type="hidden" name="artista" value="${artista.id}">
+				<input type="hidden" name="usuario" value="${usuario.id}">
+				<button type="submit" class="btn btn-info text-light" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
+				
+	</form>
+	<% 
+		}
+	%>
 			<div class="datos" hidden>${datos}</div>
 
 			<ul class="list-group">
