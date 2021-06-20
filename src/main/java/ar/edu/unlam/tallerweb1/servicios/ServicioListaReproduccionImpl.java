@@ -72,7 +72,7 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	}
 
 	@Override
-	public List<String> obtenerCancionesDeLista(ListaReproduccion listaReproduccion) {
+	public List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion) {
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
 	}
 	

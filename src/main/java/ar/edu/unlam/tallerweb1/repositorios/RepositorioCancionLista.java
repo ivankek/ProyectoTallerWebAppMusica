@@ -13,6 +13,6 @@ public interface RepositorioCancionLista {
 
 	List<String> obtenerListasDeUnaCancion(Cancion cancion);
 
-	List<String> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
+	List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
 
 }

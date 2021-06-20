@@ -19,7 +19,7 @@ public interface ServicioListaReproduccion {
 	
 	Long guardarCancionLista(CancionLista cancionLista);
 		
-	List<String> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
+	List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
 	
 	List<ListaReproduccion> obtenerTodasLasListasDeReproduccion();
 

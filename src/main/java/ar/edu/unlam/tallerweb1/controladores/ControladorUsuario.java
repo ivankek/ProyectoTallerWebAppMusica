@@ -123,6 +123,7 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("idPlaylist", idPlaylist);
+		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
 
