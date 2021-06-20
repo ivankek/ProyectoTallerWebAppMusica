@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,13 @@ public class ServicioFollowImpl implements ServicioFollow{
 	}
 
 	@Override
-	public Long guardarArtistaSeguido(Follow follow) {
-		return repositorioFollow.guardarArtistaSeguido(follow);
+	public Long guardarFollow(Follow follow) {
+		return repositorioFollow.guardarFollow(follow);
 	}
 
 	@Override
-	public Artista obtenerArtistaPorNombre(String artista) {
-		return repositorioFollow.obtenerArtistaPorNombre(artista);
+	public List<Follow> obtenerSeguidoresPorArtista(String artista) {
+		
+		return repositorioFollow.obtenerSeguidoresPorArtista(artista);
 	}
 }
