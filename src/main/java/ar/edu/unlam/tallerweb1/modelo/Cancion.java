@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,25 +11,25 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Cancion {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nombre;
-	
+
 	@ManyToOne
 	private Album album;
-	
+
 	@ManyToOne
 	private Artista artista;
-	
+
+	private String path_cancion;
+
+	private Long puntaje;
+
 	@ManyToOne
 	private ListaReproduccion listaReproduccion;
-	
-	private String path_cancion;
-	
-	private Long puntaje;
 
 	public Long getId() {
 		return id;
@@ -68,15 +71,6 @@ public class Cancion {
 		this.artista = artista;
 	}
 
-
-	public ListaReproduccion getListaReproduccion() {
-		return listaReproduccion;
-	}
-
-	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
-		this.listaReproduccion = listaReproduccion;
-	}
-
 	public Long getPuntaje() {
 		return puntaje;
 	}
@@ -84,4 +78,5 @@ public class Cancion {
 	public void setPuntaje(Long puntaje) {
 		this.puntaje = puntaje;
 	}
+
 }

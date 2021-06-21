@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+
 import java.util.List;
 
 public interface RepositorioListaReproduccion {
@@ -9,5 +11,11 @@ public interface RepositorioListaReproduccion {
 	
 
 	List<ListaReproduccion> obtenerTodasLasListasDeReproduccion();
+
+
+	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
+
+
+	ListaReproduccion obtenerListaPorId(Long id);
 
 }

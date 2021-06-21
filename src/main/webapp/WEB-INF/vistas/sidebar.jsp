@@ -13,9 +13,9 @@
         	</a>
       	</li>
         <li class="nav-item">
-        	<a href="#" class="nav-link text-white d-flex p-0">
+        	<a href="MisPlaylist" class="nav-link text-white d-flex p-0">
           		<i class="material-icons">playlist_add</i>
-          		<p class="ps-1">Crear lista</p>
+          		<p class="ps-1">Mis Playlist</p>
         	</a>
       	</li>
         <li class="nav-item">
@@ -24,6 +24,9 @@
           		<p class="ps-1">Canciones que te gustan</p>
         	</a>
       	</li>
+      	
+      	
+      	
     </ul>
     <hr class="text-white">
     <div>Traer playlist que sigue el usuario</div>

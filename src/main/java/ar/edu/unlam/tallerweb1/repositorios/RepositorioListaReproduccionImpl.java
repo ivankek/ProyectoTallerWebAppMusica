@@ -6,9 +6,12 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository
 public class RepositorioListaReproduccionImpl implements RepositorioListaReproduccion {
@@ -19,7 +22,7 @@ public class RepositorioListaReproduccionImpl implements RepositorioListaReprodu
 	@Override
 	public Long insertarLista(ListaReproduccion listaReproduccion) {
 		Session session = sessionFactory.getCurrentSession();
-		return (Long)session.save(listaReproduccion);
+		return (Long) session.save(listaReproduccion);
 
 	}
 
@@ -29,6 +32,17 @@ public class RepositorioListaReproduccionImpl implements RepositorioListaReprodu
 		return session.createCriteria(ListaReproduccion.class).list();
 	}
 
-	
-	
+	@Override
+	public List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		return (List<ListaReproduccion>) session.createCriteria(ListaReproduccion.class)
+				.add(Restrictions.eq("usuario", usuario)).list();
+	}
+
+	@Override
+	public ListaReproduccion obtenerListaPorId(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(ListaReproduccion.class, id);
+	}
+
 }

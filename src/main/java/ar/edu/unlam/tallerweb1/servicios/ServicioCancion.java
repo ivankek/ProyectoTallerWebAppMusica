@@ -20,6 +20,8 @@ public interface ServicioCancion {
 	
 	Long guardarAlbum(Album album);
 	
+	Cancion obtenerCancionPorId(Long id);
+	
 	List<Cancion> obtenerTodasLasCanciones();
 	
 	Artista obtenerArtistaPorId(Long id);
