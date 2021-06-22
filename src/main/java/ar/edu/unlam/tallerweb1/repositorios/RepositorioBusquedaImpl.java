@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionGenero;
+import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 @Repository
@@ -64,10 +65,11 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 	@Override
 	public List<Cancion> obtenerCancionesPorLista(String nombre) {
 		final Session session = sessionFactory.getCurrentSession();
-		return session.createCriteria(Cancion.class)
-				.createAlias("listaReproduccion", "listaBuscada")
+		return session.createCriteria(CancionLista.class)
+				.createAlias("listaReproduccion", "tablaListaReproduccion")
 				//.add(Restrictions.eq("listaBuscada.nombre", nombre))
-				.add(Restrictions.ilike("listaBuscada.nombre", nombre, MatchMode.ANYWHERE))
+				.add(Restrictions.ilike("tablaListaReproduccion.nombre", nombre, MatchMode.ANYWHERE))
+				.setProjection(Projections.property("cancion"))
 				.list();
 	}
 
