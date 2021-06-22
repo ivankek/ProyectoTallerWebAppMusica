@@ -19,5 +19,4 @@ public interface RepositorioBusqueda {
 	
 	List<Cancion> obtenerCancionesPorNombre(String nombre);
 	
-	
 }
