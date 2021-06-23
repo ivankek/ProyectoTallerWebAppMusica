@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -49,7 +50,7 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 	public Artista obtenerArtistaPorNombre(String artista) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Artista) session.createCriteria(Artista.class)
-				.add(Restrictions.eq("nombre", artista))
+				.add(Restrictions.ilike("nombre", artista, MatchMode.ANYWHERE))
 				.uniqueResult();
 	}
 

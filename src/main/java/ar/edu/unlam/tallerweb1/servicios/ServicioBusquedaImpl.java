@@ -24,27 +24,7 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 	public ServicioBusquedaImpl(RepositorioBusqueda repositorioBusqueda) {
 		this.repositorioBusqueda = repositorioBusqueda;
 	}
-	/*@Override
-	public List<Cancion> obtenerCancionesPorGenero(String nombre) {
-		return repositorioBusqueda.obtenerCancionesPorGenero(nombre);
-	}
-
-	@Override
-	public List<Cancion> obtenerCancionesPorArtista(String nombre) {
-		return repositorioBusqueda.obtenerCancionesPorArtista(nombre);
-	}
 	
-	public List<Cancion> obtenerCancionesPorAlbum(String nombre){
-		return repositorioBusqueda.obtenerCancionesPorAlbum(nombre);
-	}
-	@Override
-	public List<Cancion> obtenerCancionesPorLista(String nombre) {
-		return repositorioBusqueda.obtenerCancionesPorLista(nombre);
-	}
-	@Override
-	public List<Cancion> obtenerCancionesPorNombre(String nombre) {
-		return repositorioBusqueda.obtenerCancionesPorNombre(nombre);
-	}*/
 	@Override
 	public Set<Cancion> buscarCancionPorTodosLosCampos(String nombre) {
 		List<Cancion> genero = repositorioBusqueda.obtenerCancionesPorGenero(nombre);
@@ -63,5 +43,4 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 		
 		return todos;
 	}
-	
 }

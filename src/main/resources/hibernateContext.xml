@@ -15,6 +15,7 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/db_proyecto?serverTimezone=UTC" />
 		<property name="username" value="root" />
+
 		<property name="password" value="steins77" />
 	</bean>
 

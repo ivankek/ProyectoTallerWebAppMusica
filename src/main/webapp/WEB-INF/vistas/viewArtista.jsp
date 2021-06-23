@@ -40,7 +40,6 @@
 							</div>
 							<div class="flex-grow-1 ms-3 text-white">
 								<h5 class="mt-0">${cancion.nombre}</h5>
-								<p>${cancion.artista.nombre}</p>
 								<a href="">${cancion.artista.nombre}</a>
 							</div>
 						</div> 
