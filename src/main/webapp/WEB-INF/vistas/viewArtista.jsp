@@ -20,7 +20,6 @@
 			%>
 	<form action="FollowArtista">
 				<input type="hidden" name="artista" value="${artista.id}">
-				<input type="hidden" name="usuario" value="${usuario.id}">
 				<button type="submit" class="btn btn-info text-light" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
 				
 	</form>

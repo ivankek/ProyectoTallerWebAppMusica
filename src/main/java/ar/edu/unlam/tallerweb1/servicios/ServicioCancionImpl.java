@@ -115,6 +115,19 @@ public class ServicioCancionImpl implements ServicioCancion {
 		return repositorioArtista.obtenerArtistaPorNombre(nombre);
 	}
 
+	@Override
+	public List<Album> obtenerTodosLosAlbums() {
+		return repositorioAlbum.obtenerTodosLosAlbums();
+	}
 
+	@Override
+	public List<Artista> obtenerTodosLosArtistas() {
+		return repositorioArtista.obtenerTodosLosArtistas();
+	}
+
+
+	public List<Genero> obtenerTodosLosGeneros(){
+		return repositorioGenero.obtenerTodosLosGeneros();
+	}
 
 }

@@ -10,4 +10,6 @@ import ar.edu.unlam.tallerweb1.modelo.Genero;
 public interface ServicioBusqueda {
 
 	Set<Cancion> buscarCancionPorTodosLosCampos(String nombre);
+	
+	List<Artista> obtenerUnArtistaPorNombre(String nombre);
 }

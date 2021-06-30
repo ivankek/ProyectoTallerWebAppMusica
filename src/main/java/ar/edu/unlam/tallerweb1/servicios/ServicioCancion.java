@@ -37,4 +37,10 @@ public interface ServicioCancion {
 	String serializarDatosCanciones();
 	
 	Artista obtenerArtistaPorNombre(String nombre);
+	
+	List<Album> obtenerTodosLosAlbums();
+	
+	List<Artista> obtenerTodosLosArtistas();
+	
+	List<Genero> obtenerTodosLosGeneros();
 }

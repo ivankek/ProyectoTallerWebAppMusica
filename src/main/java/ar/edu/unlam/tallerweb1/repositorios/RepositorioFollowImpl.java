@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,6 +41,16 @@ public class RepositorioFollowImpl implements RepositorioFollow{
 		return session.createCriteria(Follow.class)
 				.createAlias("artista", "artistaBuscado")
 				.add(Restrictions.eq("artistaBuscado.nombre", artista))
+				.setProjection(Projections.distinct(Projections.property("artista")))
+			    .list();
+	}
+
+	@Override
+	public List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Follow.class)
+				.add(Restrictions.eq("usuario", usuario))
+				.setProjection(Projections.distinct(Projections.property("artista")))
 			    .list();
 	}	
 	}

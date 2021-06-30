@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -65,8 +67,7 @@ public class ControladorUsuario {
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista", servicioCancion.obtenerArtistaPorNombre(artista));
-
-		Object usuario = request.getSession().getAttribute("usuario");
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
 		model.put("seguidores", servicioFollow.obtenerSeguidoresPorArtista(artista).size());
 		return new ModelAndView("viewArtista", model);
@@ -149,14 +150,80 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/FollowArtista")
-	public ModelAndView seguirArtista(@RequestParam(value = "artista", required = false) Long artista,
-			@RequestParam(value = "usuario", required = false) Long usuario) {
+	public ModelAndView seguirArtista(HttpServletRequest request,
+			@RequestParam(value = "artista", required = false) Long artista) {
+		
 		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 		Follow follow = new Follow();
 		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
-		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario));
+		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
 		servicioFollow.guardarFollow(follow);
-		
 		return new ModelAndView("redirect:/Artista?nombre=" + follow.getArtista().getNombre());
+	}
+	
+	@RequestMapping("/viewArtistasSeguidos")
+	public ModelAndView mostrarArtistasSeguidos(HttpServletRequest request) {
+		
+		ModelMap modelo = new ModelMap();
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		modelo.put("usuario", user);
+		modelo.put("artistasSeguidos",servicioFollow.obtenerArtistasSeguidosPorUsuario(user));
+		return new ModelAndView("viewArtistasSeguidos",modelo);
+	}
+	
+	@RequestMapping("/viewExplorarTodo")
+	public ModelAndView explorarTodo() {
+		ModelMap model = new ModelMap();
+
+		model.put("titulo", "Explorar Todo");
+		
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		return new ModelAndView("viewExplorarTodo", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodosLosArtistas")
+	public ModelAndView explorarArtistas(@RequestParam(value="artista", required = false) String artista) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Artistas");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("artista", servicioCancion.obtenerTodosLosArtistas());
+		
+		return new ModelAndView("viewExplorarTodosLosArtistas", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodosLosAlbums")
+	public ModelAndView explorarAlbums(@RequestParam(value="album", required = false) String album) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Albums");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("album", servicioCancion.obtenerTodosLosAlbums());
+		
+		return new ModelAndView("viewExplorarTodosLosAlbums", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodasLasCanciones")
+	public ModelAndView explorarCanciones(@RequestParam(value="cancion", required = false) String cancion) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Canciones");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("cancion", servicioCancion.obtenerTodasLasCanciones());
+		
+		return new ModelAndView("viewExplorarTodasLasCanciones", model);
+	}
+	
+	@RequestMapping("viewExplorarTodosLosGeneros")
+	public ModelAndView explorarGeneros(@RequestParam(value="genero", required = false) String genero) {
+		
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Géneros");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("genero", servicioCancion.obtenerTodosLosGeneros());
+		
+		return new ModelAndView("viewExplorarTodosLosGeneros", model);
 	}
 }

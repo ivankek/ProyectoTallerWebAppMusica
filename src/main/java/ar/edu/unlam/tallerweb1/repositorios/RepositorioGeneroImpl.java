@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -20,4 +22,13 @@ public class RepositorioGeneroImpl implements RepositorioGenero {
 		return (Long)session.save(genero);
 	}
 
+	@Override
+	public List<Genero> obtenerTodosLosGeneros() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Genero.class)
+				.list();
+	}
+
+	
+	
 }

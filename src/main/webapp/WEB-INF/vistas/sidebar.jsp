@@ -24,8 +24,19 @@
           		<p class="ps-1">Canciones que te gustan</p>
         	</a>
       	</li>
+      	  <li class="nav-item">
+        	<a href="viewArtistasSeguidos" class="nav-link text-white d-flex p-0">
+          		<i class="material-icons">people</i>
+          		<p class="ps-1">Artistas que sigo</p>
+        	</a>
+      	</li>
       	
-      	
+      	<li class="nav-item">
+        	<a href="viewExplorarTodo" class="nav-link text-white d-flex p-0">
+          		<i class="material-icons">search</i>
+          		<p class="ps-1">Explorar todo</p>
+        	</a>
+      	</li>
       	
     </ul>
     <hr class="text-white">
