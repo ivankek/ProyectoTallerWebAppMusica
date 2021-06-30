@@ -28,9 +28,6 @@ public class Cancion {
 
 	private Long puntaje;
 
-	@ManyToOne
-	private ListaReproduccion listaReproduccion;
-
 	public Long getId() {
 		return id;
 	}
