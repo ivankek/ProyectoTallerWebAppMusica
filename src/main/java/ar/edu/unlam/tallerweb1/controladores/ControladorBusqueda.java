@@ -17,10 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
 public class ControladorBusqueda {
@@ -29,6 +31,7 @@ public class ControladorBusqueda {
 	private ServicioCancion servicioCancion;
 	private ServicioListaReproduccion servicioListaReproduccion;
 	private ServicioBusqueda servicioBusqueda;
+	private ServicioLogin servicioLogin;
 
 	@Autowired
 	public ControladorBusqueda(ServicioBusqueda servicioBusqueda) {
@@ -56,6 +59,12 @@ public class ControladorBusqueda {
 		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(nombre);
 	
 		modelo.put("resultado", lista);
+		
+		List<Usuario> usuarioBusqueda = servicioBusqueda.obtenerUsuarioPorNombre(nombre);
+		modelo.put("user", usuarioBusqueda);
+		
+		List<ListaReproduccion> listaListaReproduccion = servicioBusqueda.obtenerListaReproduccionPorNombre(nombre);
+		modelo.put("listaReproduccion", listaListaReproduccion);
 		
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}

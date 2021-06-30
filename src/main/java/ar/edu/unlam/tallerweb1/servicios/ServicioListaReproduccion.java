@@ -26,5 +26,7 @@ public interface ServicioListaReproduccion {
 	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
 	
 	Usuario obtenerUsuarioPorNombre(String usuario);
+
+	List<ListaReproduccion> obtenerListaPorNombre(String nombre);
 	
 }

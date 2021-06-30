@@ -76,7 +76,8 @@ public class ControladorUsuario {
 	@RequestMapping("/Usuario")
 	public ModelAndView usuario(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
-		
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
 		
 		return new ModelAndView("viewUsuario", model);
 	}

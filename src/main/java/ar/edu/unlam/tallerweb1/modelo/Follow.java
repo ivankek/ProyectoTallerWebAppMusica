@@ -17,6 +17,8 @@ public class Follow {
 	private Artista artista;
 	@ManyToOne
 	private Usuario usuario;
+	@ManyToOne
+	private ListaReproduccion listaReproduccion;
 	
 	public Long getId() {
 		return id;
@@ -35,6 +37,15 @@ public class Follow {
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public ListaReproduccion getListaReproduccion() {
+		return listaReproduccion;
+	}
+	
+	
+	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
+		this.listaReproduccion = listaReproduccion;
 	}
 	
 	

@@ -18,4 +18,7 @@ public interface RepositorioListaReproduccion {
 
 	ListaReproduccion obtenerListaPorId(Long id);
 
+
+	List<ListaReproduccion> obtenerListaReproduccionPorNombre(String lista);
+
 }

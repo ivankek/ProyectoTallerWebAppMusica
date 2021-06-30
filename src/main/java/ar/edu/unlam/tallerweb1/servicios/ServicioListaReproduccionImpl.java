@@ -27,10 +27,10 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 
 	@Inject
 	private RepositorioUsuario repositorioUsuario;
-	
-	@Inject 
+
+	@Inject
 	private RepositorioCancionLista repositorioCancionLista;
-	
+
 	@Override
 	public Long guardarListaReproduccion(ListaReproduccion listaReproduccion) {
 		return repositorioListaReproduccion.insertarLista(listaReproduccion);
@@ -47,7 +47,7 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	}
 
 	@Override
-	public List<ListaReproduccion> obtenerTodasLasListasDeReproduccion(){
+	public List<ListaReproduccion> obtenerTodasLasListasDeReproduccion() {
 		return repositorioListaReproduccion.obtenerTodasLasListasDeReproduccion();
 	}
 
@@ -72,8 +72,13 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	}
 
 	@Override
+	public List<ListaReproduccion> obtenerListaPorNombre(String nombre) {
+		return repositorioListaReproduccion.obtenerListaReproduccionPorNombre(nombre);
+	}
+
+	@Override
 	public List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion) {
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
 	}
-	
+
 }
