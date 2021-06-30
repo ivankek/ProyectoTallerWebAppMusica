@@ -7,11 +7,11 @@
 		<!-- Contenido Principal -->
 		<div class="col bg-dark bg-gradient">
 
-			<div class="d-flex flex-row justif-content-around  px-5 pt-5 pb-4">
+			<div class="d-flex flex-row justif-content-around flex-wrap  px-5 pt-5 pb-4">
 
-				<div class="d-flex">
+				<div class="d-flex flex-wrap mb-5 mb-md-0">
 
-					<img class="rounded-circle col-lg-5 shadow" alt=""
+					<img class="rounded-circle col-6 col-lg-5 shadow" alt=""
 						src="img/Usuario/ricky.jpg">
 
 					<div class="text-light align-self-center ms-4">
@@ -144,15 +144,12 @@
 
 				</div>
 				
-				
-				
-				
-				
-				
+			
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
