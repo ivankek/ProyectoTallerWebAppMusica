@@ -1,39 +1,24 @@
-<%@include file="Header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@include file="Header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Explorar Canciones</title>
+</head>
+<body>
 
-<div class="container mt-5 text-light mb-5 main">
-	<h2 class="text-center">Resultado de tu busqueda:</h2>
+<div class="container-fluid main pb-4 mb-5">
+	<div class="row">
+<%@include file="sidebar.jsp"%>
+<div class="col bg-dark bg-gradient p-5">
+<h2 class="text-white text-center">Explorar Canciones</h2>
 
-	<div class="datos" hidden>${datos}</div>
-	
-
-	<div class="mt-5 d-flex justify-content-between  text-light align-items-center">
-		<p class="text-info">Foto</p>
-		<p class="text-info">Titulo</p>
-		<p class="text-info">Artista</p>
-		<p class="text-info">Album</p>
-		<p class="text-info">Opciones</p>
-	</div>
-
-	<hr class="mt-0">
-	<div class="mt-2">
-	<ul class="list-group">
-	<c:forEach items="${artista}" var="artista">
-				<li class="list-group-item bg-dark d-flex justify-content-between">
-						<div class="d-flex align-items-center">
-							<div class="flex-shrink-0">
-								<img src="${artista.path_img}" style="width: 64px; height: 64px" alt="...">
-								<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>	
-							</div>
-						</div>
-				</li>
-				</c:forEach>
-	</ul>
-	
-	</div>
-	
 	<div class="mt-2">
 		<ul class="list-group pb-5 mb-5 cancion">
-			<c:forEach items="${resultado}" var="cancion">
+			<c:forEach items="${cancion}" var="cancion">
 				<li class="list-group-item bg-dark d-flex justify-content-between">
 					<!-- parte A -->
 						<div class="d-flex align-items-center">
@@ -80,16 +65,13 @@
 		</ul>
 	</div>
 </div>
+</div>
+</div>
 
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
-
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/json.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-	crossorigin="anonymous"></script>
 </body>
 </html>

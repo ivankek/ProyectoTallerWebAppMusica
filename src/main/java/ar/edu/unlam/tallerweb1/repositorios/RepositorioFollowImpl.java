@@ -41,6 +41,7 @@ public class RepositorioFollowImpl implements RepositorioFollow{
 		return session.createCriteria(Follow.class)
 				.createAlias("artista", "artistaBuscado")
 				.add(Restrictions.eq("artistaBuscado.nombre", artista))
+				.setProjection(Projections.distinct(Projections.property("artista")))
 			    .list();
 	}
 
@@ -49,7 +50,7 @@ public class RepositorioFollowImpl implements RepositorioFollow{
 		Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(Follow.class)
 				.add(Restrictions.eq("usuario", usuario))
-				.setProjection(Projections.property("artista"))
+				.setProjection(Projections.distinct(Projections.property("artista")))
 			    .list();
 	}	
 	}

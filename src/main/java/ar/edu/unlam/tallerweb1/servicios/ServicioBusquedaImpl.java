@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioArtista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioBusqueda;
 
 @Service
@@ -19,10 +20,12 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioBusqueda;
 public class ServicioBusquedaImpl implements ServicioBusqueda {
 
 	private RepositorioBusqueda repositorioBusqueda;
+	private RepositorioArtista repositorioArtista;
 
 	@Autowired
-	public ServicioBusquedaImpl(RepositorioBusqueda repositorioBusqueda) {
+	public ServicioBusquedaImpl(RepositorioBusqueda repositorioBusqueda, RepositorioArtista repositorioArtista) {
 		this.repositorioBusqueda = repositorioBusqueda;
+		this.repositorioArtista = repositorioArtista;
 	}
 	
 	@Override
@@ -43,4 +46,11 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 		
 		return todos;
 	}
+
+	@Override
+	public List<Artista> obtenerUnArtistaPorNombre(String nombre) {
+		return repositorioArtista.obtenerUnArtistaPorNombre(nombre);
+	}
+	
+	
 }

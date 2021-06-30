@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -58,5 +59,4 @@ public class RepositorioCancionGeneroImpl implements RepositorioCancionGenero {
                                      .setProjection(Projections.distinct(Projections.property("tablaGenero.nombre")))
                                      .list();
 	}
-
 }

@@ -50,8 +50,18 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 	public Artista obtenerArtistaPorNombre(String artista) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Artista) session.createCriteria(Artista.class)
-				.add(Restrictions.ilike("nombre", artista, MatchMode.ANYWHERE))
+				.add(Restrictions.eq("nombre", artista))
 				.uniqueResult();
 	}
+
+	@Override
+	public List<Artista> obtenerUnArtistaPorNombre(String artista) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Artista.class)
+				.add(Restrictions.ilike("nombre", artista, MatchMode.ANYWHERE ))
+				.list();
+	}
+	
+	
 
 }

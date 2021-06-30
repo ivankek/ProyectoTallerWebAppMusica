@@ -38,6 +38,13 @@ public class RepositorioAlbumImpl implements RepositorioAlbum {
 				      .list();
 	}
 
+	@Override
+	public List<Album> obtenerTodosLosAlbums() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Album.class)
+				.list();
+	}
+
 
 
 }
