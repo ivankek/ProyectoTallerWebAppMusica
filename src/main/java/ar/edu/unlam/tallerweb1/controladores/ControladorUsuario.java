@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -168,5 +170,60 @@ public class ControladorUsuario {
 		modelo.put("usuario", user);
 		modelo.put("artistasSeguidos",servicioFollow.obtenerArtistasSeguidosPorUsuario(user));
 		return new ModelAndView("viewArtistasSeguidos",modelo);
+	}
+	
+	@RequestMapping("/viewExplorarTodo")
+	public ModelAndView explorarTodo() {
+		ModelMap model = new ModelMap();
+
+		model.put("titulo", "Explorar Todo");
+		
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		return new ModelAndView("viewExplorarTodo", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodosLosArtistas")
+	public ModelAndView explorarArtistas(@RequestParam(value="artista", required = false) String artista) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Artistas");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("artista", servicioCancion.obtenerTodosLosArtistas());
+		
+		return new ModelAndView("viewExplorarTodosLosArtistas", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodosLosAlbums")
+	public ModelAndView explorarAlbums(@RequestParam(value="album", required = false) String album) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Albums");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("album", servicioCancion.obtenerTodosLosAlbums());
+		
+		return new ModelAndView("viewExplorarTodosLosAlbums", model);
+	}
+	
+	@RequestMapping("/viewExplorarTodasLasCanciones")
+	public ModelAndView explorarCanciones(@RequestParam(value="cancion", required = false) String cancion) {
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Canciones");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("cancion", servicioCancion.obtenerTodasLasCanciones());
+		
+		return new ModelAndView("viewExplorarTodasLasCanciones", model);
+	}
+	
+	@RequestMapping("viewExplorarTodosLosGeneros")
+	public ModelAndView explorarGeneros(@RequestParam(value="genero", required = false) String genero) {
+		
+		ModelMap model = new ModelMap();
+		
+		model.put("titulo", "Explorar Géneros");
+		model.put("datos", servicioCancion.serializarDatosCanciones());
+		model.put("genero", servicioCancion.obtenerTodosLosGeneros());
+		
+		return new ModelAndView("viewExplorarTodosLosGeneros", model);
 	}
 }
