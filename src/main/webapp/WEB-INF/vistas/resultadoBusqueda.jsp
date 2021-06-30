@@ -1,11 +1,12 @@
 <%@include file="Header.jsp"%>
+
 <div class="container mt-5 text-light mb-5 main">
 	<h2 class="text-center">Resultado de tu busqueda:</h2>
 
 	<div class="datos" hidden>${datos}</div>
+	
 
-	<div
-		class="mt-5 d-flex justify-content-between  text-light align-items-center">
+	<div class="mt-5 d-flex justify-content-between  text-light align-items-center">
 		<p class="text-info">Foto</p>
 		<p class="text-info">Titulo</p>
 		<p class="text-info">Artista</p>
@@ -14,13 +15,25 @@
 	</div>
 
 	<hr class="mt-0">
-
+	<div class="mt-2">
+	<ul class="list-group">
+				<li class="list-group-item bg-dark d-flex justify-content-between">
+						<div class="d-flex align-items-center">
+							<div class="flex-shrink-0">
+								<img src="${artista.path_img}" style="width: 64px; height: 64px" alt="...">
+								<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>	
+							</div>
+						</div>
+				</li>
+	</ul>
+	</div>
+	
 	<div class="mt-2">
 		<ul class="list-group pb-5 mb-5 cancion">
 			<c:forEach items="${resultado}" var="cancion">
 				<li class="list-group-item bg-dark d-flex justify-content-between">
 					<!-- parte A -->
-					<div class="d-flex  align-items-center">
+						<div class="d-flex align-items-center">
 						<i class="material-icons text-white me-3 icon-play"
 							name="${cancion.nombre}">play_circle_outline</i>
 						<div class="flex-shrink-0">

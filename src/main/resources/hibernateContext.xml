@@ -15,7 +15,7 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/db_proyecto?serverTimezone=UTC" />
 		<property name="username" value="root" />
-		<property name="password" value="Ivankek99edlp" />
+		<property name="password" value="1234" />
 	</bean>
 
 	<!--Configuracion de la factory encargada de generar las sesiones con la 

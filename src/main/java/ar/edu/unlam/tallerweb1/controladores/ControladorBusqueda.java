@@ -49,10 +49,11 @@ public class ControladorBusqueda {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		modelo.put("usuario", user);
 		modelo.put("datos", servicioCancion.serializarDatosCanciones());
+		modelo.put("artista", servicioCancion.obtenerArtistaPorNombre(nombre));
 		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(nombre);
-
+	
 		modelo.put("resultado", lista);
-
+		
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}
 }

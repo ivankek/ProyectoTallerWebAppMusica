@@ -20,7 +20,6 @@
 			%>
 	<form action="FollowArtista">
 				<input type="hidden" name="artista" value="${artista.id}">
-				<input type="hidden" name="usuario" value="${usuario.id}">
 				<button type="submit" class="btn btn-info text-light" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
 				
 	</form>
@@ -40,7 +39,6 @@
 							</div>
 							<div class="flex-grow-1 ms-3 text-white">
 								<h5 class="mt-0">${cancion.nombre}</h5>
-								<p>${cancion.artista.nombre}</p>
 								<a href="">${cancion.artista.nombre}</a>
 							</div>
 						</div> 
