@@ -73,6 +73,14 @@ public class ControladorUsuario {
 		return new ModelAndView("viewArtista", model);
 	}
 
+	@RequestMapping("/Usuario")
+	public ModelAndView usuario(HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		
+		return new ModelAndView("viewUsuario", model);
+	}
+	
 	@RequestMapping("/Inicio")
 	public ModelAndView inicio(HttpServletRequest request) {
 
