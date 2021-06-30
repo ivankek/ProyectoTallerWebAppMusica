@@ -2,16 +2,19 @@ use db_proyecto;
 /*Album*/
 INSERT INTO album(id, nombre, path_img)
 VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
-	  (2, "Medicine at Midnight", "img/Album/MedicineAtMidnight.jpg");
+	  (2, "Medicine at Midnight", "img/Album/MedicineAtMidnight.jpg"),
+      (3, "Thriller", "img/Album/Thriller.jpg");
       
 /*Artista*/
 INSERT INTO artista(id, nombre, path_img)
 VALUES(1, "AC/DC" , "img/Artista/ac_dc.jpg"),
-      (2, "Foo Fighters" , "img/Artista/foo_fighters.jpg");
+      (2, "Foo Fighters" , "img/Artista/foo_fighters.jpg"),
+      (3, "Michael Jackson", "img/Artista/michael_jackson.jpg");
 
 /*Genero*/
 INSERT INTO genero(id, nombre)
-VALUES(1, "rock");
+VALUES(1, "rock"),
+      (2, "pop");
 
 /*Canciones*/
 INSERT INTO cancion(id, nombre, path_cancion, album_id, artista_id, puntaje)
@@ -33,7 +36,16 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (16, "No Son Of Mine", "media/Medicine at midnight/No Son Of Mine.mp3",2 ,2 , 100),
       (17, "Holding Poison", "media/Medicine at midnight/Holding Poison.mp3",2 ,2 , 8),
       (18, "Chasing Birds", "media/Medicine at midnight/Chasing Birds.mp3",2 ,2 , 9),
-      (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9);  
+      (19, "Love Dies Young", "media/Medicine at midnight/Love Dies Young.mp3",2 ,2 , 9),
+      (20, "Wanna Be Startin' Somethin'" , "media/Thriller/01 - Wanna Be Startin' Somethin'.mp3", 3, 3,0),
+      (21, "Baby Be Mine" , "media/Thriller/02 - Baby Be Mine.mp3", 3, 3,0),
+      (22, "The Girl Is Mine" , "media/Thriller/03 - The Girl Is Mine.mp3", 3, 3,0),
+      (23, "Thriller" , "media/Thriller/04 - Thriller.mp3", 3, 3,0),
+      (24, "Beat It" , "media/Thriller/05 - Beat It.mp3", 3, 3,0),
+      (25, "Billie Jean" , "media/Thriller/06 - Billie Jean.mp3", 3, 3,0),
+      (26, "Human Nature" , "media/Thriller/07 - Human Nature.mp3", 3, 3,0),
+      (27, "P.Y.T. (Pretty Young Thing)" , "media/Thriller/08 - P.Y.T. (Pretty Young Thing).mp3", 3, 3,0),
+      (28, "The Lady In My Life" , "media/Thriller/09 - The Lady In My Life.mp3", 3, 3,0);  
       
 /*Asociar cancion a los generos*/
 INSERT INTO canciongenero(id , cancion_id , genero_id)
@@ -55,7 +67,16 @@ VALUES(1 , 1 , 1),
 	  (16 , 16 , 1),
 	  (17 , 17 , 1),
 	  (18 , 18 , 1),
-	  (19 , 19 , 1);
+	  (19 , 19 , 1),
+      (20 , 20 , 2),
+      (21 , 21 , 2),
+      (22 , 22 , 2),
+      (23 , 23 , 2),
+      (24 , 24 , 2),
+      (25 , 25 , 2),
+      (26 , 26 , 2),
+      (27 , 27 , 2),
+      (28 , 28 , 2);
       
 /*Inserta usuario*/
 INSERT INTO usuario(id, usuario, password, rol)

@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Favorito;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -32,4 +33,19 @@ public class RepositorioFavoritoImpl implements RepositorioFavorito{
 				      .list();
 	}
 
+	@Override
+	public void quitarFavorito(Favorito favorito) {
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(favorito);
+		return;
+	}
+
+	@Override
+	public Favorito buscarFavorito(Cancion cancion, Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Favorito) session.createCriteria(Favorito.class)
+			      .add(Restrictions.eq("usuario", usuario))
+			      .add(Restrictions.eq("cancion", cancion))
+			      .uniqueResult();
+	}
 }

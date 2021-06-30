@@ -152,11 +152,11 @@ public class ControladorUsuario {
 	public ModelAndView seguirArtista(@RequestParam(value = "artista", required = false) Long artista,
 			@RequestParam(value = "usuario", required = false) Long usuario) {
 		ModelMap modelo = new ModelMap();
-
 		Follow follow = new Follow();
 		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
 		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario));
 		servicioFollow.guardarFollow(follow);
-		return new ModelAndView("redirect:/Inicio");
+		
+		return new ModelAndView("redirect:/Artista?nombre=" + follow.getArtista().getNombre());
 	}
 }
