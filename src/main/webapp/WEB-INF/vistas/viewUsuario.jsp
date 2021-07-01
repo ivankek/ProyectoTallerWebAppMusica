@@ -12,11 +12,11 @@
 				<div class="d-flex flex-wrap mb-5 mb-md-0">
 
 					<img class="rounded-circle col-6 col-lg-5 shadow" alt=""
-						src="img/Usuario/ricky.jpg">
+						src="${user.path_img}">
 
 					<div class="text-light align-self-center ms-4">
 						<h5 class=text-info>Usuario</h5>
-						<h1>Ivank</h1>
+						<h1>${user.usuario}</h1>
 						<p class="fs-5 mb-2 text-info">Seguidores</p>
 						<hr class="mt-0 mb-2" style="color: aqua;">
 						<h5 class="text-center mt-0">20</h5>
@@ -59,90 +59,27 @@
 				<div> 
 				<h3 class="text-light ms-2 text-center mb-4">Playlist creadas por el usuario:</h3>
 				
+				
+				
 				<div class="d-flex justify-content-around flex-wrap">
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
-					style="width: 18rem; border-radius: 0.5em;">
-					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
-						<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
-							class="card-link text-decoration-none text-info">Ver
-							canciones</a> <a href="#"
-							class="card-link text-decoration-none text-primary">Seguir</a>
-					</div>
-
-				</div>
 				
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
+				<c:forEach items="${listas}" var="lista">
+	
+	<div id="" class="card mt-3 border-0 shadow bg-dark"
 					style="width: 18rem; border-radius: 0.5em;">
 					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
+						<h5 class="card-title text-light mb-3">${lista.nombre}</h5>
 						<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
+						<a href="viewLista?idPlaylist=${lista.id}"
 							class="card-link text-decoration-none text-info">Ver
 							canciones</a> <a href="#"
 							class="card-link text-decoration-none text-primary">Seguir</a>
 					</div>
 
 				</div>
-				
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
-					style="width: 18rem; border-radius: 0.5em;">
-					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
-						<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
-							class="card-link text-decoration-none text-info">Ver
-							canciones</a> <a href="#"
-							class="card-link text-decoration-none text-primary">Seguir</a>
-					</div>
-
-				</div>
-				
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
-					style="width: 18rem; border-radius: 0.5em;">
-					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
-						<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
-							class="card-link text-decoration-none text-info">Ver
-							canciones</a> <a href="#"
-							class="card-link text-decoration-none text-primary">Seguir</a>
-					</div>
-
-				</div>
-				
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
-					style="width: 18rem; border-radius: 0.5em;">
-					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
-						<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
-							class="card-link text-decoration-none text-info">Ver
-							canciones</a> <a href="#"
-							class="card-link text-decoration-none text-primary">Seguir</a>
-					</div>
-
-				</div>
-				
-				<div id="" class="card mt-3 border-0 shadow bg-dark"
-					style="width: 18rem; border-radius: 0.5em;">
-					<div class="card-body">
-						<h5 class="card-title text-light mb-3">Nombre lista</h5>
-						<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-						<a href="viewLista?idPlaylist=ListaId"
-							class="card-link text-decoration-none text-info">Ver
-							canciones</a> <a href="#"
-							class="card-link text-decoration-none text-primary">Seguir</a>
-					</div>
-
-				</div>
+	
+	</c:forEach>
 				
 			
 				</div>
