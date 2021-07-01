@@ -17,6 +17,4 @@ public interface RepositorioFollow {
 
 	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
 
-	List<ListaReproduccion> obtenerPlaylistSeguidasPorUsuario(Usuario usuario);
-
 }

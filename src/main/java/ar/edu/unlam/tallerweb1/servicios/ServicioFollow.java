@@ -15,7 +15,5 @@ public interface ServicioFollow {
 
 	List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario usuario);
 	
-	List<ListaReproduccion> obtenerPlaylistSeguidosPorUsuario(Usuario usuario);
-	
 	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
 }

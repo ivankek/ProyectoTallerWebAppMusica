@@ -46,8 +46,4 @@ public class ServicioFollowImpl implements ServicioFollow{
 		return repositorioFollow.obtenerSeguidoresPorUsuario(usuario);
 	}
 
-	@Override
-	public List<ListaReproduccion> obtenerPlaylistSeguidosPorUsuario(Usuario usuario) {
-		return repositorioFollow.obtenerPlaylistSeguidasPorUsuario(usuario);
-	}
 }

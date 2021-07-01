@@ -58,11 +58,4 @@ public class RepositorioFollowImpl implements RepositorioFollow {
 				.setProjection(Projections.distinct(Projections.property("usuario"))).list();
 	}
 
-	@Override
-	public List<ListaReproduccion> obtenerPlaylistSeguidasPorUsuario(Usuario usuario) {
-		Session session = sessionFactory.getCurrentSession();
-		return session.createCriteria(Follow.class).add(Restrictions.eq("usuario", usuario))
-				.setProjection(Projections.distinct(Projections.property("listaReproduccion"))).list();
-	}
-
 }

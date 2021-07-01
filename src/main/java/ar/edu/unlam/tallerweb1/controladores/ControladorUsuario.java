@@ -18,12 +18,14 @@ import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
+import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFollowPlaylist;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRecomendar;
 
@@ -44,6 +46,9 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioFollow servicioFollow;
+
+	@Inject
+	private ServicioFollowPlaylist servicioFollowPlaylist;
 
 	@RequestMapping("/Album")
 	public ModelAndView album(HttpServletRequest request,
@@ -84,7 +89,7 @@ public class ControladorUsuario {
 		model.put("user", servicioListaReproduccion.obtenerUsuarioPorNombre(user));
 		model.put("seguidosArtistas", servicioFollow
 				.obtenerArtistasSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
-		model.put("seguidosPlaylist", servicioFollow
+		model.put("seguidosPlaylist", servicioFollowPlaylist
 				.obtenerPlaylistSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("listas", servicioListaReproduccion
 				.obtenerListaReproduccionPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)));
@@ -179,6 +184,20 @@ public class ControladorUsuario {
 		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
 		servicioFollow.guardarFollow(follow);
 		return new ModelAndView("redirect:/Artista?nombre=" + follow.getArtista().getNombre());
+	}
+
+	@RequestMapping("/FollowPlaylist")
+	public ModelAndView seguirPlaylist(HttpServletRequest request,
+			@RequestParam(value = "playlist", required = false) Long playlist) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		FollowPlaylist followPlaylist = new FollowPlaylist();
+		followPlaylist.setListaReproduccion(servicioListaReproduccion.obtenerListaPorId(playlist));
+		followPlaylist.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
+		servicioFollowPlaylist.guardarFollowPlaylist(followPlaylist);
+		return new ModelAndView(
+				"redirect:/realizarBusqueda?busqueda=" + followPlaylist.getListaReproduccion().getNombre());
 	}
 
 	@RequestMapping("/viewArtistasSeguidos")

@@ -7,35 +7,40 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Follow {
+public class FollowPlaylist {
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne
-	private Artista artista;
+
 	@ManyToOne
 	private Usuario usuario;
-	
+
+	@ManyToOne
+	private ListaReproduccion listaReproduccion;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Artista getArtista() {
-		return artista;
+
+	public ListaReproduccion getListaReproduccion() {
+		return listaReproduccion;
 	}
-	public void setArtista(Artista artista) {
-		this.artista = artista;
+
+	public void setListaReproduccion(ListaReproduccion listaReproduccion) {
+		this.listaReproduccion = listaReproduccion;
 	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-		
-	
+
 }

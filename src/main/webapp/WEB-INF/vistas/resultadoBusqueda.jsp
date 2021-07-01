@@ -13,15 +13,26 @@
 				<h5 class="card-title text-light mb-3">${lista.nombre}</h5>
 				<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
-				<a href="viewLista?idPlaylist=${lista.id}"
-					class="card-link text-decoration-none text-info">Ver canciones</a>
-				<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
+				<div class="d-flex">
+					<a href="viewLista?idPlaylist=${lista.id}"
+						class="card-link text-decoration-none text-info align-self-center">Ver canciones</a>
+					
+					<div class="ms-4">
+					<form action="FollowPlaylist">
+						<input type="hidden" name="playlist" value="${lista.id}">
+						<button type="submit"
+							class="card-link p-2 rounded border-0 btn-info text-light text-decoration-none text-primary"
+							id="botonFollow" onclick="FbotonFollow()">Seguir</button>
+
+					</form>
+					</div>
+				</div>
 			</div>
 
 		</div>
 	</c:forEach>
 
-<c:forEach items="${user}" var="user">
+	<c:forEach items="${user}" var="user">
 		<div id="" class="card mt-3 border-0 shadow bg-dark"
 			style="width: 18rem; border-radius: 0.5em;">
 			<div class="card-body">
@@ -29,8 +40,8 @@
 				<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
 				<a href="Usuario?nombre=${user.usuario}"
-					class="card-link text-decoration-none text-info">Ver Usuario</a>
-				<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
+					class="card-link text-decoration-none text-info">Ver Usuario</a> <a
+					href="#" class="card-link text-decoration-none text-primary">Seguir</a>
 			</div>
 
 		</div>
