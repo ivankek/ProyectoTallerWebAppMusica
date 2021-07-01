@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioFollow;
 
@@ -38,5 +39,15 @@ public class ServicioFollowImpl implements ServicioFollow{
 	@Override
 	public List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario usuario) {
 		return repositorioFollow.obtenerArtistasSeguidosPorUsuario(usuario);
+	}
+
+	@Override
+	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
+		return repositorioFollow.obtenerSeguidoresPorUsuario(usuario);
+	}
+
+	@Override
+	public List<ListaReproduccion> obtenerPlaylistSeguidosPorUsuario(Usuario usuario) {
+		return repositorioFollow.obtenerPlaylistSeguidasPorUsuario(usuario);
 	}
 }

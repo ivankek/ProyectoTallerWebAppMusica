@@ -19,7 +19,7 @@
 						<h1>${user.usuario}</h1>
 						<p class="fs-5 mb-2 text-info">Seguidores</p>
 						<hr class="mt-0 mb-2" style="color: aqua;">
-						<h5 class="text-center mt-0">20</h5>
+						<h5 class="text-center mt-0">${seguidoresUsuario}</h5>
 					</div>
 				</div>
 
@@ -27,13 +27,13 @@
 					<div class="text-light align-self-center">
 						<h5 class="text-info">Playlist seguidas</h5>
 						<hr style="color: aqua;">
-						<h5 class="text-center">20</h5>
+						<h5 class="text-center">${seguidosPlaylist}</h5>
 					</div>
 
 					<div class="text-light align-self-center ms-4">
 						<h5 class="text-info">Artistas seguidos</h5>
 						<hr style="color: aqua;">
-						<h5 class="text-center">20</h5>
+						<h5 class="text-center">${seguidosArtistas}</h5>
 					</div>
 
 					<div class="text-light align-self-center ms-4">

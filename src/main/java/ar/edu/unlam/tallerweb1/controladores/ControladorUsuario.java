@@ -80,7 +80,12 @@ public class ControladorUsuario {
 		model.put("titulo", "Usuario - " + user);
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
+		model.put("seguidoresUsuario", servicioFollow.obtenerSeguidoresPorUsuario(user).size());
 		model.put("user", servicioListaReproduccion.obtenerUsuarioPorNombre(user));
+		model.put("seguidosArtistas", servicioFollow
+				.obtenerArtistasSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
+		model.put("seguidosPlaylist", servicioFollow
+				.obtenerPlaylistSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("listas", servicioListaReproduccion
 				.obtenerListaReproduccionPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)));
 
