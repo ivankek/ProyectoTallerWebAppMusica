@@ -21,7 +21,7 @@ function botonSeguir(){
         body: nombreArtista        
     })
     .then(response => isResponseOk(response))
-    .then(data => alert(data))
+    .then(data => document.querySelector("#botonFollow").innerHTML = data)
     .catch(showError);    
 }
 
