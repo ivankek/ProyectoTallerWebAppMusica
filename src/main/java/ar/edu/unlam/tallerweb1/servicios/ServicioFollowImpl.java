@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioArtista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioFollow;
@@ -50,5 +51,9 @@ public class ServicioFollowImpl implements ServicioFollow{
 		List<Artista>artistasQueSigueElUsuario = repositorioFollow.obtenerArtistasSeguidosPorUsuario(usuario);
 		Artista artistaABuscar = repositorioArtista.obtenerArtistaPorNombre(artistaNombre);
 		return artistasQueSigueElUsuario.contains(artistaABuscar) ? "Siguiendo" : "Seguir";
+	}
+
+	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
+		return repositorioFollow.obtenerSeguidoresPorUsuario(usuario);
 	}
 }

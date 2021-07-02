@@ -18,12 +18,14 @@ import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
+import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFollowPlaylist;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRecomendar;
 
@@ -44,6 +46,9 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioFollow servicioFollow;
+
+	@Inject
+	private ServicioFollowPlaylist servicioFollowPlaylist;
 
 	@RequestMapping("/Album")
 	public ModelAndView album(HttpServletRequest request,
@@ -67,10 +72,29 @@ public class ControladorUsuario {
 		model.put("titulo", "Artista - " + artista);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista", servicioCancion.obtenerArtistaPorNombre(artista));
-		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
 		model.put("seguidores", servicioFollow.obtenerSeguidoresPorArtista(artista).size());
 		return new ModelAndView("viewArtista", model);
+	}
+
+	@RequestMapping("/Usuario")
+	public ModelAndView usuario(HttpServletRequest request,
+			@RequestParam(value = "nombre", required = false) String user) {
+		ModelMap model = new ModelMap();
+		model.put("titulo", "Usuario - " + user);
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
+		model.put("seguidoresUsuario", servicioFollow.obtenerSeguidoresPorUsuario(user).size());
+		model.put("user", servicioListaReproduccion.obtenerUsuarioPorNombre(user));
+		model.put("seguidosArtistas", servicioFollow
+				.obtenerArtistasSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
+		model.put("seguidosPlaylist", servicioFollowPlaylist
+				.obtenerPlaylistSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
+		model.put("listas", servicioListaReproduccion
+				.obtenerListaReproduccionPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)));
+
+		return new ModelAndView("viewUsuario", model);
 	}
 
 	@RequestMapping("/Inicio")
@@ -152,78 +176,92 @@ public class ControladorUsuario {
 	@RequestMapping("/FollowArtista")
 	public ModelAndView seguirArtista(HttpServletRequest request,
 			@RequestParam(value = "artista", required = false) Long artista) {
-		
+
 		ModelMap modelo = new ModelMap();
-		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		Follow follow = new Follow();
 		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
 		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
 		servicioFollow.guardarFollow(follow);
 		return new ModelAndView("redirect:/Artista?nombre=" + follow.getArtista().getNombre());
 	}
-	
+
+	@RequestMapping("/FollowPlaylist")
+	public ModelAndView seguirPlaylist(HttpServletRequest request,
+			@RequestParam(value = "playlist", required = false) Long playlist) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		FollowPlaylist followPlaylist = new FollowPlaylist();
+		followPlaylist.setListaReproduccion(servicioListaReproduccion.obtenerListaPorId(playlist));
+		followPlaylist.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
+		servicioFollowPlaylist.guardarFollowPlaylist(followPlaylist);
+		return new ModelAndView(
+				"redirect:/realizarBusqueda?busqueda=" + followPlaylist.getListaReproduccion().getNombre());
+	}
+
 	@RequestMapping("/viewArtistasSeguidos")
 	public ModelAndView mostrarArtistasSeguidos(HttpServletRequest request) {
-		
+
 		ModelMap modelo = new ModelMap();
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		modelo.put("usuario", user);
-		modelo.put("artistasSeguidos",servicioFollow.obtenerArtistasSeguidosPorUsuario(user));
-		return new ModelAndView("viewArtistasSeguidos",modelo);
+		modelo.put("artistasSeguidos", servicioFollow.obtenerArtistasSeguidosPorUsuario(user));
+		return new ModelAndView("viewArtistasSeguidos", modelo);
 	}
-	
+
 	@RequestMapping("/viewExplorarTodo")
 	public ModelAndView explorarTodo() {
 		ModelMap model = new ModelMap();
 
 		model.put("titulo", "Explorar Todo");
-		
+
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		return new ModelAndView("viewExplorarTodo", model);
 	}
-	
+
 	@RequestMapping("/viewExplorarTodosLosArtistas")
-	public ModelAndView explorarArtistas(@RequestParam(value="artista", required = false) String artista) {
+	public ModelAndView explorarArtistas(@RequestParam(value = "artista", required = false) String artista) {
 		ModelMap model = new ModelMap();
-		
+
 		model.put("titulo", "Explorar Artistas");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista", servicioCancion.obtenerTodosLosArtistas());
-		
+
 		return new ModelAndView("viewExplorarTodosLosArtistas", model);
 	}
-	
+
 	@RequestMapping("/viewExplorarTodosLosAlbums")
-	public ModelAndView explorarAlbums(@RequestParam(value="album", required = false) String album) {
+	public ModelAndView explorarAlbums(@RequestParam(value = "album", required = false) String album) {
 		ModelMap model = new ModelMap();
-		
+
 		model.put("titulo", "Explorar Albums");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("album", servicioCancion.obtenerTodosLosAlbums());
-		
+
 		return new ModelAndView("viewExplorarTodosLosAlbums", model);
 	}
-	
+
 	@RequestMapping("/viewExplorarTodasLasCanciones")
-	public ModelAndView explorarCanciones(@RequestParam(value="cancion", required = false) String cancion) {
+	public ModelAndView explorarCanciones(@RequestParam(value = "cancion", required = false) String cancion) {
 		ModelMap model = new ModelMap();
-		
+
 		model.put("titulo", "Explorar Canciones");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("cancion", servicioCancion.obtenerTodasLasCanciones());
-		
+
 		return new ModelAndView("viewExplorarTodasLasCanciones", model);
 	}
-	
+
 	@RequestMapping("viewExplorarTodosLosGeneros")
-	public ModelAndView explorarGeneros(@RequestParam(value="genero", required = false) String genero) {
-		
+	public ModelAndView explorarGeneros(@RequestParam(value = "genero", required = false) String genero) {
+
 		ModelMap model = new ModelMap();
-		
+
 		model.put("titulo", "Explorar Géneros");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("genero", servicioCancion.obtenerTodosLosGeneros());
-		
+
 		return new ModelAndView("viewExplorarTodosLosGeneros", model);
 	}
 }

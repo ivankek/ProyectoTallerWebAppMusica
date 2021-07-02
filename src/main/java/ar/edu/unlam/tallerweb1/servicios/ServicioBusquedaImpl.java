@@ -12,8 +12,12 @@ import org.springframework.stereotype.Service;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioArtista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioBusqueda;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 
 @Service
 @Transactional
@@ -21,13 +25,18 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 
 	private RepositorioBusqueda repositorioBusqueda;
 	private RepositorioArtista repositorioArtista;
+	private RepositorioListaReproduccion repositorioListaReproduccion;
+	private RepositorioUsuario repositorioUsuario;
 
 	@Autowired
-	public ServicioBusquedaImpl(RepositorioBusqueda repositorioBusqueda, RepositorioArtista repositorioArtista) {
+	public ServicioBusquedaImpl(RepositorioBusqueda repositorioBusqueda, RepositorioArtista repositorioArtista,
+			RepositorioUsuario repositorioUsuario, RepositorioListaReproduccion repositorioListaReproduccion) {
 		this.repositorioBusqueda = repositorioBusqueda;
 		this.repositorioArtista = repositorioArtista;
+		this.repositorioUsuario = repositorioUsuario;
+		this.repositorioListaReproduccion = repositorioListaReproduccion;
 	}
-	
+
 	@Override
 	public Set<Cancion> buscarCancionPorTodosLosCampos(String nombre) {
 		List<Cancion> genero = repositorioBusqueda.obtenerCancionesPorGenero(nombre);
@@ -35,15 +44,15 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 		List<Cancion> album = repositorioBusqueda.obtenerCancionesPorAlbum(nombre);
 		List<Cancion> lista = repositorioBusqueda.obtenerCancionesPorLista(nombre);
 		List<Cancion> nombreCancion = repositorioBusqueda.obtenerCancionesPorNombre(nombre);
-		
+
 		Set<Cancion> todos = new HashSet<>();
-		
+
 		todos.addAll(genero);
 		todos.addAll(artista);
 		todos.addAll(album);
 		todos.addAll(lista);
 		todos.addAll(nombreCancion);
-		
+
 		return todos;
 	}
 
@@ -51,6 +60,16 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 	public List<Artista> obtenerUnArtistaPorNombre(String nombre) {
 		return repositorioArtista.obtenerUnArtistaPorNombre(nombre);
 	}
+
+	@Override
+	public List<ListaReproduccion> obtenerListaReproduccionPorNombre(String nombre) {
+		return repositorioListaReproduccion.obtenerListaReproduccionPorNombre(nombre);
+	}
+
 	
-	
+	@Override
+	public List<Usuario> obtenerUsuarioPorNombre(String usuario) {
+		return repositorioUsuario.obtenerUnUsuarioPorNombre(usuario);
+	}
+
 }

@@ -15,6 +15,7 @@ public class Usuario {
 	private String usuario;
 	private String password;
 	private String rol;
+	private String path_img;
 	
 	public Long getId() {
 		return id;
@@ -42,6 +43,16 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	
+	public String getPath_img() {
+		return path_img;
+	}
+
+	public void setPath_img(String path_img) {
+		this.path_img = path_img;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,7 +82,6 @@ public class Usuario {
 			return false;
 		return true;
 	}
-
-
+	
 
 }

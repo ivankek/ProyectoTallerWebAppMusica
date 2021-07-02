@@ -4,6 +4,7 @@ import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioFollow {
@@ -15,4 +16,7 @@ public interface ServicioFollow {
 	List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario usuario);
 	
 	String consultarSiElUsuarioSigueAlArtista(Usuario usuario , String artistaNombre);
+
+	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
+
 }
