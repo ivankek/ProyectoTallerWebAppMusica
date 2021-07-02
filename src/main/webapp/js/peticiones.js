@@ -10,7 +10,21 @@ elementos_cancion.forEach(item => {
     item.addEventListener("mouseleave" , ocultarFavorito);
 });
 
+window.addEventListener("load" , botonSeguir);
+
 //Funciones
+function botonSeguir(){
+    let nombreArtista = document.querySelector("#Titulo").innerHTML;
+    fetch('consultarSeguir' , {
+        headers: {'Content-Type': 'text/plain'},
+        method: 'POST',
+        body: nombreArtista        
+    })
+    .then(response => isResponseOk(response))
+    .then(data => alert(data))
+    .catch(showError);    
+}
+
 const isResponseOk = (response) =>{
     if(!response.ok)
         console.log(response.status);

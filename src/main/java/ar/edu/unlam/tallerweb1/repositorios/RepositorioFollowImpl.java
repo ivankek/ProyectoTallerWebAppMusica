@@ -53,7 +53,7 @@ public class RepositorioFollowImpl implements RepositorioFollow{
 				.setProjection(Projections.distinct(Projections.property("artista")))
 			    .list();
 	}	
-	}
+}
 
 
 	

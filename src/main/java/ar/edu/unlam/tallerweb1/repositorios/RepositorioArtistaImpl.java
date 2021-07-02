@@ -47,13 +47,6 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 				      .list();
 	}
 
-	public Artista obtenerArtistaPorNombre(String artista) {
-		Session session = sessionFactory.getCurrentSession();
-		return (Artista) session.createCriteria(Artista.class)
-				.add(Restrictions.eq("nombre", artista))
-				.uniqueResult();
-	}
-
 	@Override
 	public List<Artista> obtenerUnArtistaPorNombre(String artista) {
 		Session session = sessionFactory.getCurrentSession();
@@ -61,7 +54,12 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 				.add(Restrictions.ilike("nombre", artista, MatchMode.ANYWHERE ))
 				.list();
 	}
-	
-	
 
+	@Override
+	public Artista obtenerArtistaPorNombre(String artista) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Artista) session.createCriteria(Artista.class)
+								.add(Restrictions.eq("nombre", artista))
+								.uniqueResult();
+	}
 }

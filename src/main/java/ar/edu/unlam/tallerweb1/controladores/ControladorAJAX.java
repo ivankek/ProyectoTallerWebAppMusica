@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
 
 @RestController
 public class ControladorAJAX {
 
 	@Inject
 	private ServicioFavorito servicioFavorito;
+	
+	@Inject
+	private ServicioFollow servicioFollow;
 
 	@RequestMapping(value = "/agregarFavorito" , method = RequestMethod.POST)
 	public String añadirFavorito(@RequestBody Cancion cancion , HttpServletRequest request) {
@@ -32,5 +36,10 @@ public class ControladorAJAX {
 	@RequestMapping(value = "/consultarFavorito" , method = RequestMethod.POST)
 	public String consultarFavorito(@RequestBody Cancion cancion , HttpServletRequest request) {
 		return servicioFavorito.consultarSiEstaEnFavoritos(cancion, (Usuario)request.getSession().getAttribute("usuario"));
+	}
+	
+	@RequestMapping(value = "/consultarSeguir" , method = RequestMethod.POST)
+	public String consultoSiElUsuarioSigueAlArtista(@RequestBody String artistaNombre , HttpServletRequest request) {
+		return servicioFollow.consultarSiElUsuarioSigueAlArtista((Usuario)request.getSession().getAttribute("usuario") , artistaNombre);
 	}
 }

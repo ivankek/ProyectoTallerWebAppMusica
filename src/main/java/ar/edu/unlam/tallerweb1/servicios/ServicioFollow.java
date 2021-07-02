@@ -13,4 +13,6 @@ public interface ServicioFollow {
 	List<Follow> obtenerSeguidoresPorArtista(String artista);
 
 	List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario usuario);
+	
+	String consultarSiElUsuarioSigueAlArtista(Usuario usuario , String artistaNombre);
 }

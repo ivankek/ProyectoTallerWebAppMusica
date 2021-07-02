@@ -10,7 +10,7 @@
 			<div class="card bg-dark text-white" style="height: 332px;">
   				<img src="${artista.path_img}" class="card-img h-100" alt="...">
   				<div class="card-img-overlay">
-    				<h2 class="card-title fw-bolder">${artista.nombre}</h2>
+    				<h2 class="card-title fw-bolder" id="Titulo">${artista.nombre}</h2>
     				<p class="card-text">Artista</p>
     				<p class="card-text">${seguidores} seguidores</p>
   				</div>
