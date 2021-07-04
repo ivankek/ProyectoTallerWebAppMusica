@@ -9,7 +9,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioFollow {
 
-	Long guardarFollow(Follow follow);
+	String seguirArtista(Usuario usuario , String artistaNombre);
 
 	List<Follow> obtenerSeguidoresPorArtista(String artista);
 
@@ -18,5 +18,7 @@ public interface ServicioFollow {
 	String consultarSiElUsuarioSigueAlArtista(Usuario usuario , String artistaNombre);
 
 	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
+	
+	String dejarDeSeguir(Usuario usuario , String artistaNombre);
 
 }

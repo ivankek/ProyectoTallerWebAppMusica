@@ -60,4 +60,21 @@ public class RepositorioFollowImpl implements RepositorioFollow {
 				                                                  .setProjection(Projections.distinct(Projections.property("usuario")))
 				                                                  .list();
 	}
+
+	@Override
+	public void dejarDeSeguir(Follow follow) {
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(follow);
+		return;
+	}
+
+	@Override
+	public Follow obtenerRegistroFollow(Usuario usuario, String artistaNombre) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Follow) session.createCriteria(Follow.class)
+				               .createAlias("artista", "tablaArtista")
+				               .add(Restrictions.eq("tablaArtista.nombre", artistaNombre))
+				               .add(Restrictions.eq("usuario", usuario))
+				               .uniqueResult();
+	}
 }

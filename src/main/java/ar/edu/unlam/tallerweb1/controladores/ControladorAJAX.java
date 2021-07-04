@@ -42,4 +42,14 @@ public class ControladorAJAX {
 	public String consultoSiElUsuarioSigueAlArtista(@RequestBody String artistaNombre , HttpServletRequest request) {
 		return servicioFollow.consultarSiElUsuarioSigueAlArtista((Usuario)request.getSession().getAttribute("usuario") , artistaNombre);
 	}
+	
+	@RequestMapping(value = "/seguirArtista" , method = RequestMethod.POST)
+	public String seguirArtista(@RequestBody String artistaNombre , HttpServletRequest request) {
+		return servicioFollow.seguirArtista((Usuario)request.getSession().getAttribute("usuario"), artistaNombre);
+	}
+	
+	@RequestMapping(value = "/dejarDeSeguirArtista" , method = RequestMethod.POST)
+	public String dejarDeSeguirArtista(@RequestBody String artistaNombre , HttpServletRequest request) {
+		return servicioFollow.dejarDeSeguir((Usuario)request.getSession().getAttribute("usuario") , artistaNombre);
+	}
 }

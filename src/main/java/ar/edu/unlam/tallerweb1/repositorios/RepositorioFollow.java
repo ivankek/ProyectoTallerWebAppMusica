@@ -16,5 +16,9 @@ public interface RepositorioFollow {
 	List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario Usuario);
 
 	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
+	
+	void dejarDeSeguir(Follow follow);
+	
+	Follow obtenerRegistroFollow(Usuario usuario , String artistaNombre);
 
 }

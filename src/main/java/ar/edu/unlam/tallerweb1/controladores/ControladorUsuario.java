@@ -173,19 +173,6 @@ public class ControladorUsuario {
 		return new ModelAndView("redirect:/Inicio");
 	}
 
-	@RequestMapping("/FollowArtista")
-	public ModelAndView seguirArtista(HttpServletRequest request,
-			@RequestParam(value = "artista", required = false) Long artista) {
-
-		ModelMap modelo = new ModelMap();
-		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-		Follow follow = new Follow();
-		follow.setArtista(servicioCancion.obtenerArtistaPorId(artista));
-		follow.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
-		servicioFollow.guardarFollow(follow);
-		return new ModelAndView("redirect:/Artista?nombre=" + follow.getArtista().getNombre());
-	}
-
 	@RequestMapping("/FollowPlaylist")
 	public ModelAndView seguirPlaylist(HttpServletRequest request,
 			@RequestParam(value = "playlist", required = false) Long playlist) {
