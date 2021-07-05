@@ -211,19 +211,23 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodo")
-	public ModelAndView explorarTodo() {
+	public ModelAndView explorarTodo(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
 		model.put("titulo", "Explorar Todo");
-
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		return new ModelAndView("viewExplorarTodo", model);
 	}
 
 	@RequestMapping("/viewExplorarTodosLosArtistas")
-	public ModelAndView explorarArtistas(@RequestParam(value = "artista", required = false) String artista) {
+	public ModelAndView explorarArtistas(HttpServletRequest request,
+			@RequestParam(value = "artista", required = false) String artista) {
 		ModelMap model = new ModelMap();
 
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("titulo", "Explorar Artistas");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista", servicioCancion.obtenerTodosLosArtistas());
@@ -232,9 +236,12 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodosLosAlbums")
-	public ModelAndView explorarAlbums(@RequestParam(value = "album", required = false) String album) {
+	public ModelAndView explorarAlbums(HttpServletRequest request,
+			@RequestParam(value = "album", required = false) String album) {
 		ModelMap model = new ModelMap();
 
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("titulo", "Explorar Albums");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("album", servicioCancion.obtenerTodosLosAlbums());
@@ -243,9 +250,12 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodasLasCanciones")
-	public ModelAndView explorarCanciones(@RequestParam(value = "cancion", required = false) String cancion) {
+	public ModelAndView explorarCanciones(HttpServletRequest request,
+			@RequestParam(value = "cancion", required = false) String cancion) {
 		ModelMap model = new ModelMap();
 
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("titulo", "Explorar Canciones");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("cancion", servicioCancion.obtenerTodasLasCanciones());
@@ -254,14 +264,31 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("viewExplorarTodosLosGeneros")
-	public ModelAndView explorarGeneros(@RequestParam(value = "genero", required = false) String genero) {
+	public ModelAndView explorarGeneros(HttpServletRequest request,
+			@RequestParam(value = "genero", required = false) String genero) {
 
 		ModelMap model = new ModelMap();
 
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
 		model.put("titulo", "Explorar Géneros");
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("genero", servicioCancion.obtenerTodosLosGeneros());
 
 		return new ModelAndView("viewExplorarTodosLosGeneros", model);
+	}
+	
+	@RequestMapping("/viewTodasCancionesPorGenero")
+	public ModelAndView mostrarCancionesPorGenero(HttpServletRequest request,
+			@RequestParam(value="genero", required = false) String genero) {
+		
+		ModelMap model = new ModelMap();
+		
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);
+		model.put("genero", genero);
+		Set<Cancion> lista =servicioBusqueda.buscarCancionPorTodosLosCampos(genero);
+		model.put("cancion", lista);
+		return new ModelAndView("viewTodasCancionesPorGenero",model);
 	}
 }
