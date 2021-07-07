@@ -19,6 +19,7 @@ import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.Follow;
 import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
+import ar.edu.unlam.tallerweb1.modelo.FollowUsuario;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
@@ -26,6 +27,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollowPlaylist;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFollowUsuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioListaReproduccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRecomendar;
 
@@ -49,6 +51,9 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioFollowPlaylist servicioFollowPlaylist;
+
+	@Inject
+	private ServicioFollowUsuario servicioFollowUsuario;
 
 	@RequestMapping("/Album")
 	public ModelAndView album(HttpServletRequest request,
@@ -85,12 +90,15 @@ public class ControladorUsuario {
 		model.put("titulo", "Usuario - " + user);
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", usuario);
-		model.put("seguidoresUsuario", servicioFollow.obtenerSeguidoresPorUsuario(user).size());
+		model.put("seguidoresUsuario", servicioFollowUsuario
+				.obtenerSeguidoresPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("user", servicioListaReproduccion.obtenerUsuarioPorNombre(user));
 		model.put("seguidosArtistas", servicioFollow
 				.obtenerArtistasSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("seguidosPlaylist", servicioFollowPlaylist
 				.obtenerPlaylistSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
+		model.put("seguidosUsuarios", servicioFollowUsuario
+				.obtenerUsuariosSeguidosPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("listas", servicioListaReproduccion
 				.obtenerListaReproduccionPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)));
 
@@ -200,6 +208,20 @@ public class ControladorUsuario {
 				"redirect:/realizarBusqueda?busqueda=" + followPlaylist.getListaReproduccion().getNombre());
 	}
 
+	@RequestMapping("/FollowUsuario")
+	public ModelAndView seguirUsuario(HttpServletRequest request,
+			@RequestParam(value = "user", required = false) Long user) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		FollowUsuario followUsuario = new FollowUsuario();
+		followUsuario.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
+		followUsuario.setUsuarioSeguido(servicioListaReproduccion.obtenerUsuarioPorId(user));
+		servicioFollowUsuario.guardarFollowUsuario(followUsuario);
+		return new ModelAndView("redirect:/Usuario?nombre=" + followUsuario.getUsuarioSeguido().getUsuario());
+
+	}
+
 	@RequestMapping("/viewArtistasSeguidos")
 	public ModelAndView mostrarArtistasSeguidos(HttpServletRequest request) {
 
@@ -277,18 +299,18 @@ public class ControladorUsuario {
 
 		return new ModelAndView("viewExplorarTodosLosGeneros", model);
 	}
-	
+
 	@RequestMapping("/viewTodasCancionesPorGenero")
 	public ModelAndView mostrarCancionesPorGenero(HttpServletRequest request,
-			@RequestParam(value="genero", required = false) String genero) {
-		
+			@RequestParam(value = "genero", required = false) String genero) {
+
 		ModelMap model = new ModelMap();
-		
+
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("genero", genero);
-		Set<Cancion> lista =servicioBusqueda.buscarCancionPorTodosLosCampos(genero);
+		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(genero);
 		model.put("cancion", lista);
-		return new ModelAndView("viewTodasCancionesPorGenero",model);
+		return new ModelAndView("viewTodasCancionesPorGenero", model);
 	}
 }

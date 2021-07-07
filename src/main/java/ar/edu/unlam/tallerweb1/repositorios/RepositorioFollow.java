@@ -15,6 +15,4 @@ public interface RepositorioFollow {
 
 	List<Artista> obtenerArtistasSeguidosPorUsuario(Usuario Usuario);
 
-	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
-
 }

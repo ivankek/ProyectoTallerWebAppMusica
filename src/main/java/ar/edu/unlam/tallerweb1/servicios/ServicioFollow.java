@@ -17,6 +17,4 @@ public interface ServicioFollow {
 	
 	String consultarSiElUsuarioSigueAlArtista(Usuario usuario , String artistaNombre);
 
-	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
-
 }
