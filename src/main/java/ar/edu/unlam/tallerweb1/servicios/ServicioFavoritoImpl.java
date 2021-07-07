@@ -26,20 +26,26 @@ public class ServicioFavoritoImpl implements ServicioFavorito {
 
 	@Override
 	public String añadirAFavoritos(Cancion cancion, Usuario usuario) {
-		Favorito favorito = new Favorito();
-		String mensaje = "Se agrego a favoritos";
-		favorito.setCancion(cancion);
-		favorito.setUsuario(usuario);
-		repoFavorito.añadirAFavoritos(favorito);
+		String mensaje;
+		if(repoFavorito.buscarFavorito(cancion, usuario) == null) {
+			Favorito favorito = new Favorito();
+			favorito.setCancion(cancion);
+			favorito.setUsuario(usuario);
+			repoFavorito.añadirAFavoritos(favorito);
+			mensaje = "Se agrego a favoritos";
+		}else{
+			mensaje = "Ya se encuentra en favoritos";
+			}
+		
 		return mensaje;
 	}
 
 	@Override
 	public String eliminarFavorito(Cancion cancion, Usuario usuario) {
 		Favorito favorito = repoFavorito.buscarFavorito(cancion, usuario);
-		repoFavorito.quitarFavorito(favorito);
-		String mensaje = "Se elimino de favoritos";
-		return mensaje;
+		if(favorito == null)
+			return "La cancion no se encuentra en tus favoritos";
+		return repoFavorito.quitarFavorito(favorito) ? "Se elimino de favoritos" : "No se pudo eliminar";
 	}
 
 	@Override

@@ -15,5 +15,7 @@ public interface RepositorioCancion {
 	Boolean subirPuntajeDeLaCancion(Cancion cancion);
 
 	Cancion obtenerCancionPorId(Long id);
+	
+	Cancion obtenerCancionPorSuNombre(String nombreCancion);
 
 }

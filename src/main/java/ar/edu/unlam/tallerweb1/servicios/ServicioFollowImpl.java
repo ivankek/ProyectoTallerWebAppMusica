@@ -32,12 +32,18 @@ public class ServicioFollowImpl implements ServicioFollow{
 
 	@Override
 	public String seguirArtista(Usuario usuario , String artistaNombre) {
-		String estadoDelBotonSeguir = "Seguir";
+		String estadoDelBotonSeguir = consultarSiElUsuarioSigueAlArtista(usuario, artistaNombre);
+		
+		if(estadoDelBotonSeguir != "Seguir")
+			return estadoDelBotonSeguir;
+		
 		Follow follow = new Follow();
 		follow.setUsuario(usuario);
 		follow.setArtista(repositorioArtista.obtenerArtistaPorNombre(artistaNombre));
+		
 		if(follow.getArtista() == null || follow.getUsuario() == null)
 			return estadoDelBotonSeguir;
+		
 		repositorioFollow.guardarFollow(follow);
 		return estadoDelBotonSeguir = "Siguiendo";
 	}

@@ -8,7 +8,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface RepositorioFavorito {
 	Long añadirAFavoritos(Favorito favorito);
-	void quitarFavorito(Favorito favorito);	
+	Boolean quitarFavorito(Favorito favorito);	
 	List<Favorito> obtenerListaDeFavoritos(Usuario usuario);
 	Favorito buscarFavorito(Cancion cancion , Usuario usuario);
 }

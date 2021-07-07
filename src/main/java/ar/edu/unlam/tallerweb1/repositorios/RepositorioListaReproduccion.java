@@ -20,5 +20,7 @@ public interface RepositorioListaReproduccion {
 
 
 	List<ListaReproduccion> obtenerListaReproduccionPorNombre(String lista);
+	
+	ListaReproduccion obtenerUnaListaReproduccionPorSuNombreYUsuario(String nombreLista , Usuario usuario);
 
 }
