@@ -89,6 +89,17 @@ public class ControladorUsuario {
 		ModelMap model = new ModelMap();
 		model.put("titulo", "Usuario - " + user);
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+
+		if (servicioListaReproduccion.obtenerUsuarioPorNombre(user).getPath_img() != null) {
+
+			model.put("foto", servicioListaReproduccion.obtenerUsuarioPorNombre(user).getPath_img());
+
+		} else {
+
+			model.put("foto", "img/Usuario/noFoto.jpg");
+
+		}
+
 		model.put("usuario", usuario);
 		model.put("seguidoresUsuario", servicioFollowUsuario
 				.obtenerSeguidoresPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
