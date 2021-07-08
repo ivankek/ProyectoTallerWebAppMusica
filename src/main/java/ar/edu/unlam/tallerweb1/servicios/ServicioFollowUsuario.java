@@ -12,4 +12,6 @@ public interface ServicioFollowUsuario {
 	List<Usuario> obtenerUsuariosSeguidosPorUsuario(Usuario usuario);
 
 	List<Usuario> obtenerSeguidoresPorUsuario(Usuario usuario);
+
+	String dejarDeSeguirUsuario(Usuario usuario, String usuarioSeguido);
 }
