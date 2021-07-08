@@ -29,4 +29,5 @@ public interface ServicioListaReproduccion {
 
 	List<ListaReproduccion> obtenerListaPorNombre(String nombre);
 	
+	String crearYAlmacenarListaReproduccion(String nombrePlaylist , Usuario usuario);
 }

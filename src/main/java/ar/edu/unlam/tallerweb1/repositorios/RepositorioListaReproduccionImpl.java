@@ -53,4 +53,13 @@ public class RepositorioListaReproduccionImpl implements RepositorioListaReprodu
 				.add(Restrictions.ilike("nombre", lista, MatchMode.ANYWHERE)).list();
 	}
 
+	@Override
+	public ListaReproduccion obtenerUnaListaReproduccionPorSuNombreYUsuario(String nombreLista , Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		return (ListaReproduccion) session.createCriteria(ListaReproduccion.class)
+				                          .add(Restrictions.eq("nombre", nombreLista))
+				                          .add(Restrictions.eq("usuario", usuario))
+				                          .uniqueResult();
+	}
+
 }

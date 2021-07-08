@@ -1,27 +1,30 @@
 //Elementos
 const btn_favorito = document.querySelectorAll(".fav-icon");
 const elementos_cancion = document.querySelectorAll(".cancion");
+const btn_seguir = document.querySelector("#botonFollow");
+const nombreDelArtista = document.querySelector("#Titulo").innerHTML;
 
 //Setear eventos
 btn_favorito.forEach(item => item.addEventListener("click" , agregarEliminarFavorito));
+
+btn_seguir.addEventListener("click" , seguirODejarDeSeguirArtista);
 
 elementos_cancion.forEach(item => {
     item.addEventListener("mouseenter" , mostrarFavorito);
     item.addEventListener("mouseleave" , ocultarFavorito);
 });
 
-window.addEventListener("load" , botonSeguir);
+window.addEventListener("load" , cargarEstadoBotonSeguir);
 
 //Funciones
-function botonSeguir(){
-    let nombreArtista = document.querySelector("#Titulo").innerHTML;
+function cargarEstadoBotonSeguir(){
     fetch('consultarSeguir' , {
         headers: {'Content-Type': 'text/plain'},
         method: 'POST',
-        body: nombreArtista        
+        body: nombreDelArtista        
     })
     .then(response => isResponseOk(response))
-    .then(data => document.querySelector("#botonFollow").innerHTML = data)
+    .then(data => btn_seguir.innerHTML = data)
     .catch(showError);    
 }
 
@@ -99,5 +102,32 @@ function quitarDeFavoritos(cancion){
     })
     .then(response => isResponseOk(response))
     .then(data => showMessage(data))
+    .catch(showError);  
+}
+
+function seguirODejarDeSeguirArtista(evento){
+    let estado_btn_seguir = evento.target.innerHTML; 
+    estado_btn_seguir == "Seguir" ? seguirArtista() : dejarDeSeguirArtista();
+}
+
+function seguirArtista(){
+    fetch('seguirArtista' , {
+        headers: {'Content-Type': 'text/plain'},
+        method: 'POST',
+        body: nombreDelArtista        
+    })
+    .then(response => isResponseOk(response))
+    .then(data => btn_seguir.innerHTML = data)
+    .catch(showError);  
+}
+
+function dejarDeSeguirArtista(){
+    fetch('dejarDeSeguirArtista' , {
+        headers: {'Content-Type': 'text/plain'},
+        method: 'POST',
+        body: nombreDelArtista        
+    })
+    .then(response => isResponseOk(response))
+    .then(data => btn_seguir.innerHTML = data)
     .catch(showError);  
 }
