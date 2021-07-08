@@ -31,8 +31,21 @@ public class ServicioFollowImpl implements ServicioFollow{
 	private RepositorioArtista repositorioArtista;
 
 	@Override
-	public Long guardarFollow(Follow follow) {
-		return repositorioFollow.guardarFollow(follow);
+	public String seguirArtista(Usuario usuario , String artistaNombre) {
+		String estadoDelBotonSeguir = consultarSiElUsuarioSigueAlArtista(usuario, artistaNombre);
+		
+		if(estadoDelBotonSeguir != "Seguir")
+			return estadoDelBotonSeguir;
+		
+		Follow follow = new Follow();
+		follow.setUsuario(usuario);
+		follow.setArtista(repositorioArtista.obtenerArtistaPorNombre(artistaNombre));
+		
+		if(follow.getArtista() == null || follow.getUsuario() == null)
+			return estadoDelBotonSeguir;
+		
+		repositorioFollow.guardarFollow(follow);
+		return estadoDelBotonSeguir = "Siguiendo";
 	}
 
 	@Override
@@ -53,4 +66,21 @@ public class ServicioFollowImpl implements ServicioFollow{
 		return artistasQueSigueElUsuario.contains(artistaABuscar) ? "Siguiendo" : "Seguir";
 	}
 
+
+	@Override
+	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
+		return repositorioFollow.obtenerSeguidoresPorUsuario(usuario);
+	}
+
+	@Override
+	public String dejarDeSeguir(Usuario usuario, String artistaNombre) {
+		String estadoDelBotonSeguir = "Siguiendo";
+		Follow follow = repositorioFollow.obtenerRegistroFollow(usuario, artistaNombre);
+		if(follow != null) {
+			repositorioFollow.dejarDeSeguir(follow);
+			estadoDelBotonSeguir = "Seguir";
+		}
+		
+		return estadoDelBotonSeguir;
+	}
 }

@@ -28,16 +28,16 @@ public class RepositorioFavoritoImpl implements RepositorioFavorito{
 	@Override
 	public List<Favorito> obtenerListaDeFavoritos(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createCriteria(Favorito.class)
-				      .add(Restrictions.eq("usuario", usuario))
-				      .list();
+		return (List<Favorito>) session.createCriteria(Favorito.class)
+				                       .add(Restrictions.eq("usuario", usuario))
+				                       .list();
 	}
 
 	@Override
-	public void quitarFavorito(Favorito favorito) {
+	public Boolean quitarFavorito(Favorito favorito) {
 		Session session = sessionFactory.getCurrentSession();
 		session.remove(favorito);
-		return;
+		return session.get(Favorito.class, favorito.getId()) == null ? true : false;
 	}
 
 	@Override

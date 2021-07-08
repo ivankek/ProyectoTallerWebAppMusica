@@ -81,4 +81,13 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
 	}
 
+	@Override
+	public String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario) {
+		ListaReproduccion listaReproduccion = new ListaReproduccion();
+		listaReproduccion.setNombre(nombrePlaylist);
+		listaReproduccion.setUsuario(usuario);
+		repositorioListaReproduccion.insertarLista(listaReproduccion);
+		return "Se creo la lista de reproduccion, agregue canciones";
+	}
+
 }

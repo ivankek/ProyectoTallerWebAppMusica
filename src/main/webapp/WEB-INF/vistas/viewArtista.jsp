@@ -17,12 +17,8 @@
 			</div>
 			<%
 		if (request.getAttribute("usuario") != null) {
-			%>
-	<form action="FollowArtista">
-				<input type="hidden" name="artista" value="${artista.id}">
-				<button type="submit" class="btn btn-info text-light" id="botonFollow" onclick="FbotonFollow()"> Seguir </button>
-				
-	</form>
+			%>	
+				<button type="submit" class="btn btn-info text-light" id="botonFollow"></button>
 	<% 
 		}
 	%>
@@ -63,7 +59,6 @@
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/json.js"></script>
-<script src="js/follow.js"></script>
 <script src="js/peticiones.js"></script>
 </body>
 </html>

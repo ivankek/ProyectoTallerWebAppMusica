@@ -48,4 +48,12 @@ public class RepositorioCancionImpl implements RepositorioCancion {
 		return session.get(Cancion.class, id);
 	}
 
+	@Override
+	public Cancion obtenerCancionPorSuNombre(String nombreCancion) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Cancion)session.createCriteria(Cancion.class)
+				               .add(Restrictions.eq("nombre", nombreCancion))
+				               .uniqueResult();
+	}
+
 }

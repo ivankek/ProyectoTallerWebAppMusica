@@ -52,5 +52,30 @@ public class RepositorioFollowImpl implements RepositorioFollow {
 												                   .list();
 	}
 
-	
+
+	@Override
+	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		return (List<Follow>) session.createCriteria(Follow.class).createAlias("usuario", "usuarioBuscado")
+												                  .add(Restrictions.eq("usuarioBuscado.usuario", usuario))
+				                                                  .setProjection(Projections.distinct(Projections.property("usuario")))
+				                                                  .list();
+	}
+
+	@Override
+	public void dejarDeSeguir(Follow follow) {
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(follow);
+		return;
+	}
+
+	@Override
+	public Follow obtenerRegistroFollow(Usuario usuario, String artistaNombre) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Follow) session.createCriteria(Follow.class)
+				               .createAlias("artista", "tablaArtista")
+				               .add(Restrictions.eq("tablaArtista.nombre", artistaNombre))
+				               .add(Restrictions.eq("usuario", usuario))
+				               .uniqueResult();
+	}
 }
