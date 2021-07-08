@@ -11,11 +11,13 @@
 				class="d-flex flex-row justif-content-around flex-wrap  px-5 pt-5 pb-4">
 
 				<div class="d-flex flex-wrap mb-5 mb-md-0">
-					<div class="rounded-circle shadow img-responsive col-6 col-lg-5">
-						<img class="" style="max-width: 100%; width: auto; height: auto;" alt=""
+
+					<div class="rounded shadow col-6 col-lg-5">
+						<img class="img-responsive"
+							style="display: block; max-width: 100%; height: auto;" alt=""
 							src="${foto}">
 					</div>
-					
+
 					<div class="text-light align-self-center ms-4">
 						<h5 class=text-info>Usuario</h5>
 						<h1>${user.usuario}</h1>
