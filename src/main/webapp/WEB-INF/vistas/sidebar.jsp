@@ -1,6 +1,5 @@
-<!--Menú vertical-->
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-	<div
+<div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasExample">
+                <div
 		class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100 w-100">
 		<div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Administrador</h5>
@@ -71,5 +70,4 @@
 			</ul>
 		</div>
 	</div>
-</div>
-<!--Fin Menú vertical-->
+            </div>

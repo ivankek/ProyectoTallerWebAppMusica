@@ -3,10 +3,10 @@
 <div class="container-fluid main pb-4 mb-5">
 	<div class="row">
 		<!-- Contenido Principal -->
-		<div class="col bg-dark bg-gradient">
+		<div class="bg-dark bg-gradient">
 
 			<div
-				class="d-flex flex-row justif-content-between flex-wrap px-5 pt-5 pb-4">
+				class="container d-flex flex-row justif-content-around flex-wrap px-5 pt-5 pb-4">
 
 				<div class="d-flex flex-column flex-wrap mb-5 mb-md-0 col-md-5">
 
