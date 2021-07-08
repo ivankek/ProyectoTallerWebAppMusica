@@ -12,7 +12,6 @@
 
 <div class="container-fluid main pb-4 mb-5">
 	<div class="row">
-	<%@include file="sidebar.jsp"%>
 		<div class="col bg-dark bg-gradient p-5">
 		<h2 class="text-white text-center">Explorar Géneros</h2>
 

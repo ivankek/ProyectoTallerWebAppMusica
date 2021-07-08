@@ -3,7 +3,6 @@
 <div class="container-fluid main pb-4 mb-5">
 	<div class="row">
 		<!-- SIDEBAR -->
-		<%@include file="sidebar.jsp"%>
 		<!-- Contenido Principal -->
 		<div class="col bg-dark bg-gradient p-0">	
 			<div id = "nombrePlaylistContenedor" class = "mt-3">
