@@ -52,6 +52,7 @@ public class RepositorioFollowImpl implements RepositorioFollow {
 												                   .list();
 	}
 
+
 	@Override
 	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
 		Session session = sessionFactory.getCurrentSession();

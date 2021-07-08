@@ -20,5 +20,4 @@ public interface RepositorioFollow {
 	void dejarDeSeguir(Follow follow);
 	
 	Follow obtenerRegistroFollow(Usuario usuario , String artistaNombre);
-
 }

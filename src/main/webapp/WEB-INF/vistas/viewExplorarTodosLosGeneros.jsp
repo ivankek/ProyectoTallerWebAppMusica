@@ -22,7 +22,7 @@
 						<div class="d-flex align-items-center">
 							<div class="flex-shrink-0">
 								<!--  <img src="${artista.path_img}" style="width: 64px; height: 64px" alt="...">-->
-								<a href="">${genero.nombre}</a>	
+								<a href="http://localhost:8080/proyecto-limpio-spring-master/viewTodasCancionesPorGenero?genero=${genero.nombre}">${genero.nombre}</a>	
 							</div>
 						</div>
 				</li>

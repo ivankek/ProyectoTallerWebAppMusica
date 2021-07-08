@@ -66,6 +66,7 @@ public class ServicioFollowImpl implements ServicioFollow{
 		return artistasQueSigueElUsuario.contains(artistaABuscar) ? "Siguiendo" : "Seguir";
 	}
 
+
 	@Override
 	public List<Follow> obtenerSeguidoresPorUsuario(String usuario) {
 		return repositorioFollow.obtenerSeguidoresPorUsuario(usuario);

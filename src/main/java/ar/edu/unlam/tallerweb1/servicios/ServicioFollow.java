@@ -20,5 +20,4 @@ public interface ServicioFollow {
 	List<Follow> obtenerSeguidoresPorUsuario(String usuario);
 	
 	String dejarDeSeguir(Usuario usuario , String artistaNombre);
-
 }
