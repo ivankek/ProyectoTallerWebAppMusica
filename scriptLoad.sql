@@ -3,13 +3,15 @@ use db_proyecto;
 INSERT INTO album(id, nombre, path_img)
 VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
 	  (2, "Medicine at Midnight", "img/Album/MedicineAtMidnight.jpg"),
-      (3, "Thriller", "img/Album/Thriller.jpg");
+      (3, "Thriller", "img/Album/Thriller.jpg"),
+      (4, "Dynasty", "img/Album/Dynasty.jpg");
       
 /*Artista*/
 INSERT INTO artista(id, nombre, path_img)
 VALUES(1, "AC/DC" , "img/Artista/ac_dc.jpg"),
       (2, "Foo Fighters" , "img/Artista/foo_fighters.jpg"),
-      (3, "Michael Jackson", "img/Artista/michael_jackson.jpg");
+      (3, "Michael Jackson", "img/Artista/michael_jackson.jpg"),
+      (4, "Kiss", "img/Artista/kiss.jpg");
 
 /*Genero*/
 INSERT INTO genero(id, nombre)
@@ -45,7 +47,9 @@ VALUES(1, "Hells Bells", "media/BackInBlack/Hells Bells.mp3",1 ,1 , 500),
       (25, "Billie Jean" , "media/Thriller/06 - Billie Jean.mp3", 3, 3,0),
       (26, "Human Nature" , "media/Thriller/07 - Human Nature.mp3", 3, 3,0),
       (27, "P.Y.T. (Pretty Young Thing)" , "media/Thriller/08 - P.Y.T. (Pretty Young Thing).mp3", 3, 3,0),
-      (28, "The Lady In My Life" , "media/Thriller/09 - The Lady In My Life.mp3", 3, 3,0);  
+      (28, "The Lady In My Life" , "media/Thriller/09 - The Lady In My Life.mp3", 3, 3,0), 
+      (29, "I Was Made For Lovin You" , "media/Dynasty/IWasMadeForLovinYou.mp3", 4, 4,0),
+      (30, "Sure Know Something" , "media/Dynasty/SureKnowSomething.mp3", 4, 4,0);  
       
 /*Asociar cancion a los generos*/
 INSERT INTO canciongenero(id , cancion_id , genero_id)
@@ -76,7 +80,9 @@ VALUES(1 , 1 , 1),
       (25 , 25 , 2),
       (26 , 26 , 2),
       (27 , 27 , 2),
-      (28 , 28 , 2);
+      (28 , 28 , 2),
+      (29, 29, 1),
+      (30, 30, 1);
       
 /*Inserta usuario*/
 INSERT INTO usuario(id, usuario, password, rol, path_img)

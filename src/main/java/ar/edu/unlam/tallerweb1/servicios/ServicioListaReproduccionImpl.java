@@ -9,10 +9,12 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbum;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
@@ -30,6 +32,9 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 
 	@Inject
 	private RepositorioCancionLista repositorioCancionLista;
+
+	@Inject
+	private RepositorioAlbum repositorioAlbum;
 
 	@Override
 	public Long guardarListaReproduccion(ListaReproduccion listaReproduccion) {
@@ -81,6 +86,36 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
 	}
 
+	@Override
+	public List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion) {
+		List<Cancion> canciones = new ArrayList<Cancion>();
+		List<String> imagenesAlbum = new ArrayList<String>();
+		canciones.addAll(obtenerCancionesDeLista(listaReproduccion));
+		for (Cancion cancion : canciones) {
+			if (cancion.getAlbum() != null) {
+				Album album = cancion.getAlbum();
+				String imagen = album.getPath_img();
+				imagenesAlbum.add(imagen);
+			}
+
+		}
+
+		List<String> imagenesPlaylist = new ArrayList<String>();
+		if (imagenesAlbum.size() < 4) {
+
+			imagenesPlaylist.add(imagenesAlbum.get(0));
+
+		} else {
+			imagenesPlaylist.add(imagenesAlbum.get(0));
+			imagenesPlaylist.add(imagenesAlbum.get(1));
+			imagenesPlaylist.add(imagenesAlbum.get(2));
+			imagenesPlaylist.add(imagenesAlbum.get(3));
+		}
+
+		return imagenesPlaylist;
+
+	}
+	
 	@Override
 	public String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario) {
 		ListaReproduccion listaReproduccion = new ListaReproduccion();

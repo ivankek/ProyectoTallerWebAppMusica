@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -91,7 +93,8 @@ public class ControladorUsuario {
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		servicioFollowUsuario.dejarDeSeguirUsuario(usuario,
 				servicioListaReproduccion.obtenerUsuarioPorId(user).getUsuario());
-		return new ModelAndView("redirect:/Usuario?nombre=" + servicioListaReproduccion.obtenerUsuarioPorId(user).getUsuario());
+		return new ModelAndView(
+				"redirect:/Usuario?nombre=" + servicioListaReproduccion.obtenerUsuarioPorId(user).getUsuario());
 
 	}
 
@@ -205,6 +208,8 @@ public class ControladorUsuario {
 		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+		model.put("imagenesLista", servicioListaReproduccion
+				.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
 
 		return new ModelAndView("viewLista", model);
 	}

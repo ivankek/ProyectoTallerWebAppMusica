@@ -5,6 +5,13 @@
 	<div class="container mt-5 text-light mb-5 main">
 		<div class="datos" hidden>${datos}</div>
 
+
+		<c:forEach items="${imagenesLista}" var="imagen">
+
+			<img alt="" src="${imagen}">
+
+		</c:forEach>
+
 		<h4 class="text-center mb-5">${Playlist.nombre}</h4>
 
 		<ul class="list-group pb-5 mb-5">

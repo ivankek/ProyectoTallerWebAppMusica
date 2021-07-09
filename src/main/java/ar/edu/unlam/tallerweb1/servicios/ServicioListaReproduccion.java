@@ -10,24 +10,27 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 public interface ServicioListaReproduccion {
 
 	Long guardarListaReproduccion(ListaReproduccion listaReproduccion);
-	
+
 	Long guardarUsuario(Usuario usuario);
-	
+
 	Usuario obtenerUsuarioPorId(Long id);
 
 	ListaReproduccion obtenerListaPorId(Long id);
-	
+
 	Long guardarCancionLista(CancionLista cancionLista);
-		
+
 	List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
-	
+
 	List<ListaReproduccion> obtenerTodasLasListasDeReproduccion();
 
 	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
-	
+
 	Usuario obtenerUsuarioPorNombre(String usuario);
 
 	List<ListaReproduccion> obtenerListaPorNombre(String nombre);
-	
-	String crearYAlmacenarListaReproduccion(String nombrePlaylist , Usuario usuario);
+
+	String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario);
+
+	List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion);
+
 }

@@ -6,7 +6,7 @@
 		<div class="bg-dark bg-gradient">
 
 			<div
-				class="container d-flex flex-row justif-content-around flex-wrap px-5 pt-5 pb-4">
+				class="container d-flex flex-row justif-content-around flex-wrap px-lg-5 pt-5 pb-4">
 
 				<div class="d-flex flex-column flex-wrap mb-5 mb-md-0 col-md-5">
 
@@ -16,8 +16,7 @@
 							<img class="rounded-circle shadow"
 								style="width: 12em; height: 12em;" alt="" src="${foto}">
 
-							<div
-								class="container d-flex justify-content-center mt-3">
+							<div class="container d-flex justify-content-center mt-3">
 								<form action="${Action}">
 									<input type="hidden" name="user" value="${user.id}">
 
@@ -50,7 +49,7 @@
 
 				</div>
 
-				<div class="d-flex align-self-center">
+				<div class="d-flex align-self-center mt-md-5 mt-lg-0">
 					<div class="text-light">
 						<h5 class="text-info">Playlist seguidas</h5>
 						<hr style="color: aqua;">
@@ -88,17 +87,27 @@
 									<h5 class="card-title text-light mb-3">${lista.nombre}</h5>
 									<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
-									<form action="FollowPlaylist">
-						<input type="hidden" name="playlist" value="${lista.id}">
-						<button type="submit"
-							class="card-link p-2 rounded border-0 btn-info text-light text-decoration-none text-primary"
-							id="botonFollow" onclick="FbotonFollow()">Seguir</button>
+									<c:forEach items="${imagenesLista}" var="foto">
 
-					</form>
+							<img alt="" src="${foto}">
 
-</div>
-</div>
 						</c:forEach>
+									
+									<form action="FollowPlaylist">
+										<input type="hidden" name="playlist" value="${lista.id}">
+										<a href="viewLista?idPlaylist=${lista.id}"
+						class="card-link text-decoration-none text-info align-self-center">Ver canciones</a>
+										<!-- <button type="submit"
+											class="card-link p-2 rounded border-0 btn-info text-light text-decoration-none text-primary"
+											id="botonFollow" onclick="FbotonFollow()">Seguir</button> -->
+
+									</form>
+
+								</div>
+							</div>
+						</c:forEach>
+
+						
 
 
 					</div>
