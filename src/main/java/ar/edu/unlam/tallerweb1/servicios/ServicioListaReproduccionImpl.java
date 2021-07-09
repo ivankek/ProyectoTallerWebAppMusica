@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Album;
+import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
@@ -89,33 +90,39 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	@Override
 	public List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion) {
 		List<Cancion> canciones = new ArrayList<Cancion>();
-		List<String> imagenesAlbum = new ArrayList<String>();
+		List<String> imagenesArtista = new ArrayList<String>();
 		canciones.addAll(obtenerCancionesDeLista(listaReproduccion));
 		for (Cancion cancion : canciones) {
-			if (cancion.getAlbum() != null) {
-				Album album = cancion.getAlbum();
-				String imagen = album.getPath_img();
-				imagenesAlbum.add(imagen);
+			if (cancion.getArtista() != null) {
+				Artista artista = cancion.getArtista();
+				String imagen = artista.getPath_img();
+
+				if (imagenesArtista.contains(imagen)) {
+
+				} else {
+
+					imagenesArtista.add(imagen);
+				}
 			}
 
 		}
 
 		List<String> imagenesPlaylist = new ArrayList<String>();
-		if (imagenesAlbum.size() < 4) {
+		if (imagenesArtista.size() < 4) {
 
-			imagenesPlaylist.add(imagenesAlbum.get(0));
+			imagenesPlaylist.add(imagenesArtista.get(0));
 
 		} else {
-			imagenesPlaylist.add(imagenesAlbum.get(0));
-			imagenesPlaylist.add(imagenesAlbum.get(1));
-			imagenesPlaylist.add(imagenesAlbum.get(2));
-			imagenesPlaylist.add(imagenesAlbum.get(3));
+			imagenesPlaylist.add(imagenesArtista.get(0));
+			imagenesPlaylist.add(imagenesArtista.get(1));
+			imagenesPlaylist.add(imagenesArtista.get(2));
+			imagenesPlaylist.add(imagenesArtista.get(3));
 		}
 
 		return imagenesPlaylist;
 
 	}
-	
+
 	@Override
 	public String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario) {
 		ListaReproduccion listaReproduccion = new ListaReproduccion();
