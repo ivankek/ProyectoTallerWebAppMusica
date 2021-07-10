@@ -209,31 +209,7 @@ public class ControladorUsuario {
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
 
-		model.put("imagenesLista", servicioListaReproduccion
-				.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
-
-		if (servicioListaReproduccion.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist))
-				.size() < 4) {
-
-			model.put("imagenesLista", servicioListaReproduccion
-					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(0));
-
-			model.put("ocultar4", "d-none");
-
-		} else {
-
-			model.put("imagenesLista", servicioListaReproduccion
-					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(0));
-			model.put("imagenesLista2", servicioListaReproduccion
-					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(1));
-			model.put("imagenesLista3", servicioListaReproduccion
-					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(2));
-			model.put("imagenesLista4", servicioListaReproduccion
-					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(3));
-
-			model.put("ocultar1", "d-none");
-
-		}
+		servicioListaReproduccion.imagenesDePlaylistModelo(model, idPlaylist);
 
 		return new ModelAndView("viewLista", model);
 	}

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
@@ -87,6 +88,27 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
 	}
 
+	@Override
+	public void imagenesDePlaylistModelo(ModelMap model, Long idPlaylist) {
+		if (obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist))
+				.size() < 4) {
+
+			model.put("imagenesLista", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(0));
+
+			model.put("ocultar4", "d-none");
+
+		} else {
+
+			model.put("imagenesLista", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(0));
+			model.put("imagenesLista2", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(1));
+			model.put("imagenesLista3", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(2));
+			model.put("imagenesLista4", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(3));
+
+			model.put("ocultar1", "d-none");
+
+		}
+	}
+	
 	@Override
 	public List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion) {
 		List<Cancion> canciones = new ArrayList<Cancion>();

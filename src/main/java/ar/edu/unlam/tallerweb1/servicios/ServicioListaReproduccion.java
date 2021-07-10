@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+import org.springframework.ui.ModelMap;
+
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
@@ -32,5 +34,7 @@ public interface ServicioListaReproduccion {
 	String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario);
 
 	List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion);
+
+	void imagenesDePlaylistModelo(ModelMap model, Long idPlaylist);
 
 }
