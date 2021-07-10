@@ -90,33 +90,33 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	@Override
 	public List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion) {
 		List<Cancion> canciones = new ArrayList<Cancion>();
-		List<String> imagenesArtista = new ArrayList<String>();
+		List<String> imagenesAlbum = new ArrayList<String>();
 		canciones.addAll(obtenerCancionesDeLista(listaReproduccion));
 		for (Cancion cancion : canciones) {
-			if (cancion.getArtista() != null) {
-				Artista artista = cancion.getArtista();
-				String imagen = artista.getPath_img();
+			if (cancion.getAlbum() != null) {
+				Album album = cancion.getAlbum();
+				String imagen = album.getPath_img();
 
-				if (imagenesArtista.contains(imagen)) {
+				if (imagenesAlbum.contains(imagen)) {
 
 				} else {
 
-					imagenesArtista.add(imagen);
+					imagenesAlbum.add(imagen);
 				}
 			}
 
 		}
 
 		List<String> imagenesPlaylist = new ArrayList<String>();
-		if (imagenesArtista.size() < 4) {
+		if (imagenesAlbum.size() < 4) {
 
-			imagenesPlaylist.add(imagenesArtista.get(0));
+			imagenesPlaylist.add(imagenesAlbum.get(0));
 
 		} else {
-			imagenesPlaylist.add(imagenesArtista.get(0));
-			imagenesPlaylist.add(imagenesArtista.get(1));
-			imagenesPlaylist.add(imagenesArtista.get(2));
-			imagenesPlaylist.add(imagenesArtista.get(3));
+			imagenesPlaylist.add(imagenesAlbum.get(0));
+			imagenesPlaylist.add(imagenesAlbum.get(1));
+			imagenesPlaylist.add(imagenesAlbum.get(2));
+			imagenesPlaylist.add(imagenesAlbum.get(3));
 		}
 
 		return imagenesPlaylist;

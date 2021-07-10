@@ -208,8 +208,51 @@ public class ControladorUsuario {
 		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
-		model.put("imagenesLista", servicioListaReproduccion
-				.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+
+//		model.put("imagenesLista", servicioListaReproduccion
+//				.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+
+		if (servicioListaReproduccion.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist))
+				.size() < 4) {
+
+			model.put("imagenesLista", servicioListaReproduccion
+					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+
+			
+			String div = "<div class=\"container mt-5 text-light mb-5 main\">\r\n" + 
+					"		<div class=\"datos\" hidden>${datos}</div>\r\n" + 
+					"\r\n" + 
+					"		<div class=\"container d-flex flex-column mb-3\">\r\n" + 
+					"\r\n" + 
+					"			<div class=\"align-self-center border border-1 border-dark\" style=\"box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;\">\r\n" + 
+					"				<div class=\"d-flex\">\r\n" + 
+					"					<img style=\"width: 8em; height: 8em;\" alt=\"\" src=\"${imagenesLista}\">\r\n" + 
+					"					<img style=\"width: 8em; height: 8em;\" alt=\"\"\r\n" + 
+					"						src=\"${imagenesLista2}\">\r\n" + 
+					"\r\n" + 
+					"				</div>\r\n" + 
+					"				<div class=\"d-flex\">\r\n" + 
+					"					<img style=\"width: 8em; height: 8em;\" alt=\"\"\r\n" + 
+					"						src=\"${imagenesLista3}\"> <img\r\n" + 
+					"						style=\"width: 8em; height: 8em;\" alt=\"\" src=\"${imagenesLista4}\">\r\n" + 
+					"\r\n" + 
+					"				</div>\r\n" + 
+					"			</div>\r\n" + 
+					"		</div>";
+			
+			model.put("divFoto", div);
+		} else {
+
+			model.put("imagenesLista", servicioListaReproduccion
+					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(0));
+			model.put("imagenesLista2", servicioListaReproduccion
+					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(1));
+			model.put("imagenesLista3", servicioListaReproduccion
+					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(2));
+			model.put("imagenesLista4", servicioListaReproduccion
+					.obtenerImagenesDePlaylist(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).get(3));
+
+		}
 
 		return new ModelAndView("viewLista", model);
 	}
