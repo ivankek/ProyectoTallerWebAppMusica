@@ -5,9 +5,10 @@
 	<div class="container mt-5 text-light mb-5 main">
 		<div class="datos" hidden>${datos}</div>
 
-		<div class="container d-flex flex-column mb-3">
+		<div class="container d-flex flex-column mb-3 ${ocultar4}">
 
-			<div class="align-self-center border border-1 border-dark" style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;">
+			<div class="align-self-center border border-1 border-dark"
+				style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;">
 				<div class="d-flex">
 					<img style="width: 8em; height: 8em;" alt="" src="${imagenesLista}">
 					<img style="width: 8em; height: 8em;" alt=""
@@ -23,6 +24,16 @@
 			</div>
 		</div>
 
+		<div class="container d-flex flex-column mb-3 ${ocultar1}">
+
+			<div class="align-self-center border border-1 border-dark"
+				style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;">
+				<div class="d-flex">
+					<img style="width: 16em; height: 16em;" alt=""
+						src="${imagenesLista}">
+				</div>
+			</div>
+		</div>
 
 		<h4 class="text-center mb-5">${Playlist.nombre}</h4>
 

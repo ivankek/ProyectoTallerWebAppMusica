@@ -13,8 +13,8 @@
 					<div class="d-flex">
 
 						<div>
-							<img class="rounded-circle shadow"
-								style="width: 12em; height: 12em;" alt="" src="${foto}">
+							<img class="rounded-circle"
+								style="width: 12em; height: 12em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" alt="" src="${foto}">
 
 							<div class="container d-flex justify-content-center mt-3">
 								<form action="${Action}">
