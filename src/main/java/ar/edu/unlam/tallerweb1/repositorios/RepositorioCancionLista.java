@@ -14,5 +14,7 @@ public interface RepositorioCancionLista {
 	List<String> obtenerListasDeUnaCancion(Cancion cancion);
 
 	List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion);
+	
+	List<Cancion> obtenerCancionesDeListaPorNombre(String nombreListaReproduccion);
 
 }

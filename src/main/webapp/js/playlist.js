@@ -53,16 +53,23 @@ btn_siguiente.addEventListener("click" , crearPlaylist);
 
 
 function crearPlaylist(){
-    let nombrePlaylist = document.querySelector("#nombrePlaylist").value;
-    if(nombrePlaylist != ""){
+    let elementoNombrePlaylist = document.querySelector("#nombrePlaylist");
+    if(elementoNombrePlaylist.value != ""){
         fetch('crearPlaylist' , {
             headers: {'Content-Type': 'text/plain'},
             method: 'POST',
-            body: nombrePlaylist        
+            body: elementoNombrePlaylist.value        
         })
         .then(response => isResponseOk(response))
-        .then(data => alert(data))
-        .then(agregarCancionesALaPlaylist(nombrePlaylist))
+        .then(data => {
+            alert(data);
+            if(data != "Ya creaste una lista de reproduccion con ese nombre"){
+                agregarCancionesALaPlaylist(elementoNombrePlaylist.value);   
+            }else{
+                elementoNombrePlaylist.value = "";
+            }
+        }
+        )
         .catch(showError);  
     }else{
         alert("No se puede crear una playlist con nombre vacio");
@@ -81,7 +88,7 @@ function agregarCancionesALaPlaylist(nombrePlaylist){
 
 function agregarCancionALaPlaylist(){
     let inputCancion = document.querySelector("#buscador");
-    if(cancion != ""){
+    if(inputCancion.value != ""){
         arrayData.push(inputCancion.value);
         fetch('agregarCancionesALaPlaylist' , {
             headers: {'Content-Type': 'application/json'},
@@ -89,7 +96,7 @@ function agregarCancionALaPlaylist(){
             body: JSON.stringify(arrayData)
         })
         .then(response => isResponseOk(response))
-        .then(data => console.log(data))
+        .then(data => alert(data))
         .catch(showError);
         inputCancion.value = "";
     }else{

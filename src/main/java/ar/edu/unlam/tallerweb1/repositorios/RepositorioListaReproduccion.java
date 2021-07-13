@@ -9,18 +9,13 @@ public interface RepositorioListaReproduccion {
 
 	Long insertarLista(ListaReproduccion listaReproduccion);
 	
-
 	List<ListaReproduccion> obtenerTodasLasListasDeReproduccion();
-
 
 	List<ListaReproduccion> obtenerListaReproduccionPorUsuario(Usuario usuario);
 
-
 	ListaReproduccion obtenerListaPorId(Long id);
-
 
 	List<ListaReproduccion> obtenerListaReproduccionPorNombre(String lista);
 	
 	ListaReproduccion obtenerUnaListaReproduccionPorSuNombreYUsuario(String nombreLista , Usuario usuario);
-
 }
