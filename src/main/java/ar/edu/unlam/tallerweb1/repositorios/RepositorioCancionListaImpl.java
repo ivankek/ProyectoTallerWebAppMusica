@@ -47,5 +47,15 @@ public class RepositorioCancionListaImpl implements RepositorioCancionLista {
 				.list();
 	}
 
+	@Override
+	public List<Cancion> obtenerCancionesDeListaPorNombre(String nombreListaReproduccion) {
+		Session session = sessionFactory.getCurrentSession();
+		return (List<Cancion>) session.createCriteria(CancionLista.class)
+				                      .createAlias("listaReproduccion", "tablaListaReproduccion")
+				                      .add(Restrictions.eq("tablaListaReproduccion.nombre", nombreListaReproduccion))
+				                      .setProjection(Projections.property("cancion"))
+				                      .list();
+	}
+
 	
 }

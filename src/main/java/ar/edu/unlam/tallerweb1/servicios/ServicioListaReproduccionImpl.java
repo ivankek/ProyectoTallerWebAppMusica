@@ -147,6 +147,8 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 
 	@Override
 	public String crearYAlmacenarListaReproduccion(String nombrePlaylist, Usuario usuario) {
+		if(repositorioListaReproduccion.obtenerUnaListaReproduccionPorSuNombreYUsuario(nombrePlaylist, usuario) != null)
+			return "Ya creaste una lista de reproduccion con ese nombre";
 		ListaReproduccion listaReproduccion = new ListaReproduccion();
 		listaReproduccion.setNombre(nombrePlaylist);
 		listaReproduccion.setUsuario(usuario);

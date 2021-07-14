@@ -1,17 +1,13 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Album;
+
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
-import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
@@ -32,12 +28,14 @@ public class ServicioCancionListaImpl implements ServicioCancionLista {
 
 	@Override
 	public String crearYAlmacenarCancionLista(Usuario usuario, String nombrePlaylist, String nombreCancion) {
+		Cancion cancionAgregar = repoCancion.obtenerCancionPorSuNombre(nombreCancion);
+		if(repoCancionLista.obtenerCancionesDeListaPorNombre(nombrePlaylist).contains(cancionAgregar))
+			return nombreCancion + " ya se encuentra en " + nombrePlaylist;
 		CancionLista cancionLista = new CancionLista();
-		cancionLista.setCancion(repoCancion.obtenerCancionPorSuNombre(nombreCancion));
-		cancionLista.setListaReproduccion(
-				repoListaReproduccion.obtenerUnaListaReproduccionPorSuNombreYUsuario(nombrePlaylist, usuario));
+		cancionLista.setCancion(cancionAgregar);
+		cancionLista.setListaReproduccion(repoListaReproduccion.obtenerUnaListaReproduccionPorSuNombreYUsuario(nombrePlaylist, usuario));
 		repoCancionLista.insertarCancionLista(cancionLista);
-		return "Cancion añadida";
+		return nombreCancion + " se agrego a " + nombrePlaylist;
 	}
 
 }
