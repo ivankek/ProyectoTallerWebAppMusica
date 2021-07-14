@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -83,12 +85,26 @@ public class ControladorUsuario {
 		return new ModelAndView("viewArtista", model);
 	}
 
+	@RequestMapping("/UnfollowUsuario")
+	public ModelAndView dejarDeSeguirUsuario(HttpServletRequest request,
+			@RequestParam(value = "user", required = false) Long user) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		servicioFollowUsuario.dejarDeSeguirUsuario(usuario,
+				servicioListaReproduccion.obtenerUsuarioPorId(user).getUsuario());
+		return new ModelAndView(
+				"redirect:/Usuario?nombre=" + servicioListaReproduccion.obtenerUsuarioPorId(user).getUsuario());
+
+	}
+
 	@RequestMapping("/Usuario")
 	public ModelAndView usuario(HttpServletRequest request,
 			@RequestParam(value = "nombre", required = false) String user) {
 		ModelMap model = new ModelMap();
 		model.put("titulo", "Usuario - " + user);
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
 
 		if (servicioListaReproduccion.obtenerUsuarioPorNombre(user).getPath_img() != null) {
 
@@ -100,7 +116,29 @@ public class ControladorUsuario {
 
 		}
 
-		model.put("usuario", usuario);
+		if (usuario.equals(servicioListaReproduccion.obtenerUsuarioPorNombre(user))) {
+
+			model.put("Boton", "Mi perfil");
+			model.put("Action", "Inicio");
+
+		} else {
+
+			if (servicioFollowUsuario
+					.obtenerSeguidoresPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user))
+					.contains(usuario)) {
+
+				model.put("Boton", "Siguiendo");
+				model.put("Action", "UnfollowUsuario");
+
+			} else {
+
+				model.put("Boton", "Seguir");
+				model.put("Action", "FollowUsuario");
+
+			}
+
+		}
+
 		model.put("seguidoresUsuario", servicioFollowUsuario
 				.obtenerSeguidoresPorUsuario(servicioListaReproduccion.obtenerUsuarioPorNombre(user)).size());
 		model.put("user", servicioListaReproduccion.obtenerUsuarioPorNombre(user));
@@ -170,6 +208,8 @@ public class ControladorUsuario {
 		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+
+		servicioListaReproduccion.imagenesDePlaylistModelo(model, idPlaylist);
 
 		return new ModelAndView("viewLista", model);
 	}

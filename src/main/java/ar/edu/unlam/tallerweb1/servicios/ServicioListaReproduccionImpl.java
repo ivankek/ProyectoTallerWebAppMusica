@@ -8,11 +8,15 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
+import ar.edu.unlam.tallerweb1.modelo.Album;
+import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbum;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
@@ -30,6 +34,9 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 
 	@Inject
 	private RepositorioCancionLista repositorioCancionLista;
+
+	@Inject
+	private RepositorioAlbum repositorioAlbum;
 
 	@Override
 	public Long guardarListaReproduccion(ListaReproduccion listaReproduccion) {
@@ -79,6 +86,63 @@ public class ServicioListaReproduccionImpl implements ServicioListaReproduccion 
 	@Override
 	public List<Cancion> obtenerCancionesDeLista(ListaReproduccion listaReproduccion) {
 		return repositorioCancionLista.obtenerCancionesDeLista(listaReproduccion);
+	}
+
+	@Override
+	public void imagenesDePlaylistModelo(ModelMap model, Long idPlaylist) {
+		if (obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist))
+				.size() < 4) {
+
+			model.put("imagenesLista", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(0));
+
+			model.put("ocultar4", "d-none");
+
+		} else {
+
+			model.put("imagenesLista", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(0));
+			model.put("imagenesLista2", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(1));
+			model.put("imagenesLista3", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(2));
+			model.put("imagenesLista4", obtenerImagenesDePlaylist(obtenerListaPorId(idPlaylist)).get(3));
+
+			model.put("ocultar1", "d-none");
+
+		}
+	}
+	
+	@Override
+	public List<String> obtenerImagenesDePlaylist(ListaReproduccion listaReproduccion) {
+		List<Cancion> canciones = new ArrayList<Cancion>();
+		List<String> imagenesAlbum = new ArrayList<String>();
+		canciones.addAll(obtenerCancionesDeLista(listaReproduccion));
+		for (Cancion cancion : canciones) {
+			if (cancion.getAlbum() != null) {
+				Album album = cancion.getAlbum();
+				String imagen = album.getPath_img();
+
+				if (imagenesAlbum.contains(imagen)) {
+
+				} else {
+
+					imagenesAlbum.add(imagen);
+				}
+			}
+
+		}
+
+		List<String> imagenesPlaylist = new ArrayList<String>();
+		if (imagenesAlbum.size() < 4) {
+
+			imagenesPlaylist.add(imagenesAlbum.get(0));
+
+		} else {
+			imagenesPlaylist.add(imagenesAlbum.get(0));
+			imagenesPlaylist.add(imagenesAlbum.get(1));
+			imagenesPlaylist.add(imagenesAlbum.get(2));
+			imagenesPlaylist.add(imagenesAlbum.get(3));
+		}
+
+		return imagenesPlaylist;
+
 	}
 
 	@Override

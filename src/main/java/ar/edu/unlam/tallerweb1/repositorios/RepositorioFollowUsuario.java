@@ -13,4 +13,8 @@ public interface RepositorioFollowUsuario {
 
 	List<Usuario> obtenerSeguidoresPorUsuario(Usuario usuario);
 
+	void dejarDeSeguirUsuario(FollowUsuario followUsuario);
+
+	FollowUsuario obtenerRegistroFollowUsuario(Usuario usuario, String usuarioSeguido);
+
 }
