@@ -55,17 +55,21 @@ public class ControladorBusqueda {
 		modelo.put("datos", servicioCancion.serializarDatosCanciones());
 		List<Artista> listaArtista = servicioBusqueda.obtenerUnArtistaPorNombre(nombre);
 		modelo.put("artista", listaArtista);
-		
+
 		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(nombre);
-	
+
 		modelo.put("resultado", lista);
-		
+
+		if (lista.size() == 0) {
+			modelo.put("accion", "d-none");
+		}
+
 		List<Usuario> usuarioBusqueda = servicioBusqueda.obtenerUsuarioPorNombre(nombre);
 		modelo.put("user", usuarioBusqueda);
-		
+
 		List<ListaReproduccion> listaListaReproduccion = servicioBusqueda.obtenerListaReproduccionPorNombre(nombre);
 		modelo.put("listaReproduccion", listaListaReproduccion);
-		
+
 		return new ModelAndView("resultadoBusqueda", modelo);
 	}
 }

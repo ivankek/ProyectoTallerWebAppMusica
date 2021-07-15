@@ -53,7 +53,7 @@
 								<h6 class="card-title">${cancion.nombre}</h6>
 								<p class="card-text">${cancion.album.nombre}</p>
 								<div class="d-flex">
-									<a class="card-text"
+									<a class="card-text text-decoration-none text-light"
 										href="Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 
 
