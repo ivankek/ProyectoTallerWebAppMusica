@@ -17,6 +17,8 @@ public class Artista {
 	private Long puntaje;
 
 	private String path_img;
+	
+	private String path_img_portada;
 
 	public Long getId() {
 		return id;
@@ -48,6 +50,14 @@ public class Artista {
 
 	public void setPath_img(String path_img) {
 		this.path_img = path_img;
+	}
+
+	public String getPath_img_portada() {
+		return path_img_portada;
+	}
+
+	public void setPath_img_portada(String path_img_portada) {
+		this.path_img_portada = path_img_portada;
 	}
 
 }

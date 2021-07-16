@@ -7,11 +7,11 @@ VALUES(1, "Back in Black", "img/Album/BackInBlack.jpg"),
       (4, "Dynasty", "img/Album/Dynasty.jpg");
       
 /*Artista*/
-INSERT INTO artista(id, nombre, path_img)
-VALUES(1, "AC/DC" , "img/Artista/ac_dc.jpg"),
-      (2, "Foo Fighters" , "img/Artista/foo_fighters.jpg"),
-      (3, "Michael Jackson", "img/Artista/michael_jackson.jpg"),
-      (4, "Kiss", "img/Artista/kiss.jpg");
+INSERT INTO artista(id, nombre, path_img, path_img_portada)
+VALUES(1, "AC/DC" , "img/Artista/Ac_Dc.jpg", "img/Artista/ArtistaPortada/Ac_Dc.jpg"),
+      (2, "Foo Fighters" , "img/Artista/Foo_Fighters.jpg", "img/Artista/ArtistaPortada/Foo_Fighters.jpg"),
+      (3, "Michael Jackson", "img/Artista/Michael_Jackson.jpg", "img/Artista/ArtistaPortada/Michael_Jackson.jpg"),
+      (4, "Kiss", "img/Artista/Kiss.jpg", "img/Artista/ArtistaPortada/Kiss.jpg");
 
 /*Genero*/
 INSERT INTO genero(id, nombre)
