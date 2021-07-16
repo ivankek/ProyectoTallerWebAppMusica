@@ -14,24 +14,39 @@
 	<div class="row">
 <div class="col bg-dark bg-gradient p-5">
 <h2 class="text-white text-center">Explorar Artistas</h2>
-
-	<ul class="list-group">
-	<c:forEach items="${artista}" var="artista">
-				<li class="list-group-item bg-dark d-flex justify-content-between">
-						<div class="d-flex align-items-center">
+	
+	<table class="table table-dark table-hover ${accion}"
+		style="margin-bottom: 10em;">
+		<thead>
+			<tr>
+				<th scope="col">Artista</th>
+			</tr>
+		</thead>
+			<tbody>
+			<c:forEach items="${artista}" var="artista">
+				<tr>
+					<td>
+						<div class="text-white d-flex align-items-center">
 							<div class="flex-shrink-0">
-								<img src="${artista.path_img}" style="width: 64px; height: 64px" alt="...">
-								<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>	
+								<img src="${artista.path_img}"
+									style="width: 50px; height: 50px" alt="...">
+							</div>
+							
+							<div class="text-white d-flex align-items-center ">
+							<a class="text-decoration-none text-light"
+								href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>
 							</div>
 						</div>
-				</li>
-				</c:forEach>
-	</ul>
-	
+					</td>
+						
+						
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </div>
-</div>
-</div>
-
+</div>		
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->

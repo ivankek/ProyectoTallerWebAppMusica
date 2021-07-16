@@ -2,34 +2,73 @@
 <div class="container mt-5 text-light mb-5 main">
 	<div class="datos" hidden>${datos}</div>	
 	
-	<ul class="list-group pb-5 mb-5">
-		<c:forEach items="${canciones}" var="cancion">
-			<li class="list-group-item bg-dark d-flex justify-content-between" id="cancion${cancion.id}">
-				<!-- parte A -->
-				<div class="d-flex  align-items-center">
-					<i class="material-icons text-white me-3 icon-play"  name="${cancion.nombre}">play_circle_outline</i>
-					<div class="flex-shrink-0">
-						<img src="${cancion.album.path_img}" style="width: 64px; height: 64px" alt="...">
-					</div>
-					<div class="flex-grow-1 ms-3 text-white">
-						<h5 class="mt-0">${cancion.nombre}</h5>
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
-					</div>
-				</div> 
-				<!-- parte B -->
-				<div class="text-white d-flex align-items-center">
-					<a href="">${cancion.album.nombre}</a>
-				</div> 
-				<!-- parte C -->
-				<div class="text-white d-flex align-items-center">
-					<div>3:20</div>
-					<div class="material-icons ms-3">more_horiz</div>
-				</div>
-			</li>
-		</c:forEach>
-	</ul>
-</div>
+	<table class="table table-dark table-hover ${accion}"
+		style="margin-bottom: 10em;">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Título</th>
+				<th scope="col">Album</th>
+				<th scope="col">Opciones</th>
+			</tr>
+		</thead>
 
+		<tbody>
+			<c:forEach items="${canciones}" var="cancion">
+				<tr>
+					<th scope="row"><i
+						class="material-icons mt-3 text-white me-3 icon-play"
+						name="${cancion.nombre}">play_circle_outline</i></th>
+					<td><div class="d-flex align-items-center">
+
+							<div class="flex-shrink-0">
+								<img src="${cancion.album.path_img}"
+									style="width: 50px; height: 50px" alt="...">
+							</div>
+							<div class="flex-grow-1 ms-3 text-white">
+								<h5 class="mt-0 mb-0">${cancion.nombre}</h5>
+								<a class="text-decoration-none text-light"
+									href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+							</div>
+						</div></td>
+					<td><div class="text-white d-flex align-items-end mt-3">
+							<a class="text-decoration-none text-light"
+								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
+						</div></td>
+
+
+					<td>
+						<div class="text-white d-flex align-items-center"
+							style="margin-top: 0.8em;">
+							<div class="me-4">3:20</div>
+							<div class="dropdown dropstart">
+								<a href='#' role='button' id='dropdownMenuLink'
+									data-bs-toggle='dropdown' aria-expanded='false'><div
+										class="material-icons"  style="margin-top: 0.2em; color:white;">more_horiz</div></a>
+								<ul class="dropdown-menu" aria-labelledby='dropdownMenuLink'>
+
+									<c:forEach items="${listas}" var="lista">
+										<li id="${lista.id}"><a class='dropdown-item' href='#'>${lista.nombre}</a></li>
+									</c:forEach>
+
+
+								</ul>
+
+							</div>
+						</div>
+					</td>
+
+				</tr>
+
+
+			</c:forEach>
+		</tbody>
+
+	</table>
+
+</div>
+</div>
+</div>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 	

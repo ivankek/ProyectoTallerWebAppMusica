@@ -10,7 +10,7 @@
 			<li class="list-group-item bg-dark d-flex justify-content-between">
 			<div class="flex-shrink-0">
 					<img src="${artista.path_img}" style="width: 80px; height: 80px" alt="...">
-					<a href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>	
+					<a class="text-decoration-none text-light" href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>	
 			</div>
 			</li>
 	</c:forEach>
@@ -20,4 +20,9 @@
 <%
 }
 %>
-	
+
+<%@include file="queue.jsp"%>
+<%@include file="reproductor.jsp"%>
+<!-- Scripts -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/json.js"></script>	

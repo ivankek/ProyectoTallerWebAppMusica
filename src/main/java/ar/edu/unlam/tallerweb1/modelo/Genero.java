@@ -13,7 +13,9 @@ public class Genero {
 	private Long id;
 	
 	private String nombre;
-
+	
+	private String path_img;
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,5 +31,15 @@ public class Genero {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public String getPath_img() {
+		return path_img;
+	}
+
+	public void setPath_img(String path_img) {
+		this.path_img = path_img;
+	}
+	
+	
 	
 }

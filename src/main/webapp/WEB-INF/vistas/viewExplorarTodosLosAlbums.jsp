@@ -16,27 +16,48 @@
 <div class="col bg-dark bg-gradient p-5">
 <h2 class="text-white text-center">Explorar Albums</h2>
 
-	<ul class="list-group">
-	<c:forEach items="${album}" var="album">
-				<li class="list-group-item bg-dark d-flex justify-content-between">
-						<div class="d-flex align-items-center">
+	<table class="table table-dark table-hover ${accion}"
+		style="margin-bottom: 10em;">
+		<thead>
+			<tr>
+				<th scope="col">Album</th>
+			</tr>
+		</thead>
+			<tbody>
+			<c:forEach items="${album}" var="album">
+				<tr>
+					<td>
+						<div class="text-white d-flex align-items-center">
 							<div class="flex-shrink-0">
-								<img src="${album.path_img}" style="width: 64px; height: 64px" alt="...">
-								<a href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${album.nombre}">${album.nombre}</a>	
+								<img src="${album.path_img}"
+									style="width: 50px; height: 50px" alt="...">
+							</div>
+							
+							<div class="text-white d-flex align-items-center ">
+							<a class="text-decoration-none text-light"
+								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${album.nombre}">${album.nombre}</a>
 							</div>
 						</div>
-				</li>
-				</c:forEach>
-	</ul>
-	
+					</td>
+						
+						
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </div>
-</div>
-</div>
+</div>						
+
 
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/json.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
 </body>
 </html>

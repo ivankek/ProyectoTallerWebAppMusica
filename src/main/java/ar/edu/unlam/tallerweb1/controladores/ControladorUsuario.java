@@ -347,6 +347,7 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("genero", genero);
+		model.put("titulo", "Genero - " + genero);
 		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(genero);
 		model.put("cancion", lista);
 		return new ModelAndView("viewTodasCancionesPorGenero", model);
