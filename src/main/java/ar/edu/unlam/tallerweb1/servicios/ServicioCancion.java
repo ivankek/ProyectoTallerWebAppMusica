@@ -28,6 +28,8 @@ public interface ServicioCancion {
 	
 	Album obtenerAlbumPorId(Long id);
 	
+	Album obtenerAlbumPorNombre(String nombre);
+	
 	List<Cancion>obtenerLasCincoMejoresCanciones();
 	
 	List<Album> obtenerLosCincoMejoresAlbumes();
@@ -43,4 +45,5 @@ public interface ServicioCancion {
 	List<Artista> obtenerTodosLosArtistas();
 	
 	List<Genero> obtenerTodosLosGeneros();
+
 }

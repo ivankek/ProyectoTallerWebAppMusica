@@ -15,4 +15,6 @@ public interface RepositorioAlbum {
 	
 	List<Album>obtenerTodosLosAlbums();
 
+	Album obtenerAlbumPorNombre(String nombre);
+
 }

@@ -40,7 +40,7 @@
 			style="width: 15rem; border-radius: 0.5em;">
 			<div class="card-body align-self-center">
 				<img class="rounded-circle"
-					style="width: 12em; height: 12em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+					style="width: 12em; height: 12em; object-fit:cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
 					alt="" src="${user.path_img}">
 
 				<h5 class="text-center text-light mt-3 mb-3">${user.usuario}</h5>

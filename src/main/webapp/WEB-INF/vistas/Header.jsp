@@ -28,7 +28,6 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="topNavBar">
-			
 			<form action="realizarBusqueda" class="d-flex ms-auto my-3 my-lg-0">
 				<input name="busqueda" id="busqueda"
 					class="form-control me-1 bg-dark border-1 text-light"

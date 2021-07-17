@@ -20,7 +20,7 @@
 	}
 	#Titulo {
 		font-weight: bold;
-		font-size: 100pt;
+		font-size: 90pt;
 	}
 }
 

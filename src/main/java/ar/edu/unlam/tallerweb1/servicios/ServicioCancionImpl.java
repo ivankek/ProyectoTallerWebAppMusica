@@ -85,6 +85,11 @@ public class ServicioCancionImpl implements ServicioCancion {
 	}
 
 	@Override
+	public Album obtenerAlbumPorNombre(String nombre) {
+		return repositorioAlbum.obtenerAlbumPorNombre(nombre);
+	}
+	
+	@Override
 	public List<Cancion> obtenerLasCincoMejoresCanciones() {
 		return repositorioCancion.obtenerLasCincoMejoresCanciones();
 	}

@@ -61,9 +61,12 @@ public class ControladorUsuario {
 	public ModelAndView album(HttpServletRequest request,
 			@RequestParam(value = "nombre", required = false) String album) {
 		ModelMap model = new ModelMap();
-		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-		model.put("usuario", user);
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
+		model.put("album", servicioCancion.obtenerAlbumPorNombre(album));
 		model.put("canciones", servicioBusqueda.buscarCancionPorTodosLosCampos(album));
+		model.put("tamañoDisco", servicioBusqueda.buscarCancionPorTodosLosCampos(album).size());
+		model.put("listas", servicioListaReproduccion.obtenerListaReproduccionPorUsuario(usuario));
 		model.put("titulo", "Album - " + album);
 		model.put("datos", servicioCancion.serializarDatosCanciones());
 
@@ -206,8 +209,11 @@ public class ControladorUsuario {
 		model.put("usuario", user);
 		model.put("idPlaylist", idPlaylist);
 		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
+		model.put("usuarioPlaylist", servicioListaReproduccion.obtenerListaPorId(idPlaylist).getUsuario());
 		model.put("cancionesLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
+		model.put("tamañoLista", servicioListaReproduccion
+				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).size());
 
 		servicioListaReproduccion.imagenesDePlaylistModelo(model, idPlaylist);
 
@@ -229,7 +235,7 @@ public class ControladorUsuario {
 		cancionLista.setListaReproduccion(servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		servicioListaReproduccion.guardarCancionLista(cancionLista);
 
-		return new ModelAndView("redirect:/Inicio");
+		return new ModelAndView("redirect:/viewLista?idPlaylist=" + idPlaylist);
 	}
 
 	@RequestMapping("/FollowPlaylist")

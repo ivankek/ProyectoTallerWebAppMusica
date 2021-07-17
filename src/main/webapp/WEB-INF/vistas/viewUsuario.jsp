@@ -14,7 +14,7 @@
 
 						<div>
 							<img class="rounded-circle"
-								style="width: 12em; height: 12em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" alt="" src="${foto}">
+								style="width: 12em; height: 12em; object-fit:cover ;box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" alt="" src="${foto}">
 
 							<div class="container d-flex justify-content-center mt-3">
 								<form action="${Action}">
