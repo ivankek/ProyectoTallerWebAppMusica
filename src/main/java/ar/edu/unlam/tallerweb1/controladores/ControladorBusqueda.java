@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
@@ -55,6 +56,8 @@ public class ControladorBusqueda {
 		modelo.put("datos", servicioCancion.serializarDatosCanciones());
 		List<Artista> listaArtista = servicioBusqueda.obtenerUnArtistaPorNombre(nombre);
 		modelo.put("artista", listaArtista);
+
+		modelo.put("album", servicioBusqueda.obtenerUnAlbumPorNombre(nombre));
 
 		Set<Cancion> lista = servicioBusqueda.buscarCancionPorTodosLosCampos(nombre);
 

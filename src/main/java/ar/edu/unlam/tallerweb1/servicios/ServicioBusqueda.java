@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.List;
 import java.util.Set;
 
+import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
@@ -18,5 +19,7 @@ public interface ServicioBusqueda {
 	List<ListaReproduccion> obtenerListaReproduccionPorNombre(String nombre);
 	
 	List<Usuario> obtenerUsuarioPorNombre(String usuario);
+	
+	List<Album> obtenerUnAlbumPorNombre(String nombre);
 	
 }
