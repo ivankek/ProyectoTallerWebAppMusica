@@ -26,16 +26,6 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 	}
 
 	@Override
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-	
-	@Override
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	@Override
 	public Artista obtenerArtistaPorId(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Artista.class, id);
