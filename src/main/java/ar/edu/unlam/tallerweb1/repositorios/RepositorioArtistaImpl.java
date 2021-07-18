@@ -18,11 +18,21 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 
 	@Inject
 	private SessionFactory sessionFactory;
-
+	
 	@Override
 	public Long insertarArtista(Artista artista) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Long)session.save(artista);
+	}
+
+	@Override
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+	
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 	@Override

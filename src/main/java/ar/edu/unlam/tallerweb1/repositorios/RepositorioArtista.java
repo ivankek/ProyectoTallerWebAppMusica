@@ -19,6 +19,10 @@ public interface RepositorioArtista {
 	Artista obtenerArtistaPorNombre(String artista);
 
 	List<Artista> obtenerUnArtistaPorNombre(String artista);
+	
+	 SessionFactory getSessionFactory();
+	
+	 void setSessionFactory(SessionFactory sessionFactory);
 
 	SessionFactory getSessionFactory();
 	
