@@ -205,8 +205,8 @@ public class ControladorUsuario {
 	public ModelAndView viewLista(HttpServletRequest request,
 			@RequestParam(value = "idPlaylist", required = false) Long idPlaylist) {
 		ModelMap model = new ModelMap();
-		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-		model.put("usuario", user);
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", usuario);
 		model.put("idPlaylist", idPlaylist);
 		model.put("Playlist", servicioListaReproduccion.obtenerListaPorId(idPlaylist));
 		model.put("usuarioPlaylist", servicioListaReproduccion.obtenerListaPorId(idPlaylist).getUsuario());
@@ -214,8 +214,14 @@ public class ControladorUsuario {
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)));
 		model.put("tamañoLista", servicioListaReproduccion
 				.obtenerCancionesDeLista(servicioListaReproduccion.obtenerListaPorId(idPlaylist)).size());
-
 		servicioListaReproduccion.imagenesDePlaylistModelo(model, idPlaylist);
+
+		if (usuario.equals(servicioListaReproduccion.obtenerUsuarioPorNombre(
+				servicioListaReproduccion.obtenerListaPorId(idPlaylist).getUsuario().getUsuario()))) {
+
+			model.put("boton", "d-none");
+
+		}
 
 		return new ModelAndView("viewLista", model);
 	}

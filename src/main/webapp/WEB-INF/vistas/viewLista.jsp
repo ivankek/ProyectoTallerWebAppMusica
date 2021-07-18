@@ -59,13 +59,15 @@
 
 			</div>
 
+			<button type="submit" id="botonFollow"
+				class="btn btn-info text-light align-self-center mt-3 ${boton}" onclick="FbotonFollow()">Seguir</button>
 
 
 
 
 			<table class="table table-dark table-hover mt-4"
 				style="margin-bottom: 10em;">
-				
+
 				<tbody>
 					<c:forEach items="${cancionesLista}" var="cancion">
 						<tr>

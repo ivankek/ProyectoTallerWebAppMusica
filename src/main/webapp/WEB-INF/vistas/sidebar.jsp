@@ -21,23 +21,33 @@
 				<li class="nav-item"><a href="Inicio" id="botones"
 					class="nav-link text-white d-flex align-items-center"
 					aria-current="page"><i class="material-icons pe-2">home</i>Inicio</a></li>
-					
-					<li class="nav-item"><a href="MisPlaylist" id="botones"
+
+				<li class="nav-item"><a
+					href="Usuario?nombre=${usuario.usuario}" id="botones"
 					class="nav-link text-white d-flex align-items-center"
-					aria-current="page"><i class="material-icons pe-2">playlist_add</i>Mis Playlist</a></li>
-					
-					<li class="nav-item"><a href="#" id="botones"
+					aria-current="page"><i class="material-icons pe-2"><span
+							class="material-icons"> account_circle </span></i>Mi perfil</a></li>
+
+				<li class="nav-item"><a href="MisPlaylist" id="botones"
 					class="nav-link text-white d-flex align-items-center"
-					aria-current="page"><i class="material-icons pe-2">favorite</i>Canciones que te gustan</a></li>
-					
-					<li class="nav-item"><a href="viewArtistasSeguidos" id="botones"
+					aria-current="page"><i class="material-icons pe-2">playlist_add</i>Mis
+						Playlist</a></li>
+
+				<li class="nav-item"><a href="#" id="botones"
 					class="nav-link text-white d-flex align-items-center"
-					aria-current="page"><i class="material-icons pe-2">people</i>Artistas que sigo</a></li>
-					
-					<li class="nav-item"><a href="viewExplorarTodo" id="botones"
+					aria-current="page"><i class="material-icons pe-2">favorite</i>Canciones
+						que te gustan</a></li>
+
+				<li class="nav-item"><a href="viewArtistasSeguidos"
+					id="botones" class="nav-link text-white d-flex align-items-center"
+					aria-current="page"><i class="material-icons pe-2">people</i>Artistas
+						que sigo</a></li>
+
+				<li class="nav-item"><a href="viewExplorarTodo" id="botones"
 					class="nav-link text-white d-flex align-items-center"
-					aria-current="page"><i class="material-icons pe-2">search</i>Explorar todo</a></li>
-					
+					aria-current="page"><i class="material-icons pe-2">search</i>Explorar
+						todo</a></li>
+
 			</ul>
 			<hr class="text-white">
 			<div>Traer playlist que sigue el usuario</div>

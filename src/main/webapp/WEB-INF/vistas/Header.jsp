@@ -59,7 +59,7 @@
 						<%
 							if (request.getAttribute("usuario") != null) {
 						%>
-						<li><a class="dropdown-item" href="login">Login</a></li>
+						<li><a class="dropdown-item" href="login">Log out</a></li>
 
 						<%
 							} else {

@@ -87,9 +87,9 @@ VALUES(1 , 1 , 1),
 /*Inserta usuario*/
 INSERT INTO usuario(id, usuario, password, rol, path_img)
 VALUES(1, "ivank", "1234", "usuario", "img/Usuario/ricky.jpg"),
-      (2, "godiee", "zxcv", "usuario", null),
+      (2, "godiee", "zxcv", "usuario", "img/Usuario/noFoto.jpg"),
       (3, "ezeew", "9876", "usuario", "img/Usuario/ragnar.jpg"),
-      (4, "juampif", "abcd", "usuario", null);
+      (4, "juampif", "abcd", "usuario", "img/Usuario/noFoto.jpg");
       
 /*Añadir a favoritos*/
 INSERT INTO favorito(id, cancion_id, usuario_id)
