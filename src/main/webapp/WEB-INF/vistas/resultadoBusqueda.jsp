@@ -7,6 +7,30 @@
 	<div class="datos" hidden>${datos}</div>
 
 
+	<c:forEach items="${album}" var="album">
+		<div class="container d-flex flex-column mb-3">
+
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 12em; height: 12em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="${album.path_img}">
+
+					<h5 class="text-center text-light mt-3 mb-3">${album.nombre}</h5>
+					<!-- <p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p> -->
+
+					<div class="d-flex justify-content-center">
+						<a href="Album?nombre=${album.nombre}"
+							class="card-link text-decoration-none text-info">Ver Album</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+
 	<c:forEach items="${listaReproduccion}" var="lista">
 
 		<div id="" class="card mt-3 border-0 shadow bg-dark"
@@ -36,116 +60,129 @@
 	</c:forEach>
 
 	<c:forEach items="${user}" var="user">
-		<div id="" class="card mb-3 mt-3 border-0 shadow bg-dark"
-			style="width: 15rem; border-radius: 0.5em;">
-			<div class="card-body align-self-center">
-				<img class="rounded-circle"
-					style="width: 12em; height: 12em; object-fit:cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
-					alt="" src="${user.path_img}">
 
-				<h5 class="text-center text-light mt-3 mb-3">${user.usuario}</h5>
-				<!-- <p class="card-text">Some quick example text to build on the
+		<div class="container d-flex flex-column mb-3">
+
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+
+
+				<div class="card-body align-self-center">
+					<img class="rounded-circle"
+						style="width: 12em; height: 12em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="${user.path_img}">
+
+					<h5 class="text-center text-light mt-3 mb-3">${user.usuario}</h5>
+					<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
 
-				<div class="d-flex justify-content-center">
-					<a href="Usuario?nombre=${user.usuario}"
-						class="card-link text-decoration-none text-info">Ver Usuario</a> <a
-						href="#" class="card-link text-decoration-none text-primary">Seguir</a>
+					<div class="d-flex justify-content-center">
+						<a href="Usuario?nombre=${user.usuario}"
+							class="card-link text-decoration-none text-info">Ver Usuario</a>
+						<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
+					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
 	</c:forEach>
 
 
+	<c:forEach items="${artista}" var="artista">
+		<div class="container d-flex flex-column mb-3">
+
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded-circle"
+						style="width: 12em; height: 12em; object-fit: cover; object-position: 0 0; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="${artista.path_img}">
+
+					<h5 class="text-center text-light mt-3 mb-3">${artista.nombre}</h5>
+					<!-- <p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p> -->
+
+					<div class="d-flex justify-content-center">
+						<a href="Artista?nombre=${artista.nombre}"
+							class="card-link text-decoration-none text-info">Ver Artista</a>
+						<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+
 	<!-- Tabla -->
 
+</div>
 
-	<div class="mt-2 mb-3">
-		<ul class="list-group">
-			<c:forEach items="${artista}" var="artista">
-				<li class="list-group-item bg-dark d-flex justify-content-between">
-					<div class="d-flex align-items-center">
+<table class="container table table-dark table-hover ${accion}"
+	style="margin-bottom: 4.3em;">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Título</th>
+			<th scope="col">Album</th>
+			<th scope="col">Opciones</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<c:forEach items="${resultado}" var="cancion">
+			<tr>
+				<th scope="row"><i
+					class="material-icons mt-3 text-white me-3 icon-play"
+					name="${cancion.nombre}">play_circle_outline</i></th>
+				<td><div class="d-flex align-items-center">
+
 						<div class="flex-shrink-0">
-							<img src="${artista.path_img}" style="width: 64px; height: 64px"
-								alt="..."> <a class="text-decoration-none text-light"
-								href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${artista.nombre}">${artista.nombre}</a>
+							<img src="${cancion.album.path_img}"
+								style="width: 50px; height: 50px" alt="...">
+						</div>
+						<div class="flex-grow-1 ms-3 text-white">
+							<h5 class="mt-0 mb-0">${cancion.nombre}</h5>
+							<a class="text-decoration-none text-light"
+								href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+						</div>
+					</div></td>
+				<td><div class="text-white d-flex align-items-end mt-3">
+						<a class="text-decoration-none text-light"
+							href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
+					</div></td>
+
+
+				<td>
+					<div class="text-white d-flex align-items-center"
+						style="margin-top: 0.8em;">
+						<div class="me-4">3:20</div>
+						<div class="dropdown dropstart">
+							<a href='#' role='button' id='dropdownMenuLink'
+								data-bs-toggle='dropdown' aria-expanded='false'><div
+									class="material-icons" style="margin-top: 0.2em; color: white;">more_horiz</div></a>
+							<ul class="dropdown-menu" aria-labelledby='dropdownMenuLink'>
+
+								<c:forEach items="${listas}" var="lista">
+									<li id="${lista.id}"><a class='dropdown-item' href='#'>${lista.nombre}</a></li>
+								</c:forEach>
+
+
+							</ul>
+
 						</div>
 					</div>
-				</li>
-			</c:forEach>
-		</ul>
+				</td>
 
-
-
-
-	</div>
-
-	<table class="table table-dark table-hover ${accion}"
-		style="margin-bottom: 10em;">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Título</th>
-				<th scope="col">Album</th>
-				<th scope="col">Opciones</th>
 			</tr>
-		</thead>
-
-		<tbody>
-			<c:forEach items="${resultado}" var="cancion">
-				<tr>
-					<th scope="row"><i
-						class="material-icons mt-3 text-white me-3 icon-play"
-						name="${cancion.nombre}">play_circle_outline</i></th>
-					<td><div class="d-flex align-items-center">
-
-							<div class="flex-shrink-0">
-								<img src="${cancion.album.path_img}"
-									style="width: 50px; height: 50px" alt="...">
-							</div>
-							<div class="flex-grow-1 ms-3 text-white">
-								<h5 class="mt-0 mb-0">${cancion.nombre}</h5>
-								<a class="text-decoration-none text-light"
-									href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
-							</div>
-						</div></td>
-					<td><div class="text-white d-flex align-items-end mt-3">
-							<a class="text-decoration-none text-light"
-								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
-						</div></td>
 
 
-					<td>
-						<div class="text-white d-flex align-items-center"
-							style="margin-top: 0.8em;">
-							<div class="me-4">3:20</div>
-							<div class="dropdown dropstart">
-								<a href='#' role='button' id='dropdownMenuLink'
-									data-bs-toggle='dropdown' aria-expanded='false'><div
-										class="material-icons"  style="margin-top: 0.2em; color:white;">more_horiz</div></a>
-								<ul class="dropdown-menu" aria-labelledby='dropdownMenuLink'>
+		</c:forEach>
+	</tbody>
 
-									<c:forEach items="${listas}" var="lista">
-										<li id="${lista.id}"><a class='dropdown-item' href='#'>${lista.nombre}</a></li>
-									</c:forEach>
+</table>
 
-
-								</ul>
-
-							</div>
-						</div>
-					</td>
-
-				</tr>
-
-
-			</c:forEach>
-		</tbody>
-
-	</table>
-
-	<!-- Tabla fin -->
+<!-- Tabla fin -->
 
 </div>
 

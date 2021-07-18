@@ -10,16 +10,19 @@ import ar.edu.unlam.tallerweb1.modelo.Artista;
 public interface RepositorioAlbum {
 
 	Long insertarAlbum(Album album);
-	
+
 	Album obtenerAlbumPorId(Long id);
 
 	List<Album> obtenerCincoMejoresAlbum();
-	
-	List<Album>obtenerTodosLosAlbums();
+
+	List<Album> obtenerTodosLosAlbums();
 
 	Album obtenerAlbumPorNombre(String nombre);
 
 	SessionFactory getSessionFactory();
-	
+
 	void setSessionFactory(SessionFactory sessionFactory);
+
+	List<Album> obtenerAlbumsPorNombre(String nombre);
+
 }

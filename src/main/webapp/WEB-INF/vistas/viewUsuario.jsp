@@ -39,7 +39,7 @@
 						<div class="text-light align-self-start mt-3 ms-4">
 							<h5 class=text-info>Usuario</h5>
 							<h1>${user.usuario}</h1>
-							<p class="fs-5 mb-2 text-info">Seguidores</p>
+							<p class="fs-5 mb-2 text-info text-center">Seguidores</p>
 							<hr class="mt-0 mb-2" style="color: aqua;">
 							<h5 class="text-center mt-0">${seguidoresUsuario}</h5>
 						</div>
