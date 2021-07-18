@@ -82,4 +82,14 @@ public class RepositorioBusquedaImpl implements RepositorioBusqueda {
 				.add(Restrictions.ilike("nombre", nombre, MatchMode.ANYWHERE))
 				.list();
 	}	
+	
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
 }

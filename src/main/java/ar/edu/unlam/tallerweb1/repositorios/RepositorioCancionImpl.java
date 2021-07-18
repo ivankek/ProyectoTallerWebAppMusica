@@ -56,4 +56,14 @@ public class RepositorioCancionImpl implements RepositorioCancion {
 				               .uniqueResult();
 	}
 
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
+	
 }

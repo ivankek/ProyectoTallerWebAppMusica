@@ -62,4 +62,14 @@ public class RepositorioArtistaImpl implements RepositorioArtista {
 								.add(Restrictions.eq("nombre", artista))
 								.uniqueResult();
 	}
+	
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
 }

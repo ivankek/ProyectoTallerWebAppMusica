@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 
 public interface RepositorioCancion {
@@ -17,5 +19,9 @@ public interface RepositorioCancion {
 	Cancion obtenerCancionPorId(Long id);
 	
 	Cancion obtenerCancionPorSuNombre(String nombreCancion);
+	
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 
 }

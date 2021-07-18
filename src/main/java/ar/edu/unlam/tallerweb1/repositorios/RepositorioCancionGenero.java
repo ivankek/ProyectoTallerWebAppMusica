@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
@@ -14,5 +16,7 @@ public interface RepositorioCancionGenero {
 	List<String> obtenerGenerosDeUnAlbum(Album album);
 	List<String> obtenerGenerosDeUnArtista(Artista artista);
 	
-
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 }

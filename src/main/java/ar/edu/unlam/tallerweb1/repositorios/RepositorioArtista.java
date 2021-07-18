@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 
 public interface RepositorioArtista {
@@ -18,4 +20,7 @@ public interface RepositorioArtista {
 
 	List<Artista> obtenerUnArtistaPorNombre(String artista);
 
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 }

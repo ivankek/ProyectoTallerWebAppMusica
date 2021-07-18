@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 public interface RepositorioGenero {
@@ -10,4 +12,7 @@ public interface RepositorioGenero {
 
 	List<Genero> obtenerTodosLosGeneros();
 
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 }

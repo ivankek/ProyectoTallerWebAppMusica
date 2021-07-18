@@ -59,4 +59,14 @@ public class RepositorioCancionGeneroImpl implements RepositorioCancionGenero {
                                      .setProjection(Projections.distinct(Projections.property("tablaGenero.nombre")))
                                      .list();
 	}
+	
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
 }

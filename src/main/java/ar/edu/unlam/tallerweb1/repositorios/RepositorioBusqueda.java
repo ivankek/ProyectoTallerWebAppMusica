@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
@@ -19,4 +21,7 @@ public interface RepositorioBusqueda {
 	
 	List<Cancion> obtenerCancionesPorNombre(String nombre);
 	
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 }

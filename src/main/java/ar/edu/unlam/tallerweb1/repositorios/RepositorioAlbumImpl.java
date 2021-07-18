@@ -48,4 +48,14 @@ public class RepositorioAlbumImpl implements RepositorioAlbum {
 		Session session = sessionFactory.getCurrentSession();
 		return (Album) session.createCriteria(Album.class).add(Restrictions.eq("nombre", nombre)).uniqueResult();
 	}
+	
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
 }
