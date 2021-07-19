@@ -99,6 +99,7 @@ function agregarCancionALaPlaylist(){
         .then(data => alert(data))
         .catch(showError);
         inputCancion.value = "";
+		arrayData.pop();
     }else{
         alert("Tenes que seleccionar una cancion");
     }

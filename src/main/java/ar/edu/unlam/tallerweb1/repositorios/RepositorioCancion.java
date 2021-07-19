@@ -20,6 +20,8 @@ public interface RepositorioCancion {
 	
 	Cancion obtenerCancionPorSuNombre(String nombreCancion);
 	
+	Cancion obtenerCancionPorNombreArtistaAlbum(String nombreCancion, String nombreArtista, String nombreAlbum);
+	
 	SessionFactory getSessionFactory();
 	
 	void setSessionFactory(SessionFactory sessionFactory);

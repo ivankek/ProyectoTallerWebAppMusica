@@ -85,4 +85,13 @@ public class ControladorAJAX {
 		
 		return servicioCancionLista.crearYAlmacenarCancionLista((Usuario)request.getSession().getAttribute("usuario"), nombrePlaylist, nombreCancion);
 	}
+	
+	@RequestMapping(value = "/traerUnaCancion" , method = RequestMethod.POST , produces = "application/json")
+	public @ResponseBody Cancion enviarCancion(@RequestBody List<String>datos){
+		String nombreCancion = datos.get(0);
+		String nombreArtista = datos.get(1);
+		String nombreAlbum = datos.get(2);
+		
+		return servicioCancion.obtenerCancionPorNombreArtistaAlbum(nombreCancion, nombreArtista, nombreAlbum);
+	}
 }

@@ -65,5 +65,17 @@ public class RepositorioCancionImpl implements RepositorioCancion {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		 this.sessionFactory = sessionFactory;
 	}
+
+	@Override
+	public Cancion obtenerCancionPorNombreArtistaAlbum(String nombreCancion, String nombreArtista, String nombreAlbum) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Cancion)session.createCriteria(Cancion.class)
+				               .createAlias("artista", "tablaArtista")
+				               .createAlias("album", "tablaAlbum")
+				               .add(Restrictions.eq("nombre", nombreCancion))
+				               .add(Restrictions.eq("tablaArtista.nombre", nombreArtista))
+				               .add(Restrictions.eq("tablaAlbum.nombre", nombreAlbum))
+				               .uniqueResult();
+	}
 	
 }

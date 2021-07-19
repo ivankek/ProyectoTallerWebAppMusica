@@ -46,4 +46,5 @@ public interface ServicioCancion {
 	
 	List<Genero> obtenerTodosLosGeneros();
 
+	Cancion obtenerCancionPorNombreArtistaAlbum(String nombreCancion, String nombreArtista, String nombreAlbum);
 }

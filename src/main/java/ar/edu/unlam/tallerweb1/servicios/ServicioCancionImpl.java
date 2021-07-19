@@ -135,4 +135,9 @@ public class ServicioCancionImpl implements ServicioCancion {
 		return repositorioGenero.obtenerTodosLosGeneros();
 	}
 
+	@Override
+	public Cancion obtenerCancionPorNombreArtistaAlbum(String nombreCancion, String nombreArtista, String nombreAlbum) {
+		return repositorioCancion.obtenerCancionPorNombreArtistaAlbum(nombreCancion, nombreArtista, nombreAlbum);
+	}
+
 }

@@ -145,7 +145,7 @@
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/json.js"></script>
+<script src="js/reproductor.js"></script>
 <script src="js/peticiones.js"></script>
 </body>
 </html>
