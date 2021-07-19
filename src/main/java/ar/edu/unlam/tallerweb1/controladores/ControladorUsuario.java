@@ -294,8 +294,7 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodosLosArtistas")
-	public ModelAndView explorarArtistas(HttpServletRequest request,
-			@RequestParam(value = "artista", required = false) String artista) {
+	public ModelAndView explorarArtistas(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
@@ -308,8 +307,7 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodosLosAlbums")
-	public ModelAndView explorarAlbums(HttpServletRequest request,
-			@RequestParam(value = "album", required = false) String album) {
+	public ModelAndView explorarAlbums(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
@@ -322,8 +320,7 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("/viewExplorarTodasLasCanciones")
-	public ModelAndView explorarCanciones(HttpServletRequest request,
-			@RequestParam(value = "cancion", required = false) String cancion) {
+	public ModelAndView explorarCanciones(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
@@ -336,8 +333,7 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping("viewExplorarTodosLosGeneros")
-	public ModelAndView explorarGeneros(HttpServletRequest request,
-			@RequestParam(value = "genero", required = false) String genero) {
+	public ModelAndView explorarGeneros(HttpServletRequest request) {
 
 		ModelMap model = new ModelMap();
 
@@ -364,4 +360,7 @@ public class ControladorUsuario {
 		model.put("cancion", lista);
 		return new ModelAndView("viewTodasCancionesPorGenero", model);
 	}
+
+	
+	
 }
