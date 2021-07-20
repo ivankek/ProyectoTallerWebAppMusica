@@ -25,4 +25,13 @@ public class ServicioLoginImpl implements ServicioLogin {
 		return servicioLoginDao.consultarUsuario(usuario);
 	}
 
+	public RepositorioUsuario getServicioLoginDao() {
+		return servicioLoginDao;
+	}
+
+	public void setServicioLoginDao(RepositorioUsuario servicioLoginDao) {
+		this.servicioLoginDao = servicioLoginDao;
+	}
+
+	
 }

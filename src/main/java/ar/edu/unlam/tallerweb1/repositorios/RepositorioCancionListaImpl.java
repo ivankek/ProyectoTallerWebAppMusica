@@ -58,4 +58,14 @@ public class RepositorioCancionListaImpl implements RepositorioCancionLista {
 	}
 
 	
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
+	
 }

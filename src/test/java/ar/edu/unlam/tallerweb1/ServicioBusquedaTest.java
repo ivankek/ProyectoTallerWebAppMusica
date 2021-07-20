@@ -22,7 +22,9 @@ import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionGenero;
+import ar.edu.unlam.tallerweb1.modelo.CancionLista;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
+import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbum;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbumImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioArtista;
@@ -33,6 +35,8 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGenero;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGeneroImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionImpl;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionListaImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioGenero;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioGeneroImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
@@ -55,6 +59,7 @@ public class ServicioBusquedaTest extends SpringTest{
 	RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
 	RepositorioCancionGenero repoCancionGenero = new RepositorioCancionGeneroImpl();
 	RepositorioGenero repoGenero = new RepositorioGeneroImpl();
+	RepositorioCancionLista repoCancionLista = new RepositorioCancionListaImpl();
 	
 	@Test
 	@Transactional
@@ -211,5 +216,39 @@ public class ServicioBusquedaTest extends SpringTest{
 		assertEquals(listaCanciones, servicioBusqueda.buscarCancionPorTodosLosCampos("pop"));
 		
 	}
+	
+//	@Test
+//	@Transactional
+//	@Rollback
+//	public void testQueBusqueCancionPorLista() {
+//		Cancion cancion = new Cancion();
+//		cancion.setNombre("Hells Bells");
+//		CancionLista cancionBuscada = new CancionLista();
+//		cancionBuscada.setCancion(cancion);
+//		ListaReproduccion listaRepro = new ListaReproduccion();
+//		cancionBuscada.setListaReproduccion(listaRepro);
+//		
+//
+//		repoBusqueda.setSessionFactory(this.sessionFactory);
+//		repoCancion.setSessionFactory(this.sessionFactory);		
+//		repoUsuario.setSessionFactory(this.sessionFactory);		
+//		repoArtista.setSessionFactory(this.sessionFactory);		
+//		repoLista.setSessionFactory(this.sessionFactory);		
+//		repoAlbum.setSessionFactory(this.sessionFactory);
+//		repoCancionLista.setSessionFactory(this.sessionFactory);
+//		
+//		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
+//	
+//		repoCancion.insertarCancion(cancion);
+//		repoCancionLista.insertarCancionLista(cancionBuscada);
+//		repoLista.insertarLista(listaRepro);
+//		
+//		
+//		Set<CancionLista> listaCancionLista = new HashSet<CancionLista>();
+//		listaCancionLista.add(cancionBuscada);
+//		
+//		assertEquals(listaCancionLista, servicioBusqueda.buscarCancionPorTodosLosCampos("Hells Bells"));
+//		
+//	}
 	
 }

@@ -9,46 +9,32 @@
 <title>Explorar Albums</title>
 </head>
 <body>
-
-
-<div class="container-fluid main pb-4 mb-5">
-	<div class="row">
-<div class="col bg-dark bg-gradient p-5">
 <h2 class="text-white text-center">Explorar Albums</h2>
+<div class="row row-cols-1 row-cols-md-5 g-4"><br>
+<c:forEach items="${album}" var="album">
+		<div class="container d-flex flex-column mb-3">
 
-	<table class="table table-dark table-hover ${accion}"
-		style="margin-bottom: 10em;">
-		<thead>
-			<tr>
-				<th scope="col">Album</th>
-			</tr>
-		</thead>
-			<tbody>
-			<c:forEach items="${album}" var="album">
-				<tr>
-					<td>
-						<div class="text-white d-flex align-items-center">
-							<div class="flex-shrink-0">
-								<img src="${album.path_img}"
-									style="width: 50px; height: 50px" alt="...">
-							</div>
-							
-							<div class="text-white d-flex align-items-center ">
-							<a class="text-decoration-none text-light"
-								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${album.nombre}">${album.nombre}</a>
-							</div>
-						</div>
-					</td>
-						
-						
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 12em; height: 12em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="${album.path_img}">
+
+					<h5 class="text-center text-light mt-3 mb-3">${album.nombre}</h5>
+					<!-- <p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p> -->
+
+					<div class="d-flex justify-content-center">
+						<a href="Album?nombre=${album.nombre}"
+							class="card-link text-decoration-none text-info">Ver Album</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
 </div>
-</div>						
-
 
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
