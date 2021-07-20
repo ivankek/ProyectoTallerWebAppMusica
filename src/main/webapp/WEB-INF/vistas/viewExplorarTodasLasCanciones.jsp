@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div class="container-fluid main pb-4 mb-5">
+<div class="container-fluid main mb-5">
 	<div class="row">
 <div class="col bg-dark bg-gradient p-5">
 <h2 class="text-white text-center">Explorar Canciones</h2>

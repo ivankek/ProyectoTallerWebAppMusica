@@ -76,4 +76,66 @@ public class Cancion {
 		this.puntaje = puntaje;
 	}
 
+	@Override
+	public String toString() {
+		return "Cancion [ nombre=" + nombre + " ]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((album == null) ? 0 : album.hashCode());
+		result = prime * result + ((artista == null) ? 0 : artista.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((path_cancion == null) ? 0 : path_cancion.hashCode());
+		result = prime * result + ((puntaje == null) ? 0 : puntaje.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cancion other = (Cancion) obj;
+		if (album == null) {
+			if (other.album != null)
+				return false;
+		} else if (!album.equals(other.album))
+			return false;
+		if (artista == null) {
+			if (other.artista != null)
+				return false;
+		} else if (!artista.equals(other.artista))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (path_cancion == null) {
+			if (other.path_cancion != null)
+				return false;
+		} else if (!path_cancion.equals(other.path_cancion))
+			return false;
+		if (puntaje == null) {
+			if (other.puntaje != null)
+				return false;
+		} else if (!puntaje.equals(other.puntaje))
+			return false;
+		return true;
+	}
+
+	
+	
 }

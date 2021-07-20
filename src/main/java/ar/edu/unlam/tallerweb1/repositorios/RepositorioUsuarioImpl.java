@@ -56,4 +56,14 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.list();
 	}
 
+	@Override
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
+	
 }

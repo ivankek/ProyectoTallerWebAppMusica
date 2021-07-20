@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.SessionFactory;
+
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
@@ -21,5 +23,4 @@ public interface ServicioBusqueda {
 	List<Usuario> obtenerUsuarioPorNombre(String usuario);
 	
 	List<Album> obtenerUnAlbumPorNombre(String nombre);
-	
 }

@@ -5,6 +5,8 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 public interface RepositorioListaReproduccion {
 
 	Long insertarLista(ListaReproduccion listaReproduccion);
@@ -19,4 +21,7 @@ public interface RepositorioListaReproduccion {
 	
 	ListaReproduccion obtenerUnaListaReproduccionPorSuNombreYUsuario(String nombreLista , Usuario usuario);
 
+	SessionFactory getSessionFactory();
+	
+	void setSessionFactory(SessionFactory sessionFactory);
 }

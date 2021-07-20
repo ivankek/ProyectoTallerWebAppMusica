@@ -60,4 +60,11 @@ public class Artista {
 		this.path_img_portada = path_img_portada;
 	}
 
+	@Override
+	public String toString() {
+		return "Artista [id=" + id + ", nombre=" + nombre + ", puntaje=" + puntaje + ", path_img=" + path_img
+				+ ", path_img_portada=" + path_img_portada + "]";
+	}
+
+	
 }

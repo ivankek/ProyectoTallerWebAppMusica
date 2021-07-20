@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,5 +82,5 @@ public class ServicioBusquedaImpl implements ServicioBusqueda {
 	public List<Album> obtenerUnAlbumPorNombre(String nombre) {
 		return repositorioAlbum.obtenerAlbumsPorNombre(nombre);
 	}
-
+	
 }
