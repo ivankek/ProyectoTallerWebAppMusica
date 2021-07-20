@@ -53,4 +53,22 @@ public class ControladorLoginTestMock extends SpringTest{
 		assertThat(modelAndView.getViewName()).isEqualTo("redirect:/Inicio");
 	
 	}
+	
+	@Test
+	@Rollback(true)
+	@Transactional
+	public void loginConUsuarioIncorrectoQuePermanezcaEnLogin(){
+		
+		// Preparacion
+		when(requestMock.getSession()).thenReturn(sessionMock);
+	
+		when(servicioLoginMock.consultarUsuario(usuarioMock)).thenReturn(null);
+		
+		// Ejecucion
+		ModelAndView modelAndView = controladorLogin.validarLogin(usuarioMock, requestMock);
+		
+		// Validacion
+		assertThat(modelAndView.getViewName()).isEqualTo("login");
+	
+	}
 }
