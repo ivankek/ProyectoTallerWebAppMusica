@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,7 @@ import org.springframework.test.annotation.Rollback;
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Artista;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
+import ar.edu.unlam.tallerweb1.modelo.CancionGenero;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbum;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioAlbumImpl;
@@ -28,7 +30,11 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioArtistaImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioBusqueda;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioBusquedaImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGenero;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGeneroImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionImpl;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioGenero;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioGeneroImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccionImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
@@ -41,23 +47,27 @@ public class ServicioBusquedaTest extends SpringTest{
 	@Inject
 	private SessionFactory sessionFactory;
 	
+	RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+	RepositorioCancion repoCancion = new RepositorioCancionImpl();
+	RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
+	RepositorioArtista repoArtista = new RepositorioArtistaImpl();
+	RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
+	RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+	RepositorioCancionGenero repoCancionGenero = new RepositorioCancionGeneroImpl();
+	RepositorioGenero repoGenero = new RepositorioGeneroImpl();
+	
 	@Test
 	@Transactional
 	@Rollback
 	public void testQueBusqueUnaCancionPorNombre() {
 		Cancion cancionBuscada = new Cancion();
 		cancionBuscada.setNombre("Thriller");
-		RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+		
 		repoBusqueda.setSessionFactory(this.sessionFactory);
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		repoCancion.setSessionFactory(this.sessionFactory);
-		RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
-		repoUsuario.setSessionFactory(this.sessionFactory);
-		RepositorioArtista repoArtista = new RepositorioArtistaImpl();
-		repoArtista.setSessionFactory(this.sessionFactory);
-		RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
-		repoLista.setSessionFactory(this.sessionFactory);
-		RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+		repoCancion.setSessionFactory(this.sessionFactory);		
+		repoUsuario.setSessionFactory(this.sessionFactory);		
+		repoArtista.setSessionFactory(this.sessionFactory);		
+		repoLista.setSessionFactory(this.sessionFactory);		
 		repoAlbum.setSessionFactory(this.sessionFactory);
 		
 		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
@@ -80,17 +90,11 @@ public class ServicioBusquedaTest extends SpringTest{
 		Cancion cancionBuscada = new Cancion();
 		cancionBuscada.setNombre("Shake a leg");
 		
-		RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
 		repoBusqueda.setSessionFactory(this.sessionFactory);
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		repoCancion.setSessionFactory(this.sessionFactory);
-		RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
-		repoUsuario.setSessionFactory(this.sessionFactory);
-		RepositorioArtista repoArtista = new RepositorioArtistaImpl();
-		repoArtista.setSessionFactory(this.sessionFactory);
-		RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
-		repoLista.setSessionFactory(this.sessionFactory);
-		RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+		repoCancion.setSessionFactory(this.sessionFactory);		
+		repoUsuario.setSessionFactory(this.sessionFactory);		
+		repoArtista.setSessionFactory(this.sessionFactory);		
+		repoLista.setSessionFactory(this.sessionFactory);		
 		repoAlbum.setSessionFactory(this.sessionFactory);
 		
 		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
@@ -118,17 +122,11 @@ public class ServicioBusquedaTest extends SpringTest{
 		cancionBuscada.setArtista(artistaBuscado);
 		
 
-		RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
 		repoBusqueda.setSessionFactory(this.sessionFactory);
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		repoCancion.setSessionFactory(this.sessionFactory);
-		RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
-		repoUsuario.setSessionFactory(this.sessionFactory);
-		RepositorioArtista repoArtista = new RepositorioArtistaImpl();
-		repoArtista.setSessionFactory(this.sessionFactory);
-		RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
-		repoLista.setSessionFactory(this.sessionFactory);
-		RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+		repoCancion.setSessionFactory(this.sessionFactory);		
+		repoUsuario.setSessionFactory(this.sessionFactory);		
+		repoArtista.setSessionFactory(this.sessionFactory);		
+		repoLista.setSessionFactory(this.sessionFactory);		
 		repoAlbum.setSessionFactory(this.sessionFactory);
 		
 		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
@@ -156,17 +154,11 @@ public class ServicioBusquedaTest extends SpringTest{
 		cancionBuscada.setAlbum(albumBuscado);
 		
 
-		RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
 		repoBusqueda.setSessionFactory(this.sessionFactory);
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		repoCancion.setSessionFactory(this.sessionFactory);
-		RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
-		repoUsuario.setSessionFactory(this.sessionFactory);
-		RepositorioArtista repoArtista = new RepositorioArtistaImpl();
-		repoArtista.setSessionFactory(this.sessionFactory);
-		RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
-		repoLista.setSessionFactory(this.sessionFactory);
-		RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+		repoCancion.setSessionFactory(this.sessionFactory);		
+		repoUsuario.setSessionFactory(this.sessionFactory);		
+		repoArtista.setSessionFactory(this.sessionFactory);		
+		repoLista.setSessionFactory(this.sessionFactory);		
 		repoAlbum.setSessionFactory(this.sessionFactory);
 		
 		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
@@ -179,6 +171,44 @@ public class ServicioBusquedaTest extends SpringTest{
 		listaCanciones.add(cancionBuscada);
 		
 		assertEquals(listaCanciones, servicioBusqueda.buscarCancionPorTodosLosCampos("Thriller"));
+		
+	}
+	
+	@Test
+	@Transactional
+	@Rollback
+	public void testQueBusqueCancionPorGenero() {
+		Cancion cancionBuscada = new Cancion();
+		cancionBuscada.setNombre("Thriller");
+		Artista artistaBuscado = new Artista();
+		artistaBuscado.setNombre("Michael Jackson");
+		Genero generoBuscado = new Genero();
+		generoBuscado.setNombre("pop");
+		CancionGenero cancionGenero = new CancionGenero();
+		cancionGenero.setCancion(cancionBuscada);
+		cancionGenero.setGenero(generoBuscado);
+
+		repoBusqueda.setSessionFactory(this.sessionFactory);
+		repoCancion.setSessionFactory(this.sessionFactory);		
+		repoUsuario.setSessionFactory(this.sessionFactory);		
+		repoArtista.setSessionFactory(this.sessionFactory);		
+		repoLista.setSessionFactory(this.sessionFactory);		
+		repoAlbum.setSessionFactory(this.sessionFactory);
+		repoCancionGenero.setSessionFactory(this.sessionFactory);
+		repoGenero.setSessionFactory(this.sessionFactory);
+		
+		ServicioBusqueda servicioBusqueda = new ServicioBusquedaImpl(repoBusqueda, repoArtista, repoUsuario,repoLista, repoAlbum);
+	
+		repoCancion.insertarCancion(cancionBuscada);
+		repoArtista.insertarArtista(artistaBuscado);
+		repoGenero.insertarGenero(generoBuscado);
+		repoCancionGenero.insertarCancionGenero(cancionGenero);
+		
+		
+		Set<CancionGenero> listaCanciones = new HashSet<CancionGenero>();
+		listaCanciones.add(cancionGenero);
+		
+		assertEquals(listaCanciones, servicioBusqueda.buscarCancionPorTodosLosCampos("pop"));
 		
 	}
 	
