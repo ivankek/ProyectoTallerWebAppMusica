@@ -59,12 +59,12 @@
 						<%
 							if (request.getAttribute("usuario") != null) {
 						%>
-						<li><a class="dropdown-item" href="login">Log out</a></li>
+						<li><a class="dropdown-item" href="cerrarSesion">Log out</a></li>
 
 						<%
 							} else {
 						%>
-						<li><a class="dropdown-item" href="cerrarSesion">Log out</a></li>
+						<li><a class="dropdown-item" href="login">Log in</a></li>
 						<%
 							}
 						%>
