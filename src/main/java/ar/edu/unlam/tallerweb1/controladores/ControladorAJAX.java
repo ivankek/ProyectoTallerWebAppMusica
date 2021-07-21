@@ -39,18 +39,34 @@ public class ControladorAJAX {
 	private ServicioCancionLista servicioCancionLista;
 
 	@RequestMapping(value = "/agregarFavorito" , method = RequestMethod.POST)
-	public String añadirFavorito(@RequestBody Cancion cancion , HttpServletRequest request) {
-		return servicioFavorito.añadirAFavoritos(cancion, (Usuario)request.getSession().getAttribute("usuario"));
+	public String añadirFavorito(@RequestBody List<String>datos , HttpServletRequest request) {
+		String nombreCancion = datos.get(0);
+		String nombreArtista = datos.get(1);
+		String nombreAlbum = datos.get(2);
+		
+		String mensaje = servicioFavorito.añadirAFavoritos(nombreCancion, nombreArtista, nombreAlbum, (Usuario)request.getSession().getAttribute("usuario"));
+		
+		return mensaje;
 	}
 	
 	@RequestMapping(value = "/eliminarFavorito" , method = RequestMethod.POST)
-	public String eliminarFavorito(@RequestBody Cancion cancion , HttpServletRequest request) {
-		return servicioFavorito.eliminarFavorito(cancion, (Usuario)request.getSession().getAttribute("usuario"));
+	public String eliminarFavorito(@RequestBody List<String>datos , HttpServletRequest request) {
+		String nombreCancion = datos.get(0);
+		String nombreArtista = datos.get(1);
+		String nombreAlbum = datos.get(2);
+		
+		String mensaje = servicioFavorito.eliminarFavorito(nombreCancion, nombreArtista, nombreAlbum, (Usuario)request.getSession().getAttribute("usuario"));
+		
+		return mensaje;
 	}
 	
 	@RequestMapping(value = "/consultarFavorito" , method = RequestMethod.POST)
-	public String consultarFavorito(@RequestBody Cancion cancion , HttpServletRequest request) {
-		return servicioFavorito.consultarSiEstaEnFavoritos(cancion, (Usuario)request.getSession().getAttribute("usuario"));
+	public String consultarFavorito(@RequestBody List<String>datos , HttpServletRequest request) {
+		String nombreCancion = datos.get(0);
+		String nombreArtista = datos.get(1);
+		String nombreAlbum = datos.get(2);
+		String icono = servicioFavorito.consultarSiEstaEnFavoritos(nombreCancion, nombreArtista, nombreAlbum, (Usuario)request.getSession().getAttribute("usuario"));
+		return icono;
 	}
 	
 	@RequestMapping(value = "/consultarSeguir" , method = RequestMethod.POST)

@@ -49,7 +49,7 @@
 		<table class="table table-dark table-hover mt-4" style="margin-bottom: 10em;">
 			<tbody>
 				<c:forEach items="${cancionesLista}" var="cancion">
-					<tr>
+					<tr class="cancion">
 						<th scope="row">
 							<i class="material-icons mt-3 text-white me-3 icon-play"
 						       name="${cancion.nombre}">play_circle_outline</i>
@@ -74,6 +74,7 @@
 						</td>
 						<td class="d-none d-md-block">
 							<div class="text-white d-flex align-items-center" style="margin-top: 0.8em;">
+								<div class="material-icons fav-icon me-3" hidden=""></div>
 								<div class="me-4">3:20</div>
 								<div class="dropdown dropstart">
 									<a href='#' role='button' id='dropdownMenuLink'
@@ -99,6 +100,7 @@
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/peticiones.js"></script>
 <script src="js/reproductor.js"></script>
 </body>
 </html>

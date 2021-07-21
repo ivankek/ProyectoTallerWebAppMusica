@@ -120,11 +120,12 @@
 							</div>
 							<div class="flex-grow-1 ms-3 text-white info-cancion">
 								<h5 class="mt-0 mb-0 titulo-cancion">${cancion.nombre}</h5>
-								<a class="text-decoration-none text-light" href="">${cancion.artista.nombre}</a>
+								<a id ="nombreArtista" class="text-decoration-none text-light" href="">${cancion.artista.nombre}</a>
 							</div>
 						</div> <!-- parte B -->
 						<div class="col-3 text-white d-flex align-items-center">
-							<a class="text-decoration-none text-light"
+							<a  id="nombreAlbum"
+								class="text-decoration-none text-light"
 								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 						</div> <!-- parte C -->
 						<div
