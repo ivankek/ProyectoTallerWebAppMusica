@@ -72,16 +72,17 @@ public class ControladorLogin {
 			servicioLogin.insertarUsuario(usuario);
 				modelo.put("exito","Usuario registrado! "+usuario.getUsuario());
 				}
+			else {
+				modelo.put("error","No coinciden las pass");
+				return new ModelAndView("registroUsuario", modelo);
 			}
-		
-			else if(servicioLogin.consultarUsuario(usuario) != null) {
+			}
+
+			else{
 			modelo.put("error","Ya existe el usuario");
 			return new ModelAndView("registroUsuario", modelo);
 		}
-			else {
-			modelo.put("error","No coinciden las pass");
-			return new ModelAndView("registroUsuario", modelo);
-		}
+			
 		return new ModelAndView("login",modelo);
 		
 	}
