@@ -11,4 +11,6 @@ public interface ServicioFollowPlaylist {
 	Long guardarFollowPlaylist(FollowPlaylist followPlaylist);
 
 	List<ListaReproduccion> obtenerPlaylistSeguidosPorUsuario(Usuario usuario);
+
+	String dejarDeSeguirPlaylist(Usuario usuario, String listaReproduccion);
 }

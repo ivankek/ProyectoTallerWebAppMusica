@@ -22,5 +22,9 @@ public interface RepositorioCancionLista {
 	SessionFactory getSessionFactory();
 	
 	void setSessionFactory(SessionFactory sessionFactory);
+
+	void borrarCancionLista(CancionLista cancionLista);
+
+	CancionLista obtenerRegistroCancionLista(Cancion cancion, String listaReproduccion);
 	
 }

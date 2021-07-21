@@ -5,9 +5,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
+import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
@@ -29,13 +29,24 @@ public class ServicioCancionListaImpl implements ServicioCancionLista {
 	@Override
 	public String crearYAlmacenarCancionLista(Usuario usuario, String nombrePlaylist, String nombreCancion) {
 		Cancion cancionAgregar = repoCancion.obtenerCancionPorSuNombre(nombreCancion);
-		if(repoCancionLista.obtenerCancionesDeListaPorNombre(nombrePlaylist).contains(cancionAgregar))
+		if (repoCancionLista.obtenerCancionesDeListaPorNombre(nombrePlaylist).contains(cancionAgregar))
 			return nombreCancion + " ya se encuentra en " + nombrePlaylist;
 		CancionLista cancionLista = new CancionLista();
 		cancionLista.setCancion(cancionAgregar);
-		cancionLista.setListaReproduccion(repoListaReproduccion.obtenerUnaListaReproduccionPorSuNombreYUsuario(nombrePlaylist, usuario));
+		cancionLista.setListaReproduccion(
+				repoListaReproduccion.obtenerUnaListaReproduccionPorSuNombreYUsuario(nombrePlaylist, usuario));
 		repoCancionLista.insertarCancionLista(cancionLista);
 		return nombreCancion + " se agrego a " + nombrePlaylist;
+	}
+
+	@Override
+	public void borrarCancionLista(Cancion cancion, String listaReproduccion) {
+
+		CancionLista cancionLista = repoCancionLista.obtenerRegistroCancionLista(cancion, listaReproduccion);
+		if (cancionLista != null) {
+			repoCancionLista.borrarCancionLista(cancionLista);
+		}
+
 	}
 
 }

@@ -101,6 +101,18 @@ public class ControladorUsuario {
 
 	}
 
+	@RequestMapping("/UnfollowListaReproduccion")
+	public ModelAndView dejarDeSeguirPlaylist(HttpServletRequest request,
+			@RequestParam(value = "playlist", required = false) Long listaReproduccion) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		servicioFollowPlaylist.dejarDeSeguirPlaylist(usuario,
+				servicioListaReproduccion.obtenerListaPorId(listaReproduccion).getNombre());
+		return new ModelAndView("redirect:/viewLista?idPlaylist=" + listaReproduccion);
+
+	}
+
 	@RequestMapping("/Usuario")
 	public ModelAndView usuario(HttpServletRequest request,
 			@RequestParam(value = "nombre", required = false) String user) {
@@ -219,11 +231,27 @@ public class ControladorUsuario {
 		if (usuario.equals(servicioListaReproduccion.obtenerUsuarioPorNombre(
 				servicioListaReproduccion.obtenerListaPorId(idPlaylist).getUsuario().getUsuario()))) {
 
-			model.put("boton", "d-none");
+			model.put("ocultar", "d-none");
+
+		} else {
+
+			if (servicioFollowPlaylist.obtenerPlaylistSeguidosPorUsuario(usuario)
+					.contains(servicioListaReproduccion.obtenerListaPorId(idPlaylist))) {
+
+				model.put("Boton", "Siguiendo");
+				model.put("Action", "UnfollowListaReproduccion");
+
+			} else {
+
+				model.put("Boton", "Seguir");
+				model.put("Action", "FollowPlaylist");
+
+			}
 
 		}
 
 		return new ModelAndView("viewLista", model);
+
 	}
 
 	@RequestMapping("/AgregarCancionAPlaylist")
@@ -254,8 +282,7 @@ public class ControladorUsuario {
 		followPlaylist.setListaReproduccion(servicioListaReproduccion.obtenerListaPorId(playlist));
 		followPlaylist.setUsuario(servicioListaReproduccion.obtenerUsuarioPorId(usuario.getId()));
 		servicioFollowPlaylist.guardarFollowPlaylist(followPlaylist);
-		return new ModelAndView(
-				"redirect:/realizarBusqueda?busqueda=" + followPlaylist.getListaReproduccion().getNombre());
+		return new ModelAndView("redirect:/viewLista?idPlaylist=" + playlist);
 	}
 
 	@RequestMapping("/FollowUsuario")
@@ -361,6 +388,4 @@ public class ControladorUsuario {
 		return new ModelAndView("viewTodasCancionesPorGenero", model);
 	}
 
-	
-	
 }

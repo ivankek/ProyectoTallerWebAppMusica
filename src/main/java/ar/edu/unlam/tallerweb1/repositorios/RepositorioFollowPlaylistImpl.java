@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Follow;
 import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
+import ar.edu.unlam.tallerweb1.modelo.FollowUsuario;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -38,6 +39,22 @@ public class RepositorioFollowPlaylistImpl implements RepositorioFollowPlaylist 
 		Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(FollowPlaylist.class).add(Restrictions.eq("usuario", usuario))
 				.setProjection(Projections.distinct(Projections.property("listaReproduccion"))).list();
+	}
+
+	@Override
+	public void dejarDeSeguirPlaylist(FollowPlaylist followPlaylist) {
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(followPlaylist);
+		return;
+	}
+
+	@Override
+	public FollowPlaylist obtenerRegistroFollowPlaylist(Usuario usuario, String listaReproduccion) {
+		Session session = sessionFactory.getCurrentSession();
+		return (FollowPlaylist) session.createCriteria(FollowPlaylist.class)
+				.createAlias("listaReproduccion", "tablaListaReproduccion")
+				.add(Restrictions.eq("tablaListaReproduccion.nombre", listaReproduccion))
+				.add(Restrictions.eq("usuario", usuario)).uniqueResult();
 	}
 
 }

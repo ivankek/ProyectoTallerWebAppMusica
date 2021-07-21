@@ -31,31 +31,29 @@
 		</div>
 	</c:forEach>
 
-	<c:forEach items="${listaReproduccion}" var="lista">
 
-		<div id="" class="card mt-3 border-0 shadow bg-dark"
-			style="width: 18rem; border-radius: 0.5em;">
-			<div class="card-body">
-				<h5 class="card-title text-light mb-3">${lista.nombre}</h5>
-				<!-- <p class="card-text">Some quick example text to build on the
+<c:forEach items="${listaReproduccion}" var="lista">
+		<div class="container d-flex flex-column mb-3">
+
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<%-- <img class="rounded-circle"
+						style="width: 12em; height: 12em; object-fit: cover; object-position: 0 0; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="${artista.path_img}"> --%>
+
+					<h5 class="text-center text-light mt-3 mb-3">${lista.nombre}</h5>
+					<!-- <p class="card-text">Some quick example text to build on the
 						card title and make up the bulk of the card's content.</p> -->
-				<div class="d-flex">
-					<a href="viewLista?idPlaylist=${lista.id}"
-						class="card-link text-decoration-none text-info align-self-center">Ver
-						canciones</a>
 
-					<div class="ms-4">
-						<form action="FollowPlaylist">
-							<input type="hidden" name="playlist" value="${lista.id}">
-							<button type="submit"
-								class="card-link p-2 rounded border-0 btn-info text-light text-decoration-none text-primary"
-								id="botonFollow" onclick="FbotonFollow()">Seguir</button>
-
-						</form>
+					<div class="d-flex flex-column justify-content-center">
+						<p class="text-light text-center mb-0">Playlist</p>
+						<a href="viewLista?idPlaylist=${lista.id}"
+							class="card-link text-decoration-none text-info">Ver canciones</a>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</c:forEach>
 
@@ -80,7 +78,6 @@
 					<div class="d-flex justify-content-center">
 						<a href="Usuario?nombre=${user.usuario}"
 							class="card-link text-decoration-none text-info">Ver Usuario</a>
-						<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
 					</div>
 				</div>
 
@@ -107,7 +104,6 @@
 					<div class="d-flex justify-content-center">
 						<a href="Artista?nombre=${artista.nombre}"
 							class="card-link text-decoration-none text-info">Ver Artista</a>
-						<a href="#" class="card-link text-decoration-none text-primary">Seguir</a>
 					</div>
 				</div>
 			</div>

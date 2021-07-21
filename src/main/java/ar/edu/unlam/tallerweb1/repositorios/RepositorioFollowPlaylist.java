@@ -12,4 +12,8 @@ public interface RepositorioFollowPlaylist {
 
 	List<ListaReproduccion> obtenerPlaylistSeguidasPorUsuario(Usuario usuario);
 
+	void dejarDeSeguirPlaylist(FollowPlaylist followPlaylist);
+
+	FollowPlaylist obtenerRegistroFollowPlaylist(Usuario usuario, String listaReproduccion);
+
 }

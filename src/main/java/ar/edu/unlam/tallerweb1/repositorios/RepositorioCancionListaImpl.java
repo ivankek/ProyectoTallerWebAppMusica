@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Cancion;
 import ar.edu.unlam.tallerweb1.modelo.CancionGenero;
 import ar.edu.unlam.tallerweb1.modelo.CancionLista;
+import ar.edu.unlam.tallerweb1.modelo.FollowPlaylist;
 import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository
 public class RepositorioCancionListaImpl implements RepositorioCancionLista {
@@ -66,6 +66,23 @@ public class RepositorioCancionListaImpl implements RepositorioCancionLista {
 	@Override
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		 this.sessionFactory = sessionFactory;
+	}
+	
+	
+	@Override
+	public void borrarCancionLista(CancionLista cancionLista) {
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(cancionLista);
+		return;
+	}
+
+	@Override
+	public CancionLista obtenerRegistroCancionLista(Cancion cancion, String listaReproduccion) {
+		Session session = sessionFactory.getCurrentSession();
+		return (CancionLista) session.createCriteria(CancionLista.class)
+				.createAlias("listaReproduccion", "tablaListaReproduccion")
+				.add(Restrictions.eq("tablaListaReproduccion.nombre", listaReproduccion))
+				.add(Restrictions.eq("cancion", cancion)).uniqueResult();
 	}
 	
 }
