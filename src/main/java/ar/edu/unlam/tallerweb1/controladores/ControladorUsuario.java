@@ -337,7 +337,6 @@ public class ControladorUsuario {
 		model.put("titulo", "Explorar Todo");
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
-		model.put("datos", servicioCancion.serializarDatosCanciones());
 		return new ModelAndView("viewExplorarTodo", model);
 	}
 
@@ -348,7 +347,6 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("titulo", "Explorar Artistas");
-		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("artista", servicioCancion.obtenerTodosLosArtistas());
 
 		return new ModelAndView("viewExplorarTodosLosArtistas", model);
@@ -361,7 +359,6 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("titulo", "Explorar Albums");
-		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("album", servicioCancion.obtenerTodosLosAlbums());
 
 		return new ModelAndView("viewExplorarTodosLosAlbums", model);
@@ -374,7 +371,6 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("titulo", "Explorar Canciones");
-		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("cancion", servicioCancion.obtenerTodasLasCanciones());
 
 		return new ModelAndView("viewExplorarTodasLasCanciones", model);
@@ -388,10 +384,22 @@ public class ControladorUsuario {
 		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 		model.put("usuario", user);
 		model.put("titulo", "Explorar Géneros");
-		model.put("datos", servicioCancion.serializarDatosCanciones());
 		model.put("genero", servicioCancion.obtenerTodosLosGeneros());
 
 		return new ModelAndView("viewExplorarTodosLosGeneros", model);
+	}
+	
+	
+	@RequestMapping("viewExplorarTodasLasPlaylists")
+	public ModelAndView explorarPlaylist(HttpServletRequest request) {
+
+		ModelMap model = new ModelMap();
+		Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+		model.put("usuario", user);	
+		model.put("titulo", "Explorar Playlists");
+		model.put("lista", servicioListaReproduccion.obtenerTodasLasListasDeReproduccion());
+
+		return new ModelAndView("viewExplorarTodasLasPlaylists", model);
 	}
 
 	@RequestMapping("/viewTodasCancionesPorGenero")

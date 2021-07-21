@@ -117,7 +117,7 @@
 						alt="" src="img/Artista/ac_dc.jpg">
 					<h5 class="text-center text-light mt-3 mb-3">Playlists</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/MisPlaylist"
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodasLasPlaylists"
 							class="card-link text-decoration-none text-info">Ver Playlists</a>
 					</div>
 				</div>
