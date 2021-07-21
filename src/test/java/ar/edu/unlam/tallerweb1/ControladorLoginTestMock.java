@@ -71,4 +71,28 @@ public class ControladorLoginTestMock extends SpringTest{
 		assertThat(modelAndView.getViewName()).isEqualTo("login");
 	
 	}
+	
+	@Test
+	@Transactional
+	@Rollback(true)
+	    public void testQueRedireccionaRolNullALogin() {
+	        when(requestMock.getSession()).thenReturn(sessionMock);
+	        when(sessionMock.getAttribute("ROL")).thenReturn(null);
+	        ModelAndView modelAndView = controladorLogin.validarLogin(usuarioMock, requestMock);
+	        assertThat(modelAndView.getViewName().equals("redirect:/login"));
+	    }
+		
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void testQueVerificaQueSePuedaEnviarARegistrar() {		
+		when(requestMock.getSession()).thenReturn(sessionMock);
+		when(requestMock.getSession().getAttribute("usuario")).thenReturn(null);
+		Usuario usuario = new Usuario();
+		
+		ModelAndView modelo = controladorLogin.registro(requestMock);
+		assertThat(modelo.getViewName()).isEqualTo("registroUsuario");
+		assertThat(modelo.getModel().get("usuario")).isEqualTo(usuario);
+	}
+	 
 }
