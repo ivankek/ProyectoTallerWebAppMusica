@@ -13,7 +13,7 @@
 <div class="container-fluid main mb-5">
 	<div class="row">
 <div class="col bg-dark bg-gradient p-5">
-<h2 class="text-white text-center">Explorar Canciones</h2>
+<h2 class="text-white text-center">Explorar Canciones</h2><br>
 
 	<table class="table table-dark table-hover ${accion}"
 		style="margin-bottom: 10em;">

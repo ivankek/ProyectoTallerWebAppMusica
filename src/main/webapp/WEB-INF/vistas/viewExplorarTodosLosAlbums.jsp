@@ -9,8 +9,9 @@
 <title>Explorar Albums</title>
 </head>
 <body>
-<h2 class="text-white text-center">Explorar Albums</h2>
-<div class="row row-cols-1 row-cols-md-5 g-4"><br>
+<br>
+<h2 class="text-white text-center">Explorar Albums</h2><br>
+<div class="row row-cols-1 row-cols-md-5 g-4">
 <c:forEach items="${album}" var="album">
 		<div class="container d-flex flex-column mb-3">
 
@@ -21,11 +22,7 @@
 					<img class="rounded"
 						style="width: 12em; height: 12em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
 						alt="" src="${album.path_img}">
-
 					<h5 class="text-center text-light mt-3 mb-3">${album.nombre}</h5>
-					<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-
 					<div class="d-flex justify-content-center">
 						<a href="Album?nombre=${album.nombre}"
 							class="card-link text-decoration-none text-info">Ver Album</a>

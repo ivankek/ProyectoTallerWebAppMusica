@@ -12,76 +12,140 @@
 </head>
 <body>
 
-
-
-<div class="container-fluid main pb-4 mb-5">
-	<div class="row">
-<div class="col bg-dark bg-gradient p-5">
-<h2 class="text-white text-center">Explorar todo</h2>
 <br>
-			<div class="row row-cols-1 row-cols-md-5 g-4">
-				<!-- Tarjeta 1 -->
-					<div class="col">
-						<a class="text-white" href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosArtistas" style="text-decoration:none">
-							<div class="card h-100 bg-dark text-white">
-								<div class="card-body text-center rounded" style="background: linear-gradient(-90deg,#BF019F, #2C5364)">
-									<h5 class="card-title">Artistas</h5>
-								</div>
-							</div>
-						</a>
+<h2 class="text-white text-center">Explorar Todo</h2><br>
+<div class="row row-cols-1 row-cols-md-5 g-4"><br>
+
+		<!-- Card Artista -->
+		<div class="container d-flex flex-column mb-3">
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/ac_dc.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/foo_fighters.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/michael_jackson.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/kiss.jpg">
+					<h5 class="text-center text-light mt-3 mb-3">Artistas</h5>
+					<div class="d-flex justify-content-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosArtistas"
+							class="card-link text-decoration-none text-info">Ver Artistas</a>
 					</div>
-					
-					<!-- Tarjeta 2 -->
-					<div class="col">
-						<a class="text-white" href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosAlbums" style="text-decoration:none">
-							<div class="card h-100 bg-dark text-white">
-								<div class="card-body text-center rounded" style="background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(19,19,116,1) 35%, rgba(0,212,255,1) 100%)">
-									<h5 class="card-title">Albums</h5>
-								</div>
-							</div>
-						</a>
-					</div>
-		
-					<!-- Tarjeta 3 -->
-					<div class="col">
-						<a class="text-white" href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodasLasCanciones" style="text-decoration:none">
-							<div class="card h-100 bg-dark text-white">
-								<div class="card-body text-center rounded" style="background: linear-gradient(-90deg,#BF019F, #F28A57)">
-									<h5 class="card-title">Canciones</h5>
-								</div>
-							</div>
-						</a>
-					</div>
-						
-					<!-- Tarjeta 4 -->	
-					<div class="col">
-						<a class="text-white" href="http://localhost:8080/proyecto-limpio-spring-master/MisPlaylist" style="text-decoration:none">
-							<div class="card h-100 bg-dark text-white">
-								<div class="card-body text-center rounded" style="background: linear-gradient(-90deg,#BF019F, #4cde31)">
-									<h5 class="card-title">Playlists</h5>
-								</div>
-							</div>
-						</a>
-					</div>	
-						
-						<!-- Tarjeta 5 -->
-						<div class="col">
-							<a class="text-white" href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosGeneros" style="text-decoration:none">
-								<div class="card h-100 bg-dark text-white">
-									<div class="card-body text-center rounded" style="background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(222,49,168,1) 35%, rgba(0,212,255,1) 100%);">
-										<h5 class="card-title">Géneros</h5>
-									</div>
-								</div>
-							</a>
-						</div>
+				</div>
+			</div>
 		</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br>
-	</div>
-	</div>
-	
-	</div>
-	
-	
+		
+		<!-- Card Album -->
+		<div class="container d-flex flex-column mb-3">
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/Dynasty.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/Thriller.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/MedicineAtMidnight.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/BackInBlack.jpg">
+					<h5 class="text-center text-light mt-3 mb-3">Albums</h5>
+					<div class="d-flex justify-content-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosAlbums"
+							class="card-link text-decoration-none text-info">Ver Albums</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Card Canciones -->
+		<div class="container d-flex flex-column mb-3">
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 6m; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/BackInBlack.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/michael_jackson.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/Dynasty.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/foo_fighters.jpg">
+					<h5 class="text-center text-light mt-3 mb-3">Canciones</h5>
+					<div class="d-flex justify-content-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodasLasCanciones"
+							class="card-link text-decoration-none text-info">Ver Canciones</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Card Playlist -->
+		<div class="container d-flex flex-column mb-3">
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; border-radius: 0.5em;">
+				<div class="card-body align-self-center">
+					<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/kiss.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/Thriller.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Album/MedicineAtMidnight.jpg">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Artista/ac_dc.jpg">
+					<h5 class="text-center text-light mt-3 mb-3">Playlists</h5>
+					<div class="d-flex justify-content-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/MisPlaylist"
+							class="card-link text-decoration-none text-info">Ver Playlists</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Card Genero -->
+		<div class="container d-flex flex-column mb-3">
+			<div
+				class="align-self-center align-self-md-start card mb-3 mt-3 border-0 shadow bg-dark"
+				style="width: 15rem; height:19em ; border-radius: 0.5em;">
+				<div class="card-body text-center align-self-center">
+					<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Genero/pop.png">
+						<img class="rounded"
+						style="width: 6em; height: 6em; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
+						alt="" src="img/Genero/rock.jpg">
+						<br><br><br><br><br>
+					<h5 class="text-center text-light mt-3 mb-3">Géneros</h5>
+					<div class="d-flex justify-content-center">
+						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosGeneros"
+							class="card-link text-decoration-none text-info">Ver Géneros</a>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
