@@ -60,6 +60,11 @@ function buscarCancionEnBD(evento){
         var nombreAlbum = document.querySelector("#albumNombre").innerHTML;
     }
 
+    if(window.location.pathname == "/proyecto-limpio-spring-master/Artista"){
+        var nombreArtista = document.querySelector("#Titulo").innerHTML;
+        var nombreAlbum = evento.target.parentElement.parentElement.querySelector("#nombreAlbum").innerHTML;
+    }
+
     var arrayData = [nombreCancion , nombreArtista , nombreAlbum];
 
     fetch('traerUnaCancion' , {
@@ -126,15 +131,4 @@ function timeFormat(time){
 	}
 	
 	return minutes + ":" + seconds;
-}
-
-//Esto esta a modo de prueba luego hay que sacarlo
-function showError(err){
-    console.log('muestro error' , err);
-}
-
-const isResponseOk = (response) =>{
-    if(!response.ok)
-        console.log(response.status);
-    return response.text();    
 }

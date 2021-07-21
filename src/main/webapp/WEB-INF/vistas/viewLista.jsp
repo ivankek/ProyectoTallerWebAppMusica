@@ -47,8 +47,6 @@
 						href="http://localhost:8080/proyecto-limpio-spring-master/Usuario?nombre=${usuarioPlaylist.usuario}">${usuarioPlaylist.usuario}</a>
 				</div>
 			</div>
-
-
 			<form class="align-self-center" action="${Action}">
 				<input type="hidden" name="playlist" value="${Playlist.id}">
 
@@ -62,7 +60,7 @@
 				style="margin-bottom: 10em;">
 				<tbody>
 					<c:forEach items="${cancionesLista}" var="cancion">
-						<tr>
+						<tr class="cancion">
 							<th scope="row"><i
 								class="material-icons mt-3 text-white me-3 icon-play"
 								name="${cancion.nombre}">play_circle_outline</i></th>
@@ -88,6 +86,7 @@
 							<td>
 								<div class="text-white d-flex align-items-center"
 									style="margin-top: 0.8em;">
+									<div class="material-icons fav-icon me-3" hidden=""></div>
 									<div class="dropdown dropstart ${ocultarBotonEliminar}">
 										<a href='#' role='button' id='dropdownMenuLink'
 											data-bs-toggle='dropdown' aria-expanded='false'>
@@ -108,15 +107,15 @@
 			</table>
 		</div>
 	</div>
-	<%@include file="queue.jsp"%>
-	<%@include file="reproductor.jsp"%>
-	<!-- Scripts -->
-
-	<script src="js/bootstrap.min.js"></script>
+<%@include file="queue.jsp"%>
+<%@include file="reproductor.jsp"%>
+<!-- Scripts -->
+<script src="js/bootstrap.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
-	<script src="js/reproductor.js"></script>
+<script src="js/peticiones.js"></script>
+<script src="js/reproductor.js"></script>
 </body>
 </html>

@@ -56,7 +56,7 @@
 
 		<tbody>
 			<c:forEach items="${canciones}" var="cancion">
-				<tr>
+				<tr class="cancion">
 					<th scope="row"><i
 						class="material-icons mt-3 text-white me-3 icon-play"
 						name="${cancion.nombre}">play_circle_outline</i></th>
@@ -67,7 +67,7 @@
 									style="width: 50px; height: 50px" alt="...">
 							</div>
 							<div class="flex-grow-1 ms-3 text-white">
-								<h5 class="mt-0 mb-0">${cancion.nombre}</h5>
+								<h5 id="cancionNombre" class="mt-0 mb-0">${cancion.nombre}</h5>
 								<a class="text-decoration-none text-light"
 									href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 							</div>
@@ -76,6 +76,7 @@
 					<td>
 						<div class="text-white d-flex align-items-center"
 							style="margin-top: 0.8em;">
+							<div class="material-icons fav-icon me-3" hidden=""></div>
 							<div class="me-4">3:20</div>
 							<%
 								if (request.getAttribute("usuario") != null) {
@@ -131,6 +132,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 	crossorigin="anonymous"></script>
+<script src="js/peticiones.js"></script>
 <script src="js/reproductor.js"></script>
 
 </body>
