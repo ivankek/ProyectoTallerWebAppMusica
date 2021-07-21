@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,44 @@ public class ControladorLogin {
 	}
 
 
+	@RequestMapping("/registroUsuario")
+	public ModelAndView registro(HttpServletRequest request) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = new Usuario();
+		modelo.put("usuario", usuario);
+		return new ModelAndView("registroUsuario", modelo);
+	}
+	@RequestMapping(path="/procesarRegistro",method=RequestMethod.POST)
+	public ModelAndView procesarRegistroUsuario(
+			@ModelAttribute("usuario") Usuario usuario,
+			@RequestParam(value="repassword",required=false) String repass
+			) {
+		//validar password con repassword
+		ModelMap modelo = new ModelMap();
+		if(servicioLogin.consultarUsuario(usuario) == null) {
+		if(usuario.getPassword().equals(repass)) {
+			//guardamelo en la base
+			servicioLogin.insertarUsuario(usuario);
+				modelo.put("exito","Usuario registrado! "+usuario.getUsuario());
+				}
+			else {
+				modelo.put("error","No coinciden las pass");
+				return new ModelAndView("registroUsuario", modelo);
+			}
+			}
+
+			else{
+			modelo.put("error","Ya existe el usuario");
+			return new ModelAndView("registroUsuario", modelo);
+		}
+			
+		return new ModelAndView("login",modelo);
+		
+	}
+	
+	
+	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");

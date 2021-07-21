@@ -30,7 +30,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return (Usuario) session.createCriteria(Usuario.class).add(Restrictions.eq("usuario", usuario.getUsuario()))
 				.add(Restrictions.eq("password", usuario.getPassword())).uniqueResult();
 	}
-
+	
 	@Override
 	public Long insertarUsuario(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
