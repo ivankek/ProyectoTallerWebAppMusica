@@ -13,7 +13,7 @@
 					<p id="albumNombre" class="mt-0 mb-1 fw-bolder fs-1 text-center text-md-start">${album.nombre}</p>
 					<c:forEach items="${canciones}" end="0" var="cancion">
 						<div class="d-flex flex-column flex-md-row ms-2 ms-md-0">
-							<div class="d-flex">
+							<div class="d-flex align-self-center mb-2 mb-md-0">
 								<img class="rounded-circle border border-1 border-dark"
 									style="width: 2em; height: 2em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
 									alt="" src="${cancion.artista.path_img}"> <a id="artistaNombre"

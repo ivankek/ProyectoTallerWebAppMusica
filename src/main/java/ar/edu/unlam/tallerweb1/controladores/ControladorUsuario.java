@@ -26,6 +26,7 @@ import ar.edu.unlam.tallerweb1.modelo.ListaReproduccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBusqueda;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCancion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCancionLista;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavorito;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollow;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFollowPlaylist;
@@ -56,6 +57,9 @@ public class ControladorUsuario {
 
 	@Inject
 	private ServicioFollowUsuario servicioFollowUsuario;
+
+	@Inject
+	private ServicioCancionLista servicioCancionLista;
 
 	@RequestMapping("/Album")
 	public ModelAndView album(HttpServletRequest request,
@@ -110,6 +114,20 @@ public class ControladorUsuario {
 		servicioFollowPlaylist.dejarDeSeguirPlaylist(usuario,
 				servicioListaReproduccion.obtenerListaPorId(listaReproduccion).getNombre());
 		return new ModelAndView("redirect:/viewLista?idPlaylist=" + listaReproduccion);
+
+	}
+
+	@RequestMapping("/EliminarCancionDePlaylist")
+	public ModelAndView eliminarCancionDePlaylist(HttpServletRequest request,
+			@RequestParam(value = "idCancion", required = false) Long idCancion,
+			@RequestParam(value = "idPlaylist", required = false) Long idPlaylist) {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+
+		servicioCancionLista.borrarCancionLista(servicioCancion.obtenerCancionPorId(idCancion),
+				servicioListaReproduccion.obtenerListaPorId(idPlaylist).getNombre());
+		return new ModelAndView("redirect:/viewLista?idPlaylist=" + idPlaylist);
 
 	}
 
@@ -238,11 +256,14 @@ public class ControladorUsuario {
 			if (servicioFollowPlaylist.obtenerPlaylistSeguidosPorUsuario(usuario)
 					.contains(servicioListaReproduccion.obtenerListaPorId(idPlaylist))) {
 
+				
+				model.put("ocultarBotonEliminar", "d-none");
 				model.put("Boton", "Siguiendo");
 				model.put("Action", "UnfollowListaReproduccion");
 
 			} else {
 
+				model.put("ocultarBotonEliminar", "d-none");
 				model.put("Boton", "Seguir");
 				model.put("Action", "FollowPlaylist");
 

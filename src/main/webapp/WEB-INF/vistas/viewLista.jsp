@@ -39,8 +39,8 @@
 			<div class="d-flex align-self-center">
 				<div class="d-flex">
 					<a
-						class="text-decoration-none align-self-center text-light ms-2 text-center">Creada por&nbsp&nbsp</a>
-					<img class="rounded-circle border-dark"
+						class="text-decoration-none align-self-center text-light ms-2 text-center">Creada
+						por&nbsp&nbsp</a> <img class="rounded-circle border-dark"
 						style="width: 2em; height: 2em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
 						alt="" src="${usuarioPlaylist.path_img}"> <a
 						class="text-decoration-none align-self-center text-light fs-5 ms-2 text-center"
@@ -85,20 +85,19 @@
 										href="./Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 								</div>
 							</td>
-							<td class="d-none d-md-block">
+							<td>
 								<div class="text-white d-flex align-items-center"
 									style="margin-top: 0.8em;">
-									<div class="me-4">3:20</div>
-									<div class="dropdown dropstart">
+									<div class="dropdown dropstart ${ocultarBotonEliminar}">
 										<a href='#' role='button' id='dropdownMenuLink'
 											data-bs-toggle='dropdown' aria-expanded='false'>
 											<div class="material-icons"
-												style="margin-top: 0.2em; color: white;">more_horiz</div>
+												style="margin-top: 0.2em; color: white;">more_vert</div>
 										</a>
 										<ul class="dropdown-menu" aria-labelledby='dropdownMenuLink'>
-											<c:forEach items="${listas}" var="lista">
-												<li id="${lista.id}"><a class='dropdown-item' href='#'>${lista.nombre}</a></li>
-											</c:forEach>
+											<li><a class='dropdown-item'
+												href="EliminarCancionDePlaylist?idCancion=${cancion.id}&idPlaylist=${Playlist.id}">Eliminar
+													de Playlist</a></li>
 										</ul>
 									</div>
 								</div>
@@ -112,7 +111,12 @@
 	<%@include file="queue.jsp"%>
 	<%@include file="reproductor.jsp"%>
 	<!-- Scripts -->
+
 	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"></script>
 	<script src="js/reproductor.js"></script>
 </body>
 </html>
