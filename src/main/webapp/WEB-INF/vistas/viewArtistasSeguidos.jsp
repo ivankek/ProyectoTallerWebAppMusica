@@ -18,9 +18,6 @@
 						alt="" src="${artista.path_img}">
 
 					<h5 class="text-center text-light mt-3 mb-3">${artista.nombre}</h5>
-					<!-- <p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p> -->
-
 					<div class="d-flex justify-content-center">
 						<a href="Artista?nombre=${artista.nombre}"
 							class="card-link text-decoration-none text-info">Ver Artista</a>
