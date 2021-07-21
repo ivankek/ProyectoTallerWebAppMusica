@@ -88,8 +88,8 @@ public class ControladorLoginTestMock extends SpringTest{
 	@Rollback(true)
 	@Transactional
 	public void RegistroConUsuarioExistentePermanezcaEnElRegistro(){
-		
-		// Preparacion
+
+	// Preparacion
 		when(requestMock.getSession()).thenReturn(sessionMock);
 	
 		when(servicioLoginMock.consultarUsuario(usuarioMock)).thenReturn(usuarioMock);
@@ -99,6 +99,25 @@ public class ControladorLoginTestMock extends SpringTest{
 		
 		// Validacion
 		assertThat(modelAndView.getViewName()).isEqualTo("registroUsuario");
+    
+  }
+  
+	@Test
+	@Rollback(true)
+	@Transactional
+	public void testQueTeLLeveALoginAlCerrarSesion(){
+		
+		// Preparacion
+		when(requestMock.getSession()).thenReturn(sessionMock);
+	
+		when(servicioLoginMock.consultarUsuario(usuarioMock)).thenReturn(usuarioMock);
+
+    // Ejecucion
+		ModelAndView modelAndView = controladorLogin.cerrarSesion(requestMock);
+		
+		// Validacion
+		assertThat(modelAndView.getViewName()).isEqualTo("redirect:/login");
 	
 	}
+
 }

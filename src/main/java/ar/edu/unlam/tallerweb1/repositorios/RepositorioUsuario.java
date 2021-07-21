@@ -14,7 +14,6 @@ public interface RepositorioUsuario {
 	Usuario obtenerUsuarioPorId(Long id);
 	Usuario consultarUsuario (Usuario usuario);
 	Usuario obtenerUsuarioPorNombre(String usuario);
-//	List<Usuario> obtenerUnUsuarioPorNombre(String usuario);
 	List<Usuario> obtenerUnUsuarioPorNombre(String usuario);
 	
 	SessionFactory getSessionFactory();
