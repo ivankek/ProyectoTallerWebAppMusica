@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -28,13 +31,29 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGenero;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionGeneroImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionImpl;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionLista;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCancionListaImpl;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioGenero;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioGeneroImpl;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioListaReproduccionImpl;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuarioImpl;
 
 public class RepositorioBusquedaTest extends SpringTest{
 
 	@Inject
 	private SessionFactory sessionFactory;
+	
+	RepositorioBusqueda repoBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+	RepositorioCancion repoCancion = new RepositorioCancionImpl();
+	RepositorioUsuario repoUsuario = new RepositorioUsuarioImpl(sessionFactory);
+	RepositorioArtista repoArtista = new RepositorioArtistaImpl();
+	RepositorioListaReproduccion repoLista = new RepositorioListaReproduccionImpl();
+	RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
+	RepositorioCancionGenero repoCancionGenero = new RepositorioCancionGeneroImpl();
+	RepositorioGenero repoGenero = new RepositorioGeneroImpl();
+	RepositorioCancionLista repoCancionLista = new RepositorioCancionListaImpl();
 	
 	@Test
 	@Transactional
@@ -44,17 +63,19 @@ public class RepositorioBusquedaTest extends SpringTest{
 		Album album = new Album();
 		cancion.setNombre("Hells Bells");
 		album.setNombre("Back in Black");
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		RepositorioAlbum repoAlbum = new RepositorioAlbumImpl();
-		RepositorioBusqueda repositorioBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+		cancion.setAlbum(album);
+		
 		repoCancion.setSessionFactory(this.sessionFactory);
 		repoAlbum.setSessionFactory(this.sessionFactory);
-		repositorioBusqueda.setSessionFactory(this.sessionFactory);
+		repoBusqueda.setSessionFactory(this.sessionFactory);
 		
 		repoCancion.insertarCancion(cancion);
 		repoAlbum.insertarAlbum(album);	
 		
-		assertNotNull(repositorioBusqueda.obtenerCancionesPorAlbum(album.getNombre()));
+		List<Cancion> listaCanciones = new ArrayList<Cancion>();
+		listaCanciones.add(cancion);
+		
+		assertEquals(listaCanciones, repoBusqueda.obtenerCancionesPorAlbum("Back in Black"));
 	}
 	
 	@Test
@@ -65,17 +86,19 @@ public class RepositorioBusquedaTest extends SpringTest{
 		Artista artista = new Artista();
 		cancion.setNombre("Hells Bells");
 		artista.setNombre("AC/DC");
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		RepositorioArtista repoArtista = new RepositorioArtistaImpl();
-		RepositorioBusqueda repositorioBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+		cancion.setArtista(artista);
+
 		repoCancion.setSessionFactory(this.sessionFactory);
 		repoArtista.setSessionFactory(this.sessionFactory);
-		repositorioBusqueda.setSessionFactory(this.sessionFactory);
+		repoBusqueda.setSessionFactory(this.sessionFactory);
 		
 		repoCancion.insertarCancion(cancion);
 		repoArtista.insertarArtista(artista);	
 		
-		assertNotNull(repositorioBusqueda.obtenerCancionesPorAlbum(artista.getNombre()));
+		List<Cancion> listaCanciones = new ArrayList<Cancion>();
+		listaCanciones.add(cancion);
+		
+		assertEquals(listaCanciones, repoBusqueda.obtenerCancionesPorArtista("AC/DC"));
 	}
 	
 	@Test
@@ -86,24 +109,21 @@ public class RepositorioBusquedaTest extends SpringTest{
 		Genero genero = new Genero();
 		CancionGenero cancionGenero = new CancionGenero();
 		cancion.setNombre("Thriller");
-		genero.setNombre("Rock");
+		genero.setNombre("Pop");
 		cancionGenero.setCancion(cancion);
 		cancionGenero.setGenero(genero);
 		
-		RepositorioCancion repoCancion = new RepositorioCancionImpl();
-		RepositorioGenero repoGenero = new RepositorioGeneroImpl();
-		RepositorioCancionGenero repoCancionGenero = new RepositorioCancionGeneroImpl();
-		RepositorioBusqueda repositorioBusqueda = new RepositorioBusquedaImpl(sessionFactory);
+
 		repoCancion.setSessionFactory(this.sessionFactory);
 		repoGenero.setSessionFactory(this.sessionFactory);
 		repoCancionGenero.setSessionFactory(this.sessionFactory);
-		repositorioBusqueda.setSessionFactory(this.sessionFactory);
+		repoBusqueda.setSessionFactory(this.sessionFactory);
 		
 		repoCancion.insertarCancion(cancion);
 		repoGenero.insertarGenero(genero);
 		repoCancionGenero.insertarCancionGenero(cancionGenero);
 		
-		assertNotNull(repositorioBusqueda.obtenerCancionesPorGenero(cancionGenero.getGenero().getNombre()));
+		assertNotNull(repoBusqueda.obtenerCancionesPorGenero(cancionGenero.getGenero().getNombre()));
 	}
 	
 	
@@ -115,14 +135,14 @@ public class RepositorioBusquedaTest extends SpringTest{
 		Cancion cancion2 = new Cancion();
 		cancion.setNombre("Hells Bells");
 		cancion2.setNombre("Shake a Leg");
-		RepositorioCancion repositorioCancion = new RepositorioCancionImpl();
-		RepositorioBusqueda repositorioBusqueda = new RepositorioBusquedaImpl(sessionFactory);
-		repositorioCancion.setSessionFactory(this.sessionFactory);
-		repositorioBusqueda.setSessionFactory(this.sessionFactory);
+
+		repoCancion.setSessionFactory(this.sessionFactory);
+		repoBusqueda.setSessionFactory(this.sessionFactory);
 		
-		repositorioCancion.insertarCancion(cancion);
+		repoCancion.insertarCancion(cancion);
+		List<Cancion> listaCanciones = new ArrayList<Cancion>();
+		listaCanciones.add(cancion);
 		
-		assertNotNull(repositorioBusqueda.obtenerCancionesPorNombre(cancion.getNombre()));
-	
+		assertEquals(listaCanciones, repoBusqueda.obtenerCancionesPorNombre("Hells Bells"));	
 	}
 }
