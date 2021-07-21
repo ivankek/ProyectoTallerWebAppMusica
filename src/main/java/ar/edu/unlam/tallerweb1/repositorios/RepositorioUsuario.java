@@ -20,4 +20,5 @@ public interface RepositorioUsuario {
 	SessionFactory getSessionFactory();
 	
 	void setSessionFactory(SessionFactory sessionFactory);
+	
 }

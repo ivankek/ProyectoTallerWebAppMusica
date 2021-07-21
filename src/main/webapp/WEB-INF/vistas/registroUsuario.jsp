@@ -17,10 +17,10 @@
 		<div class="container-fluid bg-image" id="loginbox">
 			<div class="container my-5 p-4 col-12 col-md-6 col-lg-4"
 				style="border-radius: 10px; backdrop-filter: blur(15px); box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);">
-				<form:form class="d-flex flex-column" action="validar-login"
+				<form:form class="d-flex flex-column" action="procesarRegistro"
 					method="POST" modelAttribute="usuario">
 
-					<h3 style="color: whitesmoke">Ingreso a la Plataforma</h3>
+					<h3 style="color: whitesmoke">Registro</h3>
 					<div class="mb-3" style="color: whitesmoke">
 						<label for="exampleInputEmail1" class="form-label">Usuario</label>
 						<form:input path="usuario" id="usuario" type="usuario"
@@ -35,33 +35,18 @@
 							class="form-control"
 							style="background-color: transparent; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65); border-radius: 10px; border-color: transparent; color: whitesmoke;" />
 					</div>
-
-
-					<div class="mb-3 form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1" />
-						<label class="form-check-label" for="exampleCheck1"
-							style="color: whitesmoke">Recuerdame</label>
+									
+					<div class="mb-3" style="color: whitesmoke">
+						<label for="repassword" class="form-label">Repetir Contraseña</label>
+						<input type="password" name="repassword" id="repassword"
+							class="form-control"
+							style="background-color: transparent; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65); border-radius: 10px; border-color: transparent; color: whitesmoke;" />
 					</div>
-
-					<button Type="Submit" class="btn mt-3 bg-info"
-						style="border-radius: 10px; color: white;">Ingresar</button>
-
-					<a href="#" id="contraseñaOlvidada"
-						class="mt-3 d-flex justify-content-center"
-						style="color: rgb(216, 216, 216)"> Olvidé mi contraseña </a>
-					
-					<a href="registroUsuario" id="insertarUsuario"
-						class="mt-3 d-flex justify-content-center"
-						style="color: rgb(216, 216, 216)"> Registrarse </a>
+									
+					<button Type="submit" class="btn mt-3 bg-info"
+						style="border-radius: 10px; color: white;">Registrarse</button>
 
 				</form:form>
-
-				<c:if test="${not empty error}">
-					<h4>
-						<span>${error}</span>
-					</h4>
-					<br>
-				</c:if>
 
 			</div>
 		</div>
@@ -69,7 +54,7 @@
 
 	</div>
 
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/bootstrap.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

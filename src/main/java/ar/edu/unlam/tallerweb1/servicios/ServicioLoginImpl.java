@@ -33,5 +33,9 @@ public class ServicioLoginImpl implements ServicioLogin {
 		this.servicioLoginDao = servicioLoginDao;
 	}
 
-	
+	@Override
+	public Long insertarUsuario(Usuario usuario) {
+		return servicioLoginDao.insertarUsuario(usuario);
+	}
+
 }
