@@ -66,13 +66,21 @@ public class ControladorLogin {
 			) {
 		//validar password con repassword
 		ModelMap modelo = new ModelMap();
+		if(servicioLogin.consultarUsuario(usuario) == null) {
 		if(usuario.getPassword().equals(repass)) {
 			//guardamelo en la base
 			servicioLogin.insertarUsuario(usuario);
-				modelo.put("Exito","Usuario registrado! "+usuario.getUsuario());
+				modelo.put("exito","Usuario registrado! "+usuario.getUsuario());
+				}
 			}
+		
+			else if(servicioLogin.consultarUsuario(usuario) != null) {
+			modelo.put("error","Ya existe el usuario");
+			return new ModelAndView("registroUsuario", modelo);
+		}
 			else {
-			modelo.put("Erro","No coinciden las pass");
+			modelo.put("error","No coinciden las pass");
+			return new ModelAndView("registroUsuario", modelo);
 		}
 		return new ModelAndView("login",modelo);
 		

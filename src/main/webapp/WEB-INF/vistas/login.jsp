@@ -56,6 +56,13 @@
 
 				</form:form>
 
+					<br>
+					
+					<c:if test="${not empty exito}">
+					<h5 class="text-white text-center">
+						<span>${exito}</span>
+					</h5>
+					</c:if>
 				<c:if test="${not empty error}">
 					<h4>
 						<span>${error}</span>

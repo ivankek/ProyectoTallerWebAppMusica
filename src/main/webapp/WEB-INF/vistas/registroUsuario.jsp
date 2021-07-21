@@ -45,15 +45,19 @@
 									
 					<button Type="submit" class="btn mt-3 bg-info"
 						style="border-radius: 10px; color: white;">Registrarse</button>
-
 				</form:form>
-
+					<c:if test="${not empty error}">
+					<h5 class="text-white text-center">
+						<span>${error}</span>
+					</h5>
+					<br>
+				</c:if>
 			</div>
 		</div>
 
 
 	</div>
-
+				
 
 <script src="js/bootstrap.min.js"></script>
 </body>
