@@ -31,10 +31,24 @@
 	</c:forEach>
 </div>
 
-<%
-}
-%>
+					<%
+					} else{
+					%>
+					
+					<h2 class="text-white text-center"> Para poder ver a que artistas sigues, puedes:</h2>
+					<br>
 
+					<div class="text-center">
+					<button type="submit"
+						class="btn btn-info text-light align-self-center mt-0 mt-md-5 me-3"
+						id="botonRegistro"><a style="text-decoration:none" class="text-light" href="/proyecto-limpio-spring-master/registroUsuario">Registrarte</a></button>
+					<button type="submit"
+						class="btn btn-info text-light align-self-center mt-0 mt-md-5 me-3"
+						id="botonLogin"><a style="text-decoration:none" class="text-light" href="/proyecto-limpio-spring-master/login">Ingresar</a></button>
+					</div>
+					<%
+					} 
+					%>
 <%@include file="queue.jsp"%>
 <%@include file="reproductor.jsp"%>
 <!-- Scripts -->
