@@ -142,4 +142,90 @@ public class FollowPlaylistTest extends SpringTest {
 
 	}
 
+	@Test
+	@Transactional
+	@Rollback
+	public void testUnfollowPlaylist() {
+
+		Usuario usuario = new Usuario();
+		usuario.setUsuario("ivank");
+		usuario.setPassword("1234");
+		usuario.setRol("User");
+		sessionFactory.getCurrentSession().save(usuario);
+
+		Album album = new Album();
+		album.setId((long) 1);
+		album.setNombre("Thriller");
+		album.setPath_img("img/Album/BackInBlack.jpg");
+		repoAlbum.setSessionFactory(sessionFactory);
+		repoAlbum.insertarAlbum(album);
+
+		Artista artista = new Artista();
+		artista.setId((long) 1);
+		artista.setNombre("Michael Jackson");
+		artista.setPath_img("img/Artista/ac_dc.jpg");
+		repoArtista.setSessionFactory(sessionFactory);
+		repoArtista.insertarArtista(artista);
+
+		Cancion cancion = new Cancion();
+		cancion.setAlbum(album);
+		cancion.setArtista(artista);
+		cancion.setNombre("Thriller");
+		repoCancion.setSessionFactory(sessionFactory);
+		repoCancion.insertarCancion(cancion);
+
+		ListaReproduccion listaReproduccion = new ListaReproduccion();
+		listaReproduccion.setNombre("Playlist Rock");
+		listaReproduccion.setUsuario(usuario);
+		repoLista.setSessionFactory(sessionFactory);
+		repoLista.insertarLista(listaReproduccion);
+
+		ListaReproduccion listaReproduccion2 = new ListaReproduccion();
+		listaReproduccion2.setNombre("Pop");
+		listaReproduccion2.setUsuario(usuario);
+		repoLista.insertarLista(listaReproduccion2);
+
+		ListaReproduccion listaReproduccion3 = new ListaReproduccion();
+		listaReproduccion3.setNombre("Chamamé");
+		listaReproduccion3.setUsuario(usuario);
+		repoLista.insertarLista(listaReproduccion3);
+		
+		Usuario usuario2 = new Usuario();
+		usuario.setUsuario("maradona");
+		usuario.setPassword("1234");
+		usuario.setRol("User");
+		sessionFactory.getCurrentSession().save(usuario2);
+		
+		Usuario usuario3 = new Usuario();
+		usuario3.setUsuario("veron");
+		usuario3.setPassword("1234");
+		usuario3.setRol("User");
+		sessionFactory.getCurrentSession().save(usuario3);
+		
+		RepositorioFollowPlaylist repoFollowLista = new RepositorioFollowPlaylistImpl(sessionFactory);
+		
+		FollowPlaylist followPlaylist = new FollowPlaylist();
+		followPlaylist.setUsuario(usuario2);
+		followPlaylist.setListaReproduccion(listaReproduccion);
+		repoFollowLista.guardarFollow(followPlaylist);
+		
+		FollowPlaylist followPlaylist2 = new FollowPlaylist();
+		followPlaylist2.setUsuario(usuario3);
+		followPlaylist2.setListaReproduccion(listaReproduccion);
+		repoFollowLista.guardarFollow(followPlaylist2);
+		
+		FollowPlaylist followPlaylist3 = new FollowPlaylist();
+		followPlaylist3.setUsuario(usuario2);
+		followPlaylist3.setListaReproduccion(listaReproduccion2);
+		repoFollowLista.guardarFollow(followPlaylist3);
+
+		assertEquals(2, repoFollowLista.obtenerPlaylistSeguidasPorUsuario(usuario2).size());
+		
+		repoFollowLista.dejarDeSeguirPlaylist(followPlaylist3);
+		
+		assertEquals(1, repoFollowLista.obtenerPlaylistSeguidasPorUsuario(usuario2).size());
+		
+
+	}
+	
 }
