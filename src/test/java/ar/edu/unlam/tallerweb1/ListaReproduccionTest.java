@@ -80,7 +80,7 @@ public class ListaReproduccionTest extends SpringTest {
 		repoLista.setSessionFactory(sessionFactory);
 		repoLista.insertarLista(listaReproduccion);
 
-		assertEquals(1, repoLista.obtenerTodasLasListasDeReproduccion().size());
+		assertEquals(2, repoLista.obtenerTodasLasListasDeReproduccion().size());
 
 	}
 
