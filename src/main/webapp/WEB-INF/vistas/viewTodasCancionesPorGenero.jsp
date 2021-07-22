@@ -42,12 +42,12 @@
 							<div class="flex-grow-1 ms-3 text-white">
 								<h5 class="mt-0 mb-0">${cancion.nombre}</h5>
 								<a class="text-decoration-none text-light"
-									href="http://localhost:8080/proyecto-limpio-spring-master/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
+									href="http://localhost:8080/ProyectoTallerWebAppMusica/Artista?nombre=${cancion.artista.nombre}">${cancion.artista.nombre}</a>
 							</div>
 						</div></td>
 					<td><div class="text-white d-flex align-items-end mt-3">
 							<a class="text-decoration-none text-light"
-								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
+								href="http://localhost:8080/ProyectoTallerWebAppMusica/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 						</div></td>
 
 

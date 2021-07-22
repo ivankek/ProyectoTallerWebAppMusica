@@ -50,17 +50,17 @@ function ocultarYMostrarQueue(){
 function buscarCancionEnBD(evento){
     var nombreCancion = evento.target.getAttribute("name");
     
-    if(window.location.pathname == "/proyecto-limpio-spring-master/viewLista"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/viewLista"){
         var nombreArtista = evento.target.parentElement.parentElement.querySelector("#nombreArtista").innerHTML;
         var nombreAlbum = evento.target.parentElement.parentElement.querySelector("#nombreAlbum").innerHTML;
     }
 
-    if(window.location.pathname == "/proyecto-limpio-spring-master/Album"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/Album"){
         var nombreArtista = document.querySelector("#artistaNombre").innerHTML;
         var nombreAlbum = document.querySelector("#albumNombre").innerHTML;
     }
 
-    if(window.location.pathname == "/proyecto-limpio-spring-master/Artista"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/Artista"){
         var nombreArtista = document.querySelector("#Titulo").innerHTML;
         var nombreAlbum = evento.target.parentElement.parentElement.querySelector("#nombreAlbum").innerHTML;
     }

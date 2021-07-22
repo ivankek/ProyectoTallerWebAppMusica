@@ -24,7 +24,7 @@
 						alt="" src="${genero.path_img}">
 					<h5 class="text-center text-light mt-3 mb-3">${genero.nombre}</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewTodasCancionesPorGenero?genero=${genero.nombre}"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewTodasCancionesPorGenero?genero=${genero.nombre}"
 							class="card-link text-decoration-none text-info">Ver Género</a>
 					</div>
 				</div>

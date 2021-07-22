@@ -44,7 +44,7 @@
 						style="width: 2em; height: 2em; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"
 						alt="" src="${usuarioPlaylist.path_img}"> <a
 						class="text-decoration-none align-self-center text-light fs-5 ms-2 text-center"
-						href="http://localhost:8080/proyecto-limpio-spring-master/Usuario?nombre=${usuarioPlaylist.usuario}">${usuarioPlaylist.usuario}</a>
+						href="http://localhost:8080/ProyectoTallerWebAppMusica/Usuario?nombre=${usuarioPlaylist.usuario}">${usuarioPlaylist.usuario}</a>
 				</div>
 			</div>
 			<form class="align-self-center" action="${Action}">

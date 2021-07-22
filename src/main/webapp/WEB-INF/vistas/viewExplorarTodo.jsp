@@ -36,7 +36,7 @@
 						alt="" src="img/Artista/kiss.jpg">
 					<h5 class="text-center text-light mt-3 mb-3">Artistas</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosArtistas"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewExplorarTodosLosArtistas"
 							class="card-link text-decoration-none text-info">Ver Artistas</a>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 						alt="" src="img/Album/BackInBlack.jpg">
 					<h5 class="text-center text-light mt-3 mb-3">Albums</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosAlbums"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewExplorarTodosLosAlbums"
 							class="card-link text-decoration-none text-info">Ver Albums</a>
 					</div>
 				</div>
@@ -90,7 +90,7 @@
 						alt="" src="img/Artista/foo_fighters.jpg">
 					<h5 class="text-center text-light mt-3 mb-3">Canciones</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodasLasCanciones"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewExplorarTodasLasCanciones"
 							class="card-link text-decoration-none text-info">Ver Canciones</a>
 					</div>
 				</div>
@@ -117,7 +117,7 @@
 						alt="" src="img/Artista/ac_dc.jpg">
 					<h5 class="text-center text-light mt-3 mb-3">Playlists</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodasLasPlaylists"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewExplorarTodasLasPlaylists"
 							class="card-link text-decoration-none text-info">Ver Playlists</a>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 						<br><br><br><br><br>
 					<h5 class="text-center text-light mt-3 mb-3">Géneros</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewExplorarTodosLosGeneros"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewExplorarTodosLosGeneros"
 							class="card-link text-decoration-none text-info">Ver Géneros</a>
 					</div>
 				</div>

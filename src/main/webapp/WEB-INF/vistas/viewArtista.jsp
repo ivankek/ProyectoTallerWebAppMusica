@@ -126,7 +126,7 @@
 						<div class="col-3 text-white d-flex align-items-center">
 							<a  id="nombreAlbum"
 								class="text-decoration-none text-light"
-								href="http://localhost:8080/proyecto-limpio-spring-master/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
+								href="http://localhost:8080/ProyectoTallerWebAppMusica/Album?nombre=${cancion.album.nombre}">${cancion.album.nombre}</a>
 						</div> <!-- parte C -->
 						<div
 							class="col text-white d-flex align-items-center justify-content-end">

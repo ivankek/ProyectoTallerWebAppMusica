@@ -13,7 +13,7 @@ function showMessage(txt){
 }
 
 //Funcionamiento para la vista Artista
-if(window.location.pathname == "/proyecto-limpio-spring-master/Artista"){
+if(window.location.pathname == "/ProyectoTallerWebAppMusica/Artista"){
     const btn_seguir = document.querySelector("#botonFollow");
     const nombreDelArtista = document.querySelector("#Titulo").innerHTML;
     const elementos_cancion = document.querySelectorAll(".cancion");
@@ -83,7 +83,7 @@ btn_favorito.forEach(item => item.addEventListener("click" , agregarEliminarFavo
 function mostrarFavorito(evento){
     let icono_favorito = evento.target.querySelector(".fav-icon");
     if(icono_favorito.innerHTML == ""){
-        if(window.location.pathname == "/proyecto-limpio-spring-master/Artista"){
+        if(window.location.pathname == "/ProyectoTallerWebAppMusica/Artista"){
             let nombreCancion = evento.target.querySelector(".titulo-cancion").innerHTML;
             let nombreArtista = evento.target.querySelector("#nombreArtista").innerHTML;
             let nombreAlbum = evento.target.querySelector("#nombreAlbum").innerHTML;
@@ -91,7 +91,7 @@ function mostrarFavorito(evento){
             
         }
 
-        if(window.location.pathname == "/proyecto-limpio-spring-master/Album"){
+        if(window.location.pathname == "/ProyectoTallerWebAppMusica/Album"){
             let nombreCancion = evento.target.querySelector("#cancionNombre").innerHTML;
             let nombreArtista = document.querySelector("#artistaNombre").innerHTML;
             let nombreAlbum = document.querySelector("#albumNombre").innerHTML;
@@ -99,7 +99,7 @@ function mostrarFavorito(evento){
             
         }
 
-        if(window.location.pathname == "/proyecto-limpio-spring-master/viewLista"){
+        if(window.location.pathname == "/ProyectoTallerWebAppMusica/viewLista"){
             let nombreCancion = evento.target.querySelector(".icon-play").getAttribute("name");
             let nombreArtista = evento.target.querySelector("#nombreArtista").innerHTML;
             let nombreAlbum = evento.target.querySelector("#nombreAlbum").innerHTML;
@@ -113,21 +113,21 @@ function mostrarFavorito(evento){
 function ocultarFavorito(evento){evento.target.querySelector(".fav-icon").hidden = true}
 
 function agregarEliminarFavorito(evento){
-    if(window.location.pathname == "/proyecto-limpio-spring-master/Artista"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/Artista"){
         let nombreCancion = evento.target.parentElement.parentElement.querySelector(".icon-play").getAttribute("name");
         let nombreArtista = document.querySelector("#Titulo").innerHTML;
         let nombreAlbum = evento.target.parentElement.parentElement.querySelector("#nombreAlbum").innerHTML;
         var arrayData = [nombreCancion , nombreArtista , nombreAlbum];  
     }
 
-    if(window.location.pathname == "/proyecto-limpio-spring-master/Album"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/Album"){
         let nombreCancion = evento.target.parentElement.parentElement.parentElement.querySelector(".icon-play").getAttribute("name");
         let nombreArtista = document.querySelector("#artistaNombre").innerHTML;
         let nombreAlbum = document.querySelector("#albumNombre").innerHTML;
         var arrayData = [nombreCancion , nombreArtista , nombreAlbum];
     }
 
-    if(window.location.pathname == "/proyecto-limpio-spring-master/viewLista"){
+    if(window.location.pathname == "/ProyectoTallerWebAppMusica/viewLista"){
         let nombreCancion = evento.target.parentElement.parentElement.parentElement.querySelector(".icon-play").getAttribute("name");
         let nombreArtista = evento.target.parentElement.parentElement.parentElement.querySelector("#nombreArtista").innerHTML;
         let nombreAlbum = evento.target.parentElement.parentElement.parentElement.querySelector("#nombreAlbum").innerHTML;

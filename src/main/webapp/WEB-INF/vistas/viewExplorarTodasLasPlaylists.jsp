@@ -23,7 +23,7 @@
 					
 					<h5 class="text-center text-light mt-3 mb-3">${lista.nombre}</h5>
 					<div class="d-flex justify-content-center">
-						<a href="http://localhost:8080/proyecto-limpio-spring-master/viewLista?idPlaylist=${lista.id }"
+						<a href="http://localhost:8080/ProyectoTallerWebAppMusica/viewLista?idPlaylist=${lista.id }"
 							class="card-link text-decoration-none text-info">Ver Lista</a>
 					</div>
 				</div>
